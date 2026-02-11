@@ -1,0 +1,33 @@
+[package]
+name = "trading_bot_rs"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "trading_bot_rs"
+path = "src/main.rs"
+
+[dependencies]
+rust_decimal = { version = "1.35", features = ["serde", "db-postgres", "maths"] }
+evalexpr = "11.3.0"
+tokio = { version = "1.36.0", features = ["full"] }
+tokio-postgres = { version = "0.7.10", features = ["with-chrono-0_4"] }
+deadpool-postgres = { version = "0.12", features = ["serde"] }
+deadpool = "0.10"
+serde = { version = "1.0.203", features = ["derive"] }
+toml = { version = "0.8.19" }
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter", "chrono"] }
+chrono = { version = "0.4.38" }
+reqwest = { version = "0.12", features = ["json", "native-tls"] }
+tokio-tungstenite = { version = "0.23", features = ["native-tls"] }
+serde_json = { version = "1.0" }
+sha2 = { version = "0.10" }
+hmac = { version = "0.12" }
+base64 = { version = "0.22" }
+url = { version = "2.5" }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+anyhow = "1.0"
+ndarray = "0.15"
+uuid = { version = "1.10", features = ["v4", "std"] }
+simd-json = "0.13"

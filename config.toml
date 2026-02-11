@@ -1,0 +1,154 @@
+[api_keys]
+
+key = { value = "OhvP/6XEFA7VxLfckSyD9xuo2lqaHRdtWaNKePwbiADXC5o6T15N9wF2", description = "Kraken API Key" }
+
+secret = { value = "uL9v1ku5jfh/f/EY3e2O/WV9hWaCaYEILxDziP/j2XDnzxWSMamXjNgP9gLcGPkyCCADuZqCxJhW2/zc3IaaDw==", description = "Kraken API Secret" }
+
+[portfolio]
+api_pairs = { value = ["SOLUSD"] }
+
+ws_pairs = { value = ["SOL/USD"] }
+
+initial_investment = { value = 2750.0, description = "Initial USD investment, not to be used by bot. Does not include $30 Grok subscription since April 2025." }
+
+[trading_logic]
+
+dip_percentage = { value = 1.5, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+
+profit_target = { value = 2.0, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
+
+period_minutes = { value = 60, description = "Lookback period in minutes for calculating highest price" }
+
+data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
+
+trade_percentage = { value = 50.0, description = "Percentage of available USD balance to use per buy trade" }
+
+loop_delay_seconds = { value = 30.0, description = "Delay in seconds between trading loop iterations" }
+
+profit_decay_period = { value = 30, description = "Time constant (minutes) for exponential profit target decay to reach take_profit_min" }
+
+take_profit_min = { value = 1.0, description = "Minimum profit target percentage for exponential decay and early profit sells triggered by contraction or stagnation. Default 0.5" }
+
+min_notional = { value = 10.0, description = "Minimum trade value in USD to meet Kraken's requirements" }
+
+sell_safety_cap = { value = 0.0, description = "Optional safety cap as a percentage of available balance to limit sell amounts (e.g., 0.98 for 98%). Set to 1.0 to disable." }
+
+default_fee_rate = { value = 0.0022, description = "Default fee rate (as a decimal, e.g., 0.0016 for 0.16%) for trades when actual fees are unavailable" }
+
+liquidity_threshold = { value = 5000.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
+
+price_modifier = { value = 0.00025, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.0005" }
+
+buy_order_timeout = { value = 30, description = "Timeout in seconds for buy orders." }
+
+sell_order_timeout = { value = 30, description = "Timeout in seconds for non-expedited sell orders." }
+
+[stop_loss_behavior]
+
+fixed_stop_initial = { value = 1.0, description = "Initial fixed stop-loss percentage" }
+
+fixed_stop_min = { value = 1.0, description = "Minimum fixed stop-loss percentage after tightening" }
+
+fixed_stop_tightening_period = { value = 30, description = "Time in minutes to tighten fixed stop-loss from fixed_stop_initial to fixed_stop_min" }
+
+trailing_stop_percentage = { value = 1.0, description = "Constant trailing stop-loss percentage" }
+
+pause_after_stop_minutes = { value = 0.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
+
+[database]
+
+host = { value = "localhost", description = "PostgreSQL server host" }
+
+port = { value = 6969, description = "PostgreSQL server port" }
+
+database = { value = "trading_bot_db", description = "PostgreSQL database name" }
+
+user = { value = "trading_bot", description = "PostgreSQL user for the bot" }
+
+password = { value = "12345", description = "PostgreSQL password for the bot user" }
+
+max_connections = { value = 50, description = "Maximum number of concurrent PostgreSQL connections" }
+
+cache_size = { value = 100000, description = "Maximum number of entries in the TradeManager database cache" }
+
+max_retries = { value = 5, description = "Maximum number of retry attempts for database operations before giving up" }
+
+[market_checks]
+
+conditional_buying = { value = false, description = "A toggle to turn market condition checks for buy orders on/off, values are true/false." }
+
+sma_short_period = { value = 30, description = "Short SMA lookback period in minutes for trend crossover detection (e.g., 50 for short-term average). Recommended range: 10-50 minutes; lower (10-20) increases sensitivity to short-term price changes, generating more frequent buy signals but risking more false positives in noisy markets; upper (30-50) provides smoother signals, reducing noise but potentially missing quick opportunities in high-frequency crypto trading." }
+
+sma_long_period = { value = 150, description = "Long SMA lookback period in minutes for trend crossover detection (e.g., 200 for long-term average). Recommended range: 100-200 minutes; lower (100-150) makes the long-term trend more responsive, allowing faster detection of shifts in volatile crypto markets; upper (150-200) emphasizes sustained trends, offering stronger confirmation but with greater lag, suitable for tolerating short-term volatility." }
+
+atr_period = { value = 14, description = "ATR calculation period in minutes for volatility detection (tuned for crypto markets, e.g., 14). Recommended range: 10-20 minutes; lower (10-14) captures recent volatility more aggressively, ideal for high-frequency trading where quick spike detection is key; upper (14-20) smooths out fluctuations, reducing false volatility signals but potentially delaying responses in fast-moving crypto environments." }
+
+atr_hist_period = { value = 100, description = "Historical lookback period in minutes for comparing current ATR to average (e.g., 120 for recent volatility baseline). Recommended range: 50-200 minutes; lower (50-100) uses a shorter baseline for more reactive comparisons, detecting spikes sooner in volatile sessions; upper (100-200) provides a more stable average, minimizing overreactions to temporary noise but risking missed early volatility in high-frequency setups." }
+
+atr_vol_multiplier = { value = 1.2, description = "Multiplier for detecting volatility spikes (e.g., 1.5 means current ATR > 1.5x historical average triggers a spike). Recommended range: 1.5-2.5; lower (1.5-2.0) flags smaller spikes, increasing caution in buys during moderate volatility (more skipped opportunities but safer); upper (2.0-2.5) requires larger spikes to trigger, allowing trades in moderately volatile conditions, which suits high-frequency crypto bots tolerant of some swings." }
+
+roc_period = { value = 12, description = "ROC lookback period in minutes for momentum detection (e.g., 9 for rate of change calculation). Recommended range: 9-20 minutes; lower (9-12) focuses on short-term momentum shifts, generating quicker downtrend alerts for agile high-frequency trading; upper (12-20) assesses sustained momentum, reducing whipsaws but potentially delaying detection in rapidly changing crypto markets." }
+
+roc_down_threshold = { value = -1.0, description = "ROC percentage threshold below which indicates a downtrend (e.g., -5.0 means ROC < -5% flags downtrend). Recommended range: -3.0 to -10.0; higher (less negative, e.g., -3.0 to -5.0) detects mild downtrends early, preventing buys in subtle weakness but risking over-caution; lower (more negative, e.g., -5.0 to -10.0) requires stronger downtrends to trigger, allowing trades amid tolerable pullbacks in volatile crypto environments." }
+
+[bot_operation]
+
+fixed_stop_loss = { value = true, description = "Enable fixed stop-loss to sell when price falls below a tightening threshold relative to average buy price" }
+
+trailing_stop_loss = { value = false, description = "Enable trailing stop-loss to sell when price falls below a constant threshold relative to highest price since buy" }
+
+buy_post_only = { value = true, description = "Enable post-only limit orders for buys to prioritize maker fees." }
+
+sell_post_only = { value = true, description = "Enable post-only limit orders for sells to prioritize maker fees." }
+
+[price_logic]
+
+buy_price = { value = "close_price * (1 - price_modifier)", description = "Formula to calculate buy order limit price." }
+
+sell_price = { value = "close_price * (1 + price_modifier)", description = "Formula to calculate sell order limit price" }
+
+[symbol_info."SOLUSD"]
+quantityPrecision = 4
+pricePrecision = 2
+balanceKey = "SOL"
+lotSize = { minQty = 0.02, maxQty = 100000.0, stepSize = 0.0001 }
+
+[symbol_info."SHIBUSD"]
+quantityPrecision = 0
+pricePrecision = 8
+balanceKey = "SHIB"
+lotSize = { minQty = 160000, maxQty = 1000000000000.0, stepSize = 1 }
+
+[symbol_info."LINKUSD"]
+quantityPrecision = 4
+pricePrecision = 5  # Updated to 5; revert to 4 if preferred
+balanceKey = "LINK"
+lotSize = { minQty = 0.2, maxQty = 100000000.0, stepSize = 0.0001 }
+
+[symbol_info."INJUSD"]
+quantityPrecision = 4
+pricePrecision = 3
+balanceKey = "INJ"
+lotSize = { minQty = 0.15, maxQty = 100000000.0, stepSize = 0.0001 }
+
+[symbol_info."ATOMUSD"]
+quantityPrecision = 2
+pricePrecision = 3
+balanceKey = "ATOM"
+lotSize = { minQty = 0.1, maxQty = 100000.0, stepSize = 0.01 }
+
+[symbol_info."DOTUSD"]
+quantityPrecision = 4
+pricePrecision = 4
+balanceKey = "DOT"
+lotSize = { minQty = 0.6, maxQty = 100000.0, stepSize = 0.0001 }
+
+[delays]
+
+monitor_loop_delay = { value = 10.0, description = "Delay in seconds between order monitoring loop iterations" }
+
+monitor_pair_delay = { value = 1.0, description = "Delay in seconds between monitoring different pairs" }
+
+monitor_partial_delay = { value = 10.0, description = "Delay in seconds to poll for partial fills after order closes with vol_exec < vol" }
+
+poll_interval = { value = 5.0, description = "Seconds to poll for order completion when skipping logic" }
