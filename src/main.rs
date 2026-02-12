@@ -683,14 +683,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
-    let pool_periodic = pool.clone();
+    let pool_for_task = pool.clone();
     tokio::spawn(async move {
-        let pool = pool_periodic;
         let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
         loop {
             interval.tick().await;
-            let _ = export_trades_to_csv(&pool_clone).await;
-            let _ = export_positions_to_csv(&pool_clone).await;
+            let _ = export_trades_to_csv(&pool_for_task).await;
+            let _ = export_positions_to_csv(&pool_for_task).await;
         }
     });
 

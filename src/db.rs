@@ -20,7 +20,6 @@ use rust_decimal::Decimal;
 use csv::Writer;
 use serde::Serialize;
 use std::fs;
-use deadpool_postgres::Pool;
 
 // ============================================================================
 // Database
