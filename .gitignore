@@ -1,4 +1,5 @@
 /log/
+/log
 /target
 Cargo.lock
 RefactoredTradingRS.txt

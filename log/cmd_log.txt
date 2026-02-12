@@ -146,3 +146,122 @@
 [2m2026-02-12 08:49:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for INJUSD
 [2m2026-02-12 08:49:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for INJUSD: no open trades
 [2m2026-02-12 08:49:45 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.52506, timestamp: "2026-02-12 08:49:00" }
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for DOTUSD, timestamp: 2026-02-12 08:48:00
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for DOTUSD
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for DOTUSD (conditional_buying=false)
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for DOTUSD: close_price=1.289800, highest_price=1.290900, buy_threshold=1.277991
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for DOTUSD: close_price=1.289800 >= buy_threshold=1.277991
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for DOTUSD
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for DOTUSD
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for DOTUSD
+[2m2026-02-12 08:49:48 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for DOTUSD: no open trades
+[2m2026-02-12 08:49:50 -05:00[0m [33m WARN[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1984518
+[2m2026-02-12 08:49:50 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SHIBUSD: PriceUpdate { pair: "SHIBUSD", bid: 0, ask: 0, close_price: 0, timestamp: "2026-02-12 08:49:00" }
+[2m2026-02-12 08:49:50 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.53326, timestamp: "2026-02-12 08:49:00" }
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.5306, timestamp: "2026-02-12 08:49:00" }
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for SHIBUSD, timestamp: 2026-02-12 08:49:00
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for SHIBUSD
+[2m2026-02-12 08:49:52 -05:00[0m [33m WARN[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m No price data for SHIBUSD, skipping buy logic
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for SHIBUSD
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for SHIBUSD
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for SHIBUSD
+[2m2026-02-12 08:49:52 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for SHIBUSD: no open trades
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for LINKUSD, timestamp: 2026-02-12 08:49:00
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for LINKUSD
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for LINKUSD (conditional_buying=false)
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for LINKUSD: close_price=8.530600, highest_price=8.544370, buy_threshold=8.458926
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for LINKUSD: close_price=8.530600 >= buy_threshold=8.458926
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for LINKUSD
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for LINKUSD
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for LINKUSD
+[2m2026-02-12 08:49:56 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for LINKUSD: no open trades
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for ATOMUSD, timestamp: 2026-02-12 08:49:27
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for ATOMUSD
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for ATOMUSD (conditional_buying=false)
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for ATOMUSD: close_price=1.970100, highest_price=1.975500, buy_threshold=1.955745
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for ATOMUSD: close_price=1.970100 >= buy_threshold=1.955745
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for ATOMUSD
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for ATOMUSD
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for ATOMUSD
+[2m2026-02-12 08:49:57 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for ATOMUSD: no open trades
+[2m2026-02-12 08:50:01 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.53054, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:03 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SOLUSD: PriceUpdate { pair: "SOLUSD", bid: 0, ask: 0, close_price: 81.41, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for SOLUSD, timestamp: 2026-02-12 08:50:00
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for SOLUSD
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for SOLUSD (conditional_buying=false)
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for SOLUSD: close_price=81.410000, highest_price=81.610000, buy_threshold=80.793900
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for SOLUSD: close_price=81.410000 >= buy_threshold=80.793900
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for SOLUSD
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for SOLUSD
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for SOLUSD
+[2m2026-02-12 08:50:04 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for SOLUSD: no open trades
+[2m2026-02-12 08:50:08 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.53055, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:08 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for LINKUSD: PriceUpdate { pair: "LINKUSD", bid: 0, ask: 0, close_price: 8.53055, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:08 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SOLUSD: PriceUpdate { pair: "SOLUSD", bid: 0, ask: 0, close_price: 81.45, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:08 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SOLUSD: PriceUpdate { pair: "SOLUSD", bid: 0, ask: 0, close_price: 81.45, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for INJUSD, timestamp: 2026-02-12 08:49:10
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for INJUSD
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for INJUSD (conditional_buying=false)
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for INJUSD: close_price=3.101000, highest_price=3.101000, buy_threshold=3.069990
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for INJUSD: close_price=3.101000 >= buy_threshold=3.069990
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for INJUSD
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for INJUSD
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for INJUSD
+[2m2026-02-12 08:50:10 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for INJUSD: no open trades
+[2m2026-02-12 08:50:15 -05:00[0m [33m WARN[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=62951534.73344
+[2m2026-02-12 08:50:15 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SHIBUSD: PriceUpdate { pair: "SHIBUSD", bid: 0, ask: 0, close_price: 0, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:16 -05:00[0m [32m INFO[0m [2mtrade[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Global sweep: no lingering orders >30s (WS handling)
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for DOTUSD
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for DOTUSD (conditional_buying=false)
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for DOTUSD: close_price=1.289800, highest_price=1.290900, buy_threshold=1.277991
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for DOTUSD: close_price=1.289800 >= buy_threshold=1.277991
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for DOTUSD
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for DOTUSD
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for DOTUSD
+[2m2026-02-12 08:50:19 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for DOTUSD: no open trades
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for SHIBUSD, timestamp: 2026-02-12 08:50:00
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for SHIBUSD
+[2m2026-02-12 08:50:22 -05:00[0m [33m WARN[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m No price data for SHIBUSD, skipping buy logic
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for SHIBUSD
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for SHIBUSD
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for SHIBUSD
+[2m2026-02-12 08:50:22 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for SHIBUSD: no open trades
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for LINKUSD, timestamp: 2026-02-12 08:50:00
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for LINKUSD
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for LINKUSD (conditional_buying=false)
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for LINKUSD: close_price=8.530550, highest_price=8.544370, buy_threshold=8.458926
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for LINKUSD: close_price=8.530550 >= buy_threshold=8.458926
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for LINKUSD
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for LINKUSD
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for LINKUSD
+[2m2026-02-12 08:50:26 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for LINKUSD: no open trades
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for ATOMUSD, timestamp: 2026-02-12 08:49:27
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for ATOMUSD
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for ATOMUSD (conditional_buying=false)
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for ATOMUSD: close_price=1.970100, highest_price=1.975500, buy_threshold=1.955745
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for ATOMUSD: close_price=1.970100 >= buy_threshold=1.955745
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for ATOMUSD
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for ATOMUSD
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for ATOMUSD
+[2m2026-02-12 08:50:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for ATOMUSD: no open trades
+[2m2026-02-12 08:50:32 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SOLUSD: PriceUpdate { pair: "SOLUSD", bid: 0, ask: 0, close_price: 81.47, timestamp: "2026-02-12 08:50:00" }
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for SOLUSD, timestamp: 2026-02-12 08:50:00
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for SOLUSD
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for SOLUSD (conditional_buying=false)
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for SOLUSD: close_price=81.470000, highest_price=81.610000, buy_threshold=80.793900
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for SOLUSD: close_price=81.470000 >= buy_threshold=80.793900
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for SOLUSD
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for SOLUSD
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for SOLUSD
+[2m2026-02-12 08:50:34 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for SOLUSD: no open trades
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for INJUSD, timestamp: 2026-02-12 08:49:10
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for INJUSD
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for INJUSD (conditional_buying=false)
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for INJUSD: close_price=3.101000, highest_price=3.101000, buy_threshold=3.069990
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for INJUSD: close_price=3.101000 >= buy_threshold=3.069990
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for INJUSD
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for INJUSD
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for INJUSD
+[2m2026-02-12 08:50:40 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for INJUSD: no open trades
+[2m2026-02-12 08:50:44 -05:00[0m [33m WARN[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=74949385.73344
+[2m2026-02-12 08:50:44 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SHIBUSD: PriceUpdate { pair: "SHIBUSD", bid: 0, ask: 0, close_price: 0, timestamp: "2026-02-12 08:50:00" }
