@@ -5600,3 +5600,13 @@
 [2m2026-02-12 01:49:16 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for SHIBUSD
 [2m2026-02-12 01:49:16 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for SHIBUSD
 [2m2026-02-12 01:49:16 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for SHIBUSD: no open trades
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Using WebSocket OHLC data for INJUSD, timestamp: 2026-02-12 01:48:00
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering buy_logic for INJUSD
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::indicators::indicators[0m[2m:[0m [2msrc\indicators.rs[0m[2m:[0m Market condition checks bypassed for INJUSD (conditional_buying=false)
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy logic for INJUSD: close_price=3.121000, highest_price=3.126000, buy_threshold=3.094740
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Buy skipped for INJUSD: close_price=3.121000 >= buy_threshold=3.094740
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Entering sell_logic for INJUSD
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::db[0m[2m:[0m [2msrc\db.rs[0m[2m:[0m DB: Fetched 0 open trades for INJUSD
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Found 0 open trades for INJUSD
+[2m2026-02-12 01:49:17 -05:00[0m [32m INFO[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Sell skipped for INJUSD: no open trades
+[2m2026-02-12 01:49:27 -05:00[0m [32m INFO[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Processed price update for SOLUSD: PriceUpdate { pair: "SOLUSD", bid: 0, ask: 0, close_price: 80.55, timestamp: "2026-02-12 01:49:00" }
