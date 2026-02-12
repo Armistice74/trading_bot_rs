@@ -8,6 +8,7 @@ name = "trading_bot_rs"
 path = "src/main.rs"
 
 [dependencies]
+csv = "1.3"
 rust_decimal = { version = "1.35", features = ["serde", "db-postgres", "maths"] }
 evalexpr = "11.3.0"
 tokio = { version = "1.36.0", features = ["full"] }

@@ -20,6 +20,7 @@ use tracing::warn;
 use tokio::time::timeout;
 use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
+use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 
 mod actors;
 mod api;
@@ -451,6 +452,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Starting trading bot");
 
     let config = load_config()?;
+    let pool = create_pool(&config).await?;
     config.validate()?;
     info!(
         "Loaded configuration: {:?}",
@@ -670,6 +672,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Entering main loop with concurrent trading for {} pairs",
         config.portfolio.api_pairs.value.len()
     );
+
+    let pool_clone = pool.clone();
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
+        loop {
+            interval.tick().await;
+            let _ = export_trades_to_csv(&pool_clone).await;
+            let _ = export_positions_to_csv(&pool_clone).await;
+        }
+    });
+
     tokio::select! {
         _ = signal::ctrl_c() => {
             info!("Received SIGINT, initiating shutdown...");
@@ -692,6 +705,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     info!("Initiating graceful shutdown of StateManager...");
     state_manager.shutdown().await?;
+    let _ = export_trades_to_csv(&pool).await;
+    let _ = export_positions_to_csv(&pool).await;
     let _ = shutdown_tx.send(());
     info!("Shutdown complete");
     Ok(())

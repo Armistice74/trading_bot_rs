@@ -17,6 +17,9 @@ use tokio_postgres::NoTls;
 use tracing::{error, info};
 use crate::utils::parse_unix_timestamp;
 use rust_decimal::Decimal;
+use csv::Writer;
+use serde::Serialize;
+use std::fs;
 
 // ============================================================================
 // Database
@@ -875,4 +878,69 @@ pub async fn get_total_pl_for_crypto(
         }
     }
     Err(anyhow!("Unreachable: max retries exceeded"))
+}
+
+#[derive(Serialize)]
+struct TradesRow {
+    timestamp: String,
+    pair: String,
+    trade_id: String,
+    order_id: Option<String>,
+    #[serde(rename = "type")]
+    type_: String,
+    amount: Decimal,
+    execution_price: Decimal,
+    fees: Decimal,
+    fee_percentage: Decimal,
+    profit: Option<Decimal>,
+    profit_percentage: Option<Decimal>,
+    reason: Option<String>,
+    avg_cost_basis: Option<Decimal>,
+    slippage: Option<Decimal>,
+    remaining_amount: Decimal,
+    open: i32,
+    partial_open: i32,
+}
+
+#[derive(Serialize)]
+struct PositionsRow {
+    pair: String,
+    total_usd: Decimal,
+    total_quantity: Decimal,
+    usd_balance: Decimal,
+    last_updated: Option<String>,
+    total_fees: Decimal,
+    total_pl: Decimal,
+    highest_price_since_buy: Option<Decimal>,
+    last_synced: Option<String>,
+}
+
+pub async fn export_trades_to_csv(pool: &Pool) -> Result<()> {
+    fs::create_dir_all("data")?;
+    let mut wtr = Writer::from_path("data/trades.csv")?;
+    let rows = sqlx::query_as::<_, TradesRow>(
+        r#"SELECT timestamp, pair, trade_id, order_id, "type", amount, execution_price, fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis, slippage, remaining_amount, open, partial_open FROM trades ORDER BY timestamp DESC"#
+    )
+    .fetch_all(pool)
+    .await?;
+    for row in rows {
+        wtr.serialize(row)?;
+    }
+    wtr.flush()?;
+    Ok(())
+}
+
+pub async fn export_positions_to_csv(pool: &Pool) -> Result<()> {
+    fs::create_dir_all("data")?;
+    let mut wtr = Writer::from_path("data/positions.csv")?;
+    let rows = sqlx::query_as::<_, PositionsRow>(
+        "SELECT pair, total_usd, total_quantity, usd_balance, last_updated, total_fees, total_pl, highest_price_since_buy, last_synced FROM positions"
+    )
+    .fetch_all(pool)
+    .await?;
+    for row in rows {
+        wtr.serialize(row)?;
+    }
+    wtr.flush()?;
+    Ok(())
 }
