@@ -919,7 +919,6 @@ pub async fn export_trades_to_csv(pool: &deadpool_postgres::Pool) -> Result<(), 
     fs::create_dir_all("data")?;
     let mut wtr = Writer::from_path("data/trades.csv")?;
 
-    // Write header
     wtr.write_record(&[
         "timestamp", "pair", "trade_id", "order_id", "type", "amount", "execution_price",
         "fees", "fee_percentage", "profit", "profit_percentage", "reason", "avg_cost_basis",
@@ -965,7 +964,6 @@ pub async fn export_positions_to_csv(pool: &deadpool_postgres::Pool) -> Result<(
     fs::create_dir_all("data")?;
     let mut wtr = Writer::from_path("data/positions.csv")?;
 
-    // Write header
     wtr.write_record(&[
         "pair", "total_usd", "total_quantity", "usd_balance", "last_updated",
         "total_fees", "total_pl", "highest_price_since_buy", "last_synced"
