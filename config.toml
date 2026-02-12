@@ -5,9 +5,9 @@ key = { value = "OhvP/6XEFA7VxLfckSyD9xuo2lqaHRdtWaNKePwbiADXC5o6T15N9wF2", desc
 secret = { value = "uL9v1ku5jfh/f/EY3e2O/WV9hWaCaYEILxDziP/j2XDnzxWSMamXjNgP9gLcGPkyCCADuZqCxJhW2/zc3IaaDw==", description = "Kraken API Secret" }
 
 [portfolio]
-api_pairs = { value = ["SOLUSD"] }
+api_pairs = { value = ["SOLUSD", "SHIBUSD", "LINKUSD", "INJUSD", "ATOMUSD", "DOTUSD"], description = "List of trading pairs for API (e.g., SOLUSD, XDGUSD, XRPUSD)" }
 
-ws_pairs = { value = ["SOL/USD"] }
+ws_pairs = { value = ["SOL/USD", "SHIB/USD", "LINK/USD", "INJ/USD", "ATOM/USD", "DOT/USD"], description = "List of trading pairs for WebSocket (e.g., SOL/USD, XDG/USD)" }
 
 initial_investment = { value = 2750.0, description = "Initial USD investment, not to be used by bot. Does not include $30 Grok subscription since April 2025." }
 
