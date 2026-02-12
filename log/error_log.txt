@@ -1,4 +1,0 @@
-[2026-02-12 08:49:50.283091100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1984518
-[2026-02-12 08:50:15.092473800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=62951534.73344
-[2026-02-12 08:50:44.878683100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=74949385.73344
-[2026-02-12 08:51:01.763038700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2188360
