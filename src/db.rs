@@ -915,31 +915,83 @@ struct PositionsRow {
     last_synced: Option<String>,
 }
 
-pub async fn export_trades_to_csv(pool: &Pool) -> Result<()> {
+pub async fn export_trades_to_csv(pool: &deadpool_postgres::Pool) -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir_all("data")?;
     let mut wtr = Writer::from_path("data/trades.csv")?;
-    let rows = sqlx::query_as::<_, TradesRow>(
-        r#"SELECT timestamp, pair, trade_id, order_id, "type", amount, execution_price, fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis, slippage, remaining_amount, open, partial_open FROM trades ORDER BY timestamp DESC"#
-    )
-    .fetch_all(pool)
-    .await?;
+
+    // Write header
+    wtr.write_record(&[
+        "timestamp", "pair", "trade_id", "order_id", "type", "amount", "execution_price",
+        "fees", "fee_percentage", "profit", "profit_percentage", "reason", "avg_cost_basis",
+        "slippage", "remaining_amount", "open", "partial_open"
+    ])?;
+
+    let client = pool.get().await?;
+    let rows = client.query(
+        "SELECT timestamp, pair, trade_id, order_id, \"type\", amount, execution_price, fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis, slippage, remaining_amount, open, partial_open FROM trades ORDER BY timestamp DESC",
+        &[],
+    ).await?;
+
     for row in rows {
-        wtr.serialize(row)?;
+        let timestamp: String = row.get(0);
+        let pair: String = row.get(1);
+        let trade_id: String = row.get(2);
+        let order_id: Option<String> = row.get(3);
+        let type_: String = row.get(4);
+        let amount: Decimal = row.get(5);
+        let execution_price: Decimal = row.get(6);
+        let fees: Decimal = row.get(7);
+        let fee_percentage: Decimal = row.get(8);
+        let profit: Option<Decimal> = row.get(9);
+        let profit_percentage: Option<Decimal> = row.get(10);
+        let reason: Option<String> = row.get(11);
+        let avg_cost_basis: Option<Decimal> = row.get(12);
+        let slippage: Option<Decimal> = row.get(13);
+        let remaining_amount: Decimal = row.get(14);
+        let open: i32 = row.get(15);
+        let partial_open: i32 = row.get(16);
+
+        wtr.serialize((
+            timestamp, pair, trade_id, order_id, type_, amount, execution_price,
+            fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis,
+            slippage, remaining_amount, open, partial_open
+        ))?;
     }
     wtr.flush()?;
     Ok(())
 }
 
-pub async fn export_positions_to_csv(pool: &Pool) -> Result<()> {
+pub async fn export_positions_to_csv(pool: &deadpool_postgres::Pool) -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir_all("data")?;
     let mut wtr = Writer::from_path("data/positions.csv")?;
-    let rows = sqlx::query_as::<_, PositionsRow>(
-        "SELECT pair, total_usd, total_quantity, usd_balance, last_updated, total_fees, total_pl, highest_price_since_buy, last_synced FROM positions"
-    )
-    .fetch_all(pool)
-    .await?;
+
+    // Write header
+    wtr.write_record(&[
+        "pair", "total_usd", "total_quantity", "usd_balance", "last_updated",
+        "total_fees", "total_pl", "highest_price_since_buy", "last_synced"
+    ])?;
+
+    let client = pool.get().await?;
+    let rows = client.query(
+        "SELECT pair, total_usd, total_quantity, usd_balance, last_updated, total_fees, total_pl, highest_price_since_buy, last_synced FROM positions",
+        &[],
+    ).await?;
+
     for row in rows {
-        wtr.serialize(row)?;
+        let pair: String = row.get(0);
+        let total_usd: Decimal = row.get(1);
+        let total_quantity: Decimal = row.get(2);
+        let usd_balance: Decimal = row.get(3);
+        let last_updated: Option<String> = row.get(4);
+        let total_fees: Decimal = row.get(5);
+        let total_pl: Decimal = row.get(6);
+        let highest_price_since_buy: Option<Decimal> = row.get(7);
+        let last_synced: Option<String> = row.get(8);
+
+        wtr.serialize((
+            pair, total_usd, total_quantity, usd_balance, last_updated,
+            total_fees, total_pl, highest_price_since_buy, last_synced
+        ))?;
     }
     wtr.flush()?;
     Ok(())
