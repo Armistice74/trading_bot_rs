@@ -1,4 +1,4 @@
-// dal.rs - Data Access Layer (formerly merged.rs)
+// dal.rs - Data Access Layer
 
 use crate::config::Config;
 use serde::{Deserialize, Serialize};

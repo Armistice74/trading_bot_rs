@@ -674,7 +674,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         config.portfolio.api_pairs.value.len()
     );
 
-    let pool_clone = pool.clone();
     tokio::spawn(async move {
         let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
         loop {
@@ -684,7 +683,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
+    let pool_periodic = pool.clone();
     tokio::spawn(async move {
+        let pool = pool_periodic;
         let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
         loop {
             interval.tick().await;

@@ -20,6 +20,7 @@ use rust_decimal::Decimal;
 use csv::Writer;
 use serde::Serialize;
 use std::fs;
+use deadpool_postgres::Pool;
 
 // ============================================================================
 // Database
@@ -919,12 +920,6 @@ pub async fn export_trades_to_csv(pool: &deadpool_postgres::Pool) -> Result<(), 
     fs::create_dir_all("data")?;
     let mut wtr = Writer::from_path("data/trades.csv")?;
 
-    wtr.write_record(&[
-        "timestamp", "pair", "trade_id", "order_id", "type", "amount", "execution_price",
-        "fees", "fee_percentage", "profit", "profit_percentage", "reason", "avg_cost_basis",
-        "slippage", "remaining_amount", "open", "partial_open"
-    ])?;
-
     let client = pool.get().await?;
     let rows = client.query(
         "SELECT timestamp, pair, trade_id, order_id, \"type\", amount, execution_price, fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis, slippage, remaining_amount, open, partial_open FROM trades ORDER BY timestamp DESC",
@@ -932,29 +927,26 @@ pub async fn export_trades_to_csv(pool: &deadpool_postgres::Pool) -> Result<(), 
     ).await?;
 
     for row in rows {
-        let timestamp: String = row.get(0);
-        let pair: String = row.get(1);
-        let trade_id: String = row.get(2);
-        let order_id: Option<String> = row.get(3);
-        let type_: String = row.get(4);
-        let amount: Decimal = row.get(5);
-        let execution_price: Decimal = row.get(6);
-        let fees: Decimal = row.get(7);
-        let fee_percentage: Decimal = row.get(8);
-        let profit: Option<Decimal> = row.get(9);
-        let profit_percentage: Option<Decimal> = row.get(10);
-        let reason: Option<String> = row.get(11);
-        let avg_cost_basis: Option<Decimal> = row.get(12);
-        let slippage: Option<Decimal> = row.get(13);
-        let remaining_amount: Decimal = row.get(14);
-        let open: i32 = row.get(15);
-        let partial_open: i32 = row.get(16);
-
-        wtr.serialize((
-            timestamp, pair, trade_id, order_id, type_, amount, execution_price,
-            fees, fee_percentage, profit, profit_percentage, reason, avg_cost_basis,
-            slippage, remaining_amount, open, partial_open
-        ))?;
+        let trade_row = TradesRow {
+            timestamp: row.get(0),
+            pair: row.get(1),
+            trade_id: row.get(2),
+            order_id: row.get(3),
+            type_: row.get(4),
+            amount: row.get(5),
+            execution_price: row.get(6),
+            fees: row.get(7),
+            fee_percentage: row.get(8),
+            profit: row.get(9),
+            profit_percentage: row.get(10),
+            reason: row.get(11),
+            avg_cost_basis: row.get(12),
+            slippage: row.get(13),
+            remaining_amount: row.get(14),
+            open: row.get(15),
+            partial_open: row.get(16),
+        };
+        wtr.serialize(trade_row)?;
     }
     wtr.flush()?;
     Ok(())
