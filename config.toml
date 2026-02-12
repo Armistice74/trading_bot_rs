@@ -13,21 +13,21 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 [trading_logic]
 
-dip_percentage = { value = 1.0, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+dip_percentage = { value = 0.8, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
-profit_target = { value = 2.0, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
+profit_target = { value = 1.5, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
 period_minutes = { value = 30, description = "Lookback period in minutes for calculating highest price" }
 
 data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
 
-trade_percentage = { value = 50.0, description = "Percentage of available USD balance to use per buy trade" }
+trade_percentage = { value = 90.0, description = "Percentage of available USD balance to use per buy trade" }
 
 loop_delay_seconds = { value = 30.0, description = "Delay in seconds between trading loop iterations" }
 
 profit_decay_period = { value = 30, description = "Time constant (minutes) for exponential profit target decay to reach take_profit_min" }
 
-take_profit_min = { value = 1.0, description = "Minimum profit target percentage for exponential decay and early profit sells triggered by contraction or stagnation. Default 0.5" }
+take_profit_min = { value = 0.7, description = "Minimum profit target percentage for exponential decay and early profit sells triggered by contraction or stagnation. Default 0.5" }
 
 min_notional = { value = 10.0, description = "Minimum trade value in USD to meet Kraken's requirements" }
 
@@ -45,13 +45,13 @@ sell_order_timeout = { value = 30, description = "Timeout in seconds for non-exp
 
 [stop_loss_behavior]
 
-fixed_stop_initial = { value = 1.0, description = "Initial fixed stop-loss percentage" }
+fixed_stop_initial = { value = 2.0, description = "Initial fixed stop-loss percentage" }
 
-fixed_stop_min = { value = 1.0, description = "Minimum fixed stop-loss percentage after tightening" }
+fixed_stop_min = { value = 2.0, description = "Minimum fixed stop-loss percentage after tightening" }
 
 fixed_stop_tightening_period = { value = 30, description = "Time in minutes to tighten fixed stop-loss from fixed_stop_initial to fixed_stop_min" }
 
-trailing_stop_percentage = { value = 1.5, description = "Constant trailing stop-loss percentage" }
+trailing_stop_percentage = { value = 2.0, description = "Constant trailing stop-loss percentage" }
 
 pause_after_stop_minutes = { value = 0.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
 
