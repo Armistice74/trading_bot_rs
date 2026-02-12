@@ -250,7 +250,8 @@ pub mod processing {
             let avg_buy = price;
             trade.avg_cost_basis = avg_buy;
             let min_notional = config.trading_logic.min_notional.value;
-            trade.remaining_amount = amount;
+            let net_amount = amount - fees;
+            trade.remaining_amount = net_amount;
             if notional >= min_notional {
                 trade.open = 1;
                 trade.partial_open = 0;
@@ -258,7 +259,7 @@ pub mod processing {
                 trade.open = 0;
                 trade.partial_open = 1;
             }
-            let new_total_quantity = existing_position.total_quantity + amount;
+            let new_total_quantity = existing_position.total_quantity + net_amount;
             let new_total_usd = existing_position.total_usd + (amount * price);
             Position {
                 pair: pair.to_string(),

@@ -13,11 +13,11 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 [trading_logic]
 
-dip_percentage = { value = 1.5, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+dip_percentage = { value = 1.0, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
 profit_target = { value = 2.0, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
-period_minutes = { value = 60, description = "Lookback period in minutes for calculating highest price" }
+period_minutes = { value = 30, description = "Lookback period in minutes for calculating highest price" }
 
 data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
 
@@ -35,7 +35,7 @@ sell_safety_cap = { value = 0.0, description = "Optional safety cap as a percent
 
 default_fee_rate = { value = 0.0022, description = "Default fee rate (as a decimal, e.g., 0.0016 for 0.16%) for trades when actual fees are unavailable" }
 
-liquidity_threshold = { value = 5000.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
+liquidity_threshold = { value = 2000.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
 
 price_modifier = { value = 0.00025, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.0005" }
 
@@ -51,7 +51,7 @@ fixed_stop_min = { value = 1.0, description = "Minimum fixed stop-loss percentag
 
 fixed_stop_tightening_period = { value = 30, description = "Time in minutes to tighten fixed stop-loss from fixed_stop_initial to fixed_stop_min" }
 
-trailing_stop_percentage = { value = 1.0, description = "Constant trailing stop-loss percentage" }
+trailing_stop_percentage = { value = 1.5, description = "Constant trailing stop-loss percentage" }
 
 pause_after_stop_minutes = { value = 0.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
 
