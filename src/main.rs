@@ -453,7 +453,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let config = load_config()?;
     let pool = create_pool(&config).await?;
-    let pool_clone = pool.clone();
     config.validate()?;
     info!(
         "Loaded configuration: {:?}",
@@ -673,15 +672,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Entering main loop with concurrent trading for {} pairs",
         config.portfolio.api_pairs.value.len()
     );
-
-    tokio::spawn(async move {
-        let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
-        loop {
-            interval.tick().await;
-            let _ = export_trades_to_csv(&pool_clone).await;
-            let _ = export_positions_to_csv(&pool_clone).await;
-        }
-    });
 
     let pool_for_task = pool.clone();
     tokio::spawn(async move {
