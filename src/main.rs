@@ -17,8 +17,7 @@ use tracing_subscriber::filter::filter_fn;
 use tracing_subscriber::fmt::time::ChronoLocal;
 use tracing_subscriber::prelude::*;
 use tracing::warn;
-use tokio::time::{interval, Duration};
-use tokio::time::timeout;
+use tokio::time::{interval, timeout};
 use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
@@ -454,7 +453,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .init();
     init_metrics();
     info!("Starting trading bot");
-    let initial_usd: Decimal = Decimal::ZERO;
+    let mut initial_usd: Decimal = Decimal::ZERO;
     let report_path_arc: Arc<String>;
 
     let config = load_config()?;
@@ -727,6 +726,38 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
+    let report_path_hourly = report_path_arc.clone();
+    let kraken_client_hourly = kraken_client.clone();
+
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
+        interval.tick().await; // skip immediate first tick
+
+        loop {
+            interval.tick().await;
+
+            let now = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+
+            let free_usd = match kraken_client_hourly.fetch_balance().await {
+                Ok(bal) => bal.get("ZUSD")
+                    .and_then(|v| v.as_str())
+                    .and_then(|s| Decimal::from_str(s).ok())
+                    .unwrap_or(Decimal::ZERO),
+                Err(e) => {
+                    let _ = report_log(&report_path_hourly, &format!("[{}] Hourly balance fetch error: {}", now, e));
+                    Decimal::ZERO
+                }
+            };
+
+            let summary = format!(
+                "HOURLY SUMMARY at {}\nFree USD (Kraken): {:.4}\n(Note: positions value / attempt-fill stats to be added later)\n",
+                now, free_usd
+            );
+
+            let _ = report_log(&report_path_hourly, &summary);
+        }
+    });
+
     tokio::select! {
         _ = signal::ctrl_c() => {
             info!("Received SIGINT, initiating shutdown...");
@@ -747,6 +778,52 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             error!("Trading loops terminated unexpectedly");
         }
     }
+
+    info!("Writing final trade report snapshot...");
+
+    let balances_res = kraken_client.fetch_balance().await;
+
+    let final_usd = match balances_res {
+        Ok(bal) => bal.get("ZUSD")
+            .and_then(|v| v.as_str())
+            .and_then(|s| Decimal::from_str(s).ok())
+            .unwrap_or(Decimal::ZERO),
+        Err(e) => {
+            error!("Final balance fetch failed: {}", e);
+            Decimal::ZERO
+        }
+    };
+
+    let usd_change = final_usd - initial_usd;
+
+    let mut final_text = "FINAL SNAPSHOT\n".to_string();
+    final_text.push_str(&format!("BOT RUN SHUTDOWN at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
+    final_text.push_str(&format!("Final free USD: {:.4}\n", final_usd));
+    final_text.push_str(&format!("Free USD change during run: {:.4}\n\n", usd_change));
+    final_text.push_str("Final Balances:\n");
+
+    match balances_res {
+        Ok(balances) => {
+            if let Some(map) = balances.as_object() {
+                for (asset, val) in map {
+                    if let Some(s) = val.as_str() {
+                        if let Ok(amt) = Decimal::from_str(s) {
+                            if amt > Decimal::ZERO {
+                                final_text.push_str(&format!("  {}: {:.8}\n", asset, amt));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Err(e) => final_text.push_str(&format!("  Balance fetch failed: {}\n", e)),
+    }
+
+    final_text.push_str("\nOpen Orders: (placeholder - get_open_orders not yet implemented)\n");
+    final_text.push_str("DB vs Kraken realized PL diff: (to be added later)\n");
+
+    let _ = report_log(&report_path_arc, &final_text);
+
     info!("Initiating graceful shutdown of StateManager...");
     state_manager.shutdown().await?;
     let _ = export_trades_to_csv(&pool).await;
