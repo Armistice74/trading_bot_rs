@@ -711,7 +711,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
             // Periodic report summary
             let _ = report_log(&report_path_periodic, "HOURLY SUMMARY");
-            if let Ok(balances) = kraken_client_periodic.get_account_balance().await {
+            if let Ok(balances) = kraken_client_periodic.fetch_balance().await {
                 let _ = report_log(&report_path_periodic, "Current balances:");
                 for (asset, qty) in balances {
                     let _ = report_log(&report_path_periodic, &format!("  {}: {}", asset, qty));
