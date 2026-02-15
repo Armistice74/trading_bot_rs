@@ -476,14 +476,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     report_log(&report_path, &format!("BOT STARTED at {}", start_time.format("%Y-%m-%d %H:%M:%S")))?;
     report_log(&report_path, "Initial Kraken balances:")?;
     if let Ok(balances) = kraken_client.fetch_balance().await {
-        report_log(&report_path, "Current balances:")?;
         for (asset, qty) in balances.iter() {
             report_log(&report_path, &format!("  {}: {}", asset, qty))?;
         }
     }
     report_log(&report_path, "Initial open orders:")?;
     if let Ok(orders) = kraken_client.fetch_open_orders().await {
-        report_log(&report_path, "Open orders:")?;
         if orders.is_empty() {
             report_log(&report_path, "  None")?;
         } else {
@@ -714,7 +712,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             // Periodic report summary
             let _ = report_log(&report_path_periodic, "HOURLY SUMMARY");
             if let Ok(balances) = kraken_client.fetch_balance().await {
-                report_log(&report_path, "Current balances:")?;
                 for (asset, qty) in balances.iter() {
                     report_log(&report_path, &format!("  {}: {}", asset, qty))?;
                 }
@@ -748,14 +745,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     report_log(&report_path, &format!("BOT SHUTDOWN at {}", end_time.format("%Y-%m-%d %H:%M:%S")))?;
     report_log(&report_path, "Final Kraken balances:")?;
     if let Ok(balances) = kraken_client.fetch_balance().await {
-        report_log(&report_path, "Current balances:")?;
         for (asset, qty) in balances.iter() {
             report_log(&report_path, &format!("  {}: {}", asset, qty))?;
         }
     }
     report_log(&report_path, "Final open orders:")?;
     if let Ok(orders) = kraken_client.fetch_open_orders().await {
-        report_log(&report_path, "Open orders:")?;
         if orders.is_empty() {
             report_log(&report_path, "  None")?;
         } else {
