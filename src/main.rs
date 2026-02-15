@@ -21,7 +21,6 @@ use tokio::time::timeout;
 use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
-use crate::utils::report_log;
 
 mod actors;
 mod api;
@@ -466,31 +465,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         error!("Failed to init WS token: {}", e);
     }
     let usd_balance = validate_kraken_authentication(&kraken_client).await?;
-    fs::create_dir_all("report")?;
-    let start_time = Local::now();
-    let report_filename = format!("trade_report_{}.txt", start_time.format("%Y-%m-%d_%H-%M-%S"));
-    let report_path = format!("report/{}", report_filename);
-    let report_path_arc = Arc::new(report_path.clone());
-
-    // Startup header + snapshot
-    report_log(&report_path, &format!("BOT STARTED at {}", start_time.format("%Y-%m-%d %H:%M:%S")))?;
-    report_log(&report_path, "Initial Kraken balances:")?;
-    if let Ok(balances) = kraken_client.fetch_balance().await {
-        for (asset, qty) in balances.iter() {
-            report_log(&report_path, &format!("  {}: {}", asset, qty))?;
-        }
-    }
-    report_log(&report_path, "Initial open orders:")?;
-    if let Ok(orders) = kraken_client.fetch_open_orders().await {
-        if orders.is_empty() {
-            report_log(&report_path, "  None")?;
-        } else {
-            for (txid, order) in orders.iter() {
-                report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
-                    txid, order.vol, order.pair, order.price, order.status))?;
-            }
-        }
-    }
     initialize_database(&config).await?;
     let state_manager =
         initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
@@ -700,22 +674,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
 
     let pool_for_task = pool.clone();
-    let report_path_periodic = report_path_arc.clone();
-    let kraken_client_periodic = kraken_client.clone();
     tokio::spawn(async move {
         let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
         loop {
             interval.tick().await;
             let _ = export_trades_to_csv(&pool_for_task).await;
             let _ = export_positions_to_csv(&pool_for_task).await;
-
-            // Periodic report summary
-            let _ = report_log(&report_path_periodic, "HOURLY SUMMARY");
-            if let Ok(balances) = kraken_client.fetch_balance().await {
-                for (asset, qty) in balances.iter() {
-                    report_log(&report_path, &format!("  {}: {}", asset, qty))?;
-                }
-            }
         }
     });
 
@@ -741,31 +705,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     info!("Initiating graceful shutdown of StateManager...");
     state_manager.shutdown().await?;
-    let end_time = Local::now();
-    report_log(&report_path, &format!("BOT SHUTDOWN at {}", end_time.format("%Y-%m-%d %H:%M:%S")))?;
-    report_log(&report_path, "Final Kraken balances:")?;
-    if let Ok(balances) = kraken_client.fetch_balance().await {
-        for (asset, qty) in balances.iter() {
-            report_log(&report_path, &format!("  {}: {}", asset, qty))?;
-        }
-    }
-    report_log(&report_path, "Final open orders:")?;
-    if let Ok(orders) = kraken_client.fetch_open_orders().await {
-        if orders.is_empty() {
-            report_log(&report_path, "  None")?;
-        } else {
-            for (txid, order) in orders.iter() {
-                report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
-                    txid, order.vol, order.pair, order.price, order.status))?;
-            }
-        }
-    }
-
-    let client = pool.get().await?;
-    if let Ok(db_pl) = db::get_total_pl_for_crypto(&client).await {
-        report_log(&report_path, &format!("DB realized total_pl: {}", db_pl))?;
-    }
-    report_log(&report_path, "Note: Compare DB total_pl to manual Kraken ledger check for realized PL diff");
     let _ = export_trades_to_csv(&pool).await;
     let _ = export_positions_to_csv(&pool).await;
     let _ = shutdown_tx.send(());
