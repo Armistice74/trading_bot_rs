@@ -22,8 +22,6 @@ use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
-use std::sync::Arc;
-use chrono::Local;
 
 mod actors;
 mod api;
@@ -456,31 +454,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let config = load_config()?;
     let pool = create_pool(&config).await?;
-    fs::create_dir_all("report")?;
-    let start_time = Local::now();
-    let report_filename = format!("trade_report_{}.txt", start_time.format("%Y-%m-%d_%H-%M-%S"));
-    let report_path = format!("report/{}", report_filename);
-    let report_path_arc = Arc::new(report_path.clone());
-
-    // Startup header + snapshot
-    report_log(&report_path, &format!("BOT STARTED at {}", start_time.format("%Y-%m-%d %H:%M:%S")))?;
-    report_log(&report_path, "Initial Kraken balances:")?;
-    if let Ok(balances) = kraken_client.get_account_balance().await {
-        for (asset, qty) in balances {
-            report_log(&report_path, &format!("  {}: {}", asset, qty))?;
-        }
-    }
-    report_log(&report_path, "Initial open orders:")?;
-    if let Ok(orders) = kraken_client.get_open_orders().await {
-        if orders.is_empty() {
-            report_log(&report_path, "  None")?;
-        } else {
-            for (txid, order) in orders {
-                report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
-                    txid, order.vol, order.pair, order.price, order.status))?;
-            }
-        }
-    }
     config.validate()?;
     info!(
         "Loaded configuration: {:?}",
@@ -493,6 +466,31 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         error!("Failed to init WS token: {}", e);
     }
     let usd_balance = validate_kraken_authentication(&kraken_client).await?;
+    fs::create_dir_all("report")?;
+    let start_time = Local::now();
+    let report_filename = format!("trade_report_{}.txt", start_time.format("%Y-%m-%d_%H-%M-%S"));
+    let report_path = format!("report/{}", report_filename);
+    let report_path_arc = Arc::new(report_path.clone());
+
+    // Startup header + snapshot
+    report_log(&report_path, &format!("BOT STARTED at {}", start_time.format("%Y-%m-%d %H:%M:%S")))?;
+    report_log(&report_path, "Initial Kraken balances:")?;
+    if let Ok(balances) = kraken_client.fetch_balance().await {
+        for (asset, qty) in balances {
+            report_log(&report_path, &format!("  {}: {}", asset, qty))?;
+        }
+    }
+    report_log(&report_path, "Initial open orders:")?;
+    if let Ok(orders) = kraken_client.fetch_open_orders().await {
+        if orders.is_empty() {
+            report_log(&report_path, "  None")?;
+        } else {
+            for (txid, order) in orders {
+                report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
+                    txid, order.vol, order.pair, order.price, order.status))?;
+            }
+        }
+    }
     initialize_database(&config).await?;
     let state_manager =
         initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
@@ -764,8 +762,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
-    // Simple DB PL audit
-    if let Ok(db_pl) = db::get_total_pl_for_crypto(&pool.get().await?) {
+    let client = pool.get().await?;
+    if let Ok(db_pl) = db::get_total_pl_for_crypto(&client).await {
         report_log(&report_path, &format!("DB realized total_pl: {}", db_pl))?;
     }
     report_log(&report_path, "Note: Compare DB total_pl to manual Kraken ledger check for realized PL diff");

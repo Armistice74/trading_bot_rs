@@ -6,7 +6,6 @@ use chrono::{DateTime, TimeZone, Utc, offset::Local};
 use rust_decimal::{Decimal, prelude::*};
 use std::fs::OpenOptions;
 use std::io::Write;
-use chrono::Local;
 
 pub fn get_current_time() -> DateTime<Local> {
     Local::now()
