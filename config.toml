@@ -53,7 +53,7 @@ fixed_stop_tightening_period = { value = 30, description = "Time in minutes to t
 
 trailing_stop_percentage = { value = 2.0, description = "Constant trailing stop-loss percentage" }
 
-pause_after_stop_minutes = { value = 0.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
+pause_after_stop_minutes = { value = 30.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
 
 [database]
 
