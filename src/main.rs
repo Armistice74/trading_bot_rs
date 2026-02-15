@@ -476,7 +476,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     report_log(&report_path, &format!("BOT STARTED at {}", start_time.format("%Y-%m-%d %H:%M:%S")))?;
     report_log(&report_path, "Initial Kraken balances:")?;
     if let Ok(balances) = kraken_client.fetch_balance().await {
-        for (asset, qty) in balances {
+        for (asset, qty) in balances.iter() {
             report_log(&report_path, &format!("  {}: {}", asset, qty))?;
         }
     }
@@ -485,7 +485,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         if orders.is_empty() {
             report_log(&report_path, "  None")?;
         } else {
-            for (txid, order) in orders {
+            for (txid, order) in orders.iter() {
                 report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
                     txid, order.vol, order.pair, order.price, order.status))?;
             }
@@ -745,17 +745,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let end_time = Local::now();
     report_log(&report_path, &format!("BOT SHUTDOWN at {}", end_time.format("%Y-%m-%d %H:%M:%S")))?;
     report_log(&report_path, "Final Kraken balances:")?;
-    if let Ok(balances) = kraken_client.get_account_balance().await {
-        for (asset, qty) in balances {
+    if let Ok(balances) = kraken_client.fetch_balance().await {
+        for (asset, qty) in balances.iter() {
             report_log(&report_path, &format!("  {}: {}", asset, qty))?;
         }
     }
     report_log(&report_path, "Final open orders:")?;
-    if let Ok(orders) = kraken_client.get_open_orders().await {
+    if let Ok(orders) = kraken_client.fetch_open_orders().await {
         if orders.is_empty() {
             report_log(&report_path, "  None")?;
         } else {
-            for (txid, order) in orders {
+            for (txid, order) in orders.iter() {
                 report_log(&report_path, &format!("  Order {}: {} {} @ {} (status: {})", 
                     txid, order.vol, order.pair, order.price, order.status))?;
             }
