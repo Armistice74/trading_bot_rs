@@ -4,6 +4,8 @@
 // IMPORTS
 use chrono::{DateTime, TimeZone, Utc, offset::Local};
 use rust_decimal::{Decimal, prelude::*};
+use std::fs::OpenOptions;
+use std::io::Write;
 
 pub fn get_current_time() -> DateTime<Local> {
     Local::now()
@@ -18,4 +20,14 @@ pub fn parse_unix_timestamp(unix_str: &str) -> Option<DateTime<Utc>> {
 
 pub fn get_eastern_tz() -> Local {
     Local
+}
+
+pub fn report_log(report_path: &str, message: &str) -> Result<(), std::io::Error> {
+    let mut file = OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(report_path)?;
+    let timestamp = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+    writeln!(file, "[{}] {}", timestamp, message)?;
+    Ok(())
 }
