@@ -17,10 +17,12 @@ use tracing_subscriber::filter::filter_fn;
 use tracing_subscriber::fmt::time::ChronoLocal;
 use tracing_subscriber::prelude::*;
 use tracing::warn;
+use tokio::time::{interval, Duration};
 use tokio::time::timeout;
 use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
+use crate::utils::report_log;
 
 mod actors;
 mod api;
@@ -388,6 +390,8 @@ async fn setup_websocket_channels(
     Ok((price_tx, price_rx, ohlc_tx, ohlc_rx))
 }
 
+
+
 // MAIN FUNCTION
 
 #[tokio::main]
@@ -450,6 +454,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .init();
     init_metrics();
     info!("Starting trading bot");
+    let initial_usd: Decimal = Decimal::ZERO;
+    let report_path_arc: Arc<String>;
 
     let config = load_config()?;
     let pool = create_pool(&config).await?;
@@ -465,6 +471,44 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         error!("Failed to init WS token: {}", e);
     }
     let usd_balance = validate_kraken_authentication(&kraken_client).await?;
+    initial_usd = usd_balance;
+
+    let _ = fs::create_dir_all("report");
+
+    let report_file = format!("trade_report_{}.txt", Local::now().format("%Y-%m-%d_%H-%M"));
+
+    let report_path = format!("report/{}", report_file);
+
+    report_path_arc = Arc::new(report_path.clone());
+
+    let _ = report_log(&report_path_arc, &format!("BOT RUN STARTED at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
+
+    let balances_res = kraken_client.fetch_balance().await;
+
+    let mut snapshot = "INITIAL SNAPSHOT\n".to_string();
+    snapshot.push_str(&format!("Initial free USD: {:.4}\n\n", initial_usd));
+    snapshot.push_str("Balances:\n");
+
+    match balances_res {
+        Ok(balances) => {
+            if let Some(map) = balances.as_object() {
+                for (asset, val) in map {
+                    if let Some(s) = val.as_str() {
+                        if let Ok(amt) = Decimal::from_str(s) {
+                            if amt > Decimal::ZERO {
+                                snapshot.push_str(&format!("  {}: {:.8}\n", asset, amt));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
+    }
+
+    snapshot.push_str("\nOpen Orders: (placeholder - get_open_orders not yet implemented)\n");
+
+    let _ = report_log(&report_path_arc, &snapshot);
     initialize_database(&config).await?;
     let state_manager =
         initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
@@ -711,3 +755,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Shutdown complete");
     Ok(())
 }
+

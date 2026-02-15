@@ -4,6 +4,8 @@
 // IMPORTS
 use chrono::{DateTime, TimeZone, Utc, offset::Local};
 use rust_decimal::{Decimal, prelude::*};
+use std::fs::OpenOptions;
+use std::io::{self, Write};
 
 pub fn get_current_time() -> DateTime<Local> {
     Local::now()
@@ -18,4 +20,21 @@ pub fn parse_unix_timestamp(unix_str: &str) -> Option<DateTime<Utc>> {
 
 pub fn get_eastern_tz() -> Local {
     Local
+}
+
+pub fn report_log(report_path: &str, message: &str) -> io::Result<()> {
+    let mut file = OpenOptions::new()
+        .create(true)
+        .append(true)
+        .write(true)
+        .open(report_path)?;
+
+    let timestamp = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+
+    // This handles both single-line and multi-line messages cleanly:
+    // - Single-line event → one timestamped line
+    // - Multi-line snapshot → timestamp on the first line, subsequent lines indented/no timestamp
+    writeln!(file, "[{}] {}", timestamp, message.replace('\n', "\n    "))?;
+
+    Ok(())
 }
