@@ -22,6 +22,7 @@ use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
+use chrono::Utc;
 
 mod actors;
 mod api;
@@ -505,7 +506,60 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
     }
 
-    snapshot.push_str("\nOpen Orders: (placeholder - get_open_orders not yet implemented)\n");
+    snapshot.push_str("Balances:\n");
+
+    match balances_res {
+        Ok(balances) => {
+            if let Some(map) = balances.as_object() {
+                for (asset, val) in map {
+                    if let Some(s) = val.as_str() {
+                        if let Ok(amt) = Decimal::from_str(s) {
+                            if amt > Decimal::ZERO {
+                                snapshot.push_str(&format!("  {}: {:.8}\n", asset, amt));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
+    }
+
+    snapshot.push_str("\nOpen Orders:\n");
+
+    match kraken_client.fetch_open_orders().await {
+        Ok(open_orders_obj) => {
+            if let Some(orders_map) = open_orders_obj.as_object() {
+                if orders_map.is_empty() {
+                    snapshot.push_str("  (none)\n");
+                } else {
+                    for (order_id, details) in orders_map {
+                        if let Some(descr) = details.get("descr").and_then(|d| d.as_object()) {
+                            let pair = descr.get("pair").and_then(|p| p.as_str()).unwrap_or("unknown");
+                            let side = descr.get("type").and_then(|t| t.as_str()).unwrap_or("unknown");
+                            let price = descr.get("price").and_then(|p| p.as_str()).unwrap_or("0");
+                            let vol = details.get("vol").and_then(|v| v.as_str()).unwrap_or("0");
+                            let status = details.get("status").and_then(|s| s.as_str()).unwrap_or("unknown");
+                            let timestamp = details.get("opentm").and_then(|t| t.as_f64()).map(|t| {
+                                let dt = chrono::DateTime::<chrono::Utc>::from_timestamp(t as i64, 0)
+                                    .map(|d| d.with_timezone(&Local).format("%Y-%m-%d %H:%M:%S").to_string())
+                                    .unwrap_or("unknown".to_string());
+                                dt
+                            }).unwrap_or("unknown".to_string());
+
+                            snapshot.push_str(&format!(
+                                "  {}: {} {} {} @ {} (status: {}) opened: {}\n",
+                                order_id, pair, side, vol, price, status, timestamp
+                            ));
+                        }
+                    }
+                }
+            } else {
+                snapshot.push_str("  (failed to parse orders)\n");
+            }
+        }
+        Err(e) => snapshot.push_str(&format!("  Open orders fetch failed: {}\n", e)),
+    }
 
     let _ = report_log(&report_path_arc, &snapshot);
     initialize_database(&config).await?;
@@ -823,7 +877,62 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         final_text.push_str(&format!("  Balance fetch failed: {}\n", err_msg));
     }
 
-    final_text.push_str("\nOpen Orders: (placeholder - get_open_orders not yet implemented)\n");
+    final_text.push_str("Final Balances:\n");
+
+    if let Some(balances) = balances_opt {
+        if let Some(map) = balances.as_object() {
+            for (asset, val) in map {
+                if let Some(s) = val.as_str() {
+                    if let Ok(amt) = Decimal::from_str(s) {
+                        if amt > Decimal::ZERO {
+                            final_text.push_str(&format!("  {}: {:.8}\n", asset, amt));
+                        }
+                    }
+                }
+            }
+        }
+    } else if let Some(err_msg) = fetch_error_opt {
+        final_text.push_str(&format!("  Balance fetch failed: {}\n", err_msg));
+    }
+
+    final_text.push_str("\nOpen Orders:\n");
+
+    match kraken_client.fetch_open_orders().await {
+        Ok(open_orders_obj) => {
+            if let Some(orders_map) = open_orders_obj.as_object() {
+                if orders_map.is_empty() {
+                    final_text.push_str("  (none)\n");
+                } else {
+                    for (order_id, details) in orders_map {
+                        if let Some(descr) = details.get("descr").and_then(|d| d.as_object()) {
+                            let pair = descr.get("pair").and_then(|p| p.as_str()).unwrap_or("unknown");
+                            let side = descr.get("type").and_then(|t| t.as_str()).unwrap_or("unknown");
+                            let price = descr.get("price").and_then(|p| p.as_str()).unwrap_or("0");
+                            let vol = details.get("vol").and_then(|v| v.as_str()).unwrap_or("0");
+                            let status = details.get("status").and_then(|s| s.as_str()).unwrap_or("unknown");
+                            let timestamp = details.get("opentm").and_then(|t| t.as_f64()).map(|t| {
+                                let dt = chrono::DateTime::<chrono::Utc>::from_timestamp(t as i64, 0)
+                                    .map(|d| d.with_timezone(&Local).format("%Y-%m-%d %H:%M:%S").to_string())
+                                    .unwrap_or("unknown".to_string());
+                                dt
+                            }).unwrap_or("unknown".to_string());
+
+                            final_text.push_str(&format!(
+                                "  {}: {} {} {} @ {} (status: {}) opened: {}\n",
+                                order_id, pair, side, vol, price, status, timestamp
+                            ));
+                        }
+                    }
+                }
+            } else {
+                final_text.push_str("  (failed to parse orders)\n");
+            }
+        }
+        Err(e) => final_text.push_str(&format!("  Open orders fetch failed: {}\n", e)),
+    }
+
+    final_text.push_str("DB vs Kraken realized PL diff: (to be added later)\n");
+
     final_text.push_str("DB vs Kraken realized PL diff: (to be added later)\n");
 
     let _ = report_log(&report_path_arc, &final_text);

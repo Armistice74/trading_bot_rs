@@ -44,3 +44,11 @@
     Free USD (Kraken): 18.7159
     (Note: positions value / attempt-fill stats to be added later)
     
+[2026-02-15 20:27:16] HOURLY SUMMARY at 2026-02-15 20:27:15
+    Free USD (Kraken): 1.8344
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 21:27:16] HOURLY SUMMARY at 2026-02-15 21:27:15
+    Free USD (Kraken): 1.8344
+    (Note: positions value / attempt-fill stats to be added later)
+    

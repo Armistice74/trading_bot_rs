@@ -18,6 +18,7 @@ use std::sync::Arc;
 use tokio::time::sleep;
 use tracing::{error, info};
 use rust_decimal::Decimal;
+use serde_json::value::Map;
 
 // ============================================================================
 // STRUCT DEFINITION
@@ -373,6 +374,50 @@ impl KrakenClient {
         }
         Ok(response["result"].clone())
     }
+
+    pub async fn fetch_open_orders(&self) -> Result<Value, anyhow::Error> {
+    let server_time = self.fetch_time().await?;
+    let nonce = server_time + 1000;
+
+    let params = format!("nonce={}", nonce);
+    let path = "/0/private/OpenOrders";
+
+    let signature = self.sign_request(path, nonce, &params).await?;
+    let url = Url::parse(&format!("{}/0/private/OpenOrders", self.base_url))?;
+
+    let response = self
+        .api_call_with_retry(
+            || async {
+                let resp = self
+                    .client
+                    .post(url.clone())
+                    .header("API-Key", &self.api_key)
+                    .header("API-Sign", &signature)
+                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("User-Agent", "Rust Trading Bot/1.0")
+                    .body(params.clone())
+                    .send()
+                    .await
+                    .map_err(|e| anyhow!("Failed to send request: {}", e))?
+                    .json::<Value>()
+                    .await
+                    .map_err(|e| anyhow!("Failed to parse JSON response: {}", e))?;
+
+                Ok(resp)
+            },
+            3,
+            "fetch_open_orders",
+        )
+        .await?;
+
+    if let Some(error) = response.get("error").and_then(|e| e.as_array()) {
+        if !error.is_empty() {
+            return Err(anyhow!("Kraken API error: {:?}", error));
+        }
+    }
+
+    Ok(response["result"]["open"].clone())
+}
 
     pub async fn create_order(
         &self,
