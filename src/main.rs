@@ -23,6 +23,7 @@ use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
 use chrono::Utc;
+use std::sync::atomic::{AtomicU64, Ordering};
 
 mod actors;
 mod api;
@@ -455,6 +456,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     init_metrics();
     info!("Starting trading bot");
     let mut initial_usd: Decimal = Decimal::ZERO;
+    let start_time = Local::now();
+    let mut initial_holdings_value = Decimal::ZERO;
+    let mut initial_total_value: Decimal;
+
+    let buy_attempts = Arc::new(AtomicU64::new(0));
+    let buy_fills = Arc::new(AtomicU64::new(0));
+    let sell_attempts = Arc::new(AtomicU64::new(0));
+    let sell_fills = Arc::new(AtomicU64::new(0));
+    let cancels = Arc::new(AtomicU64::new(0));
     let report_path_arc: Arc<String>;
 
     let config = load_config()?;
@@ -546,6 +556,38 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     initialize_database(&config).await?;
     let state_manager =
         initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
+
+    let mut positions_str = "Portfolio Positions:\n".to_string();
+
+    for pair in &config.portfolio.api_pairs.value {
+        let position = match0 match state_manager.get_position(pair.clone()).await {
+            Ok(p) => p,
+            Err(_) => continue,
+        };
+
+        if position.amount > Decimal::ZERO {  // change to actual field if compile error (e.g., qty, holding, current_qty)
+            let ticker = match kraken_client.fetch_ticker(pair).await {
+                Ok(t) => t,
+                Err(_) => continue,
+            };
+
+            let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+
+            let value = position.amount * close;
+
+            initial_holdings_value += value;
+
+            positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
+        }
+    }
+
+    initial_total_value = initial_usd + initial_holdings_value;
+
+    snapshot.push_str(&positions_str);
+
+    snapshot.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
+
+    snapshot.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
 
     let (shutdown_tx, _) = broadcast::channel::<()>(1);
 
