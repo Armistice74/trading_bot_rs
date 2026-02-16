@@ -100,3 +100,40 @@
     Sells: 0 attempted, 0 filled
     Cancels: 0
     
+[2026-02-16 09:25:17] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-16 09:25:17
+    Runtime: 7h 47m 14s
+    Final free USD: 1.5530
+    Free USD change: -185.6614
+    Holdings value: 181.2289
+    Total portfolio value: 182.7819
+    Total value change: -4.4324
+    
+    Portfolio Positions:
+      SHIBUSD: 13.57877 (value 0.0000 USD)
+      LINKUSD: 0.70583700 (value 6.2054 USD)
+      ATOMUSD: 65.686560 (value 145.0556 USD)
+      DOTUSD: 22.05947 (value 29.9677 USD)
+    Buys: 0 attempted, 0 filled
+    Sells: 0 attempted, 0 filled
+    Cancels: 0
+    
+    Final Balances:
+      ATOM: 66.05817079
+      DOT: 22.13520000
+      INJ: 0.00000000
+      LINK: 0.74720000
+      PEPE: 38461.68000000
+      SHIB: 375658.33498000
+      SOL: 0.00000000
+      USDC: 0.00005300
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 1.55300000
+    
+    Open Orders:
+      (none)
+    Realized PL approx = free USD change (fees deducted)
+    
