@@ -17,7 +17,7 @@ use tracing_subscriber::filter::filter_fn;
 use tracing_subscriber::fmt::time::ChronoLocal;
 use tracing_subscriber::prelude::*;
 use tracing::warn;
-use tokio::time::{interval, timeout};
+use tokio::time::timeout;
 use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
@@ -783,14 +783,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let balances_res = kraken_client.fetch_balance().await;
 
-    let final_usd = match balances_res {
-        Ok(bal) => bal.get("ZUSD")
-            .and_then(|v| v.as_str())
-            .and_then(|s| Decimal::from_str(s).ok())
-            .unwrap_or(Decimal::ZERO),
+    let (final_usd, balances_opt, fetch_error_opt): (Decimal, Option<serde_json::Value>, Option<String>) = match &balances_res {
+        Ok(bal) => (
+            bal.get("ZUSD")
+                .and_then(|v| v.as_str())
+                .and_then(|s| Decimal::from_str(s).ok())
+                .unwrap_or(Decimal::ZERO),
+            Some(bal.clone()),
+            None,
+        ),
         Err(e) => {
-            error!("Final balance fetch failed: {}", e);
-            Decimal::ZERO
+            let err_msg = format!("{}", e);
+            error!("Final balance fetch failed: {}", err_msg);
+            (Decimal::ZERO, None, Some(err_msg))
         }
     };
 
@@ -802,21 +807,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     final_text.push_str(&format!("Free USD change during run: {:.4}\n\n", usd_change));
     final_text.push_str("Final Balances:\n");
 
-    match balances_res {
-        Ok(balances) => {
-            if let Some(map) = balances.as_object() {
-                for (asset, val) in map {
-                    if let Some(s) = val.as_str() {
-                        if let Ok(amt) = Decimal::from_str(s) {
-                            if amt > Decimal::ZERO {
-                                final_text.push_str(&format!("  {}: {:.8}\n", asset, amt));
-                            }
+    if let Some(balances) = balances_opt {
+        if let Some(map) = balances.as_object() {
+            for (asset, val) in map {
+                if let Some(s) = val.as_str() {
+                    if let Ok(amt) = Decimal::from_str(s) {
+                        if amt > Decimal::ZERO {
+                            final_text.push_str(&format!("  {}: {:.8}\n", asset, amt));
                         }
                     }
                 }
             }
         }
-        Err(e) => final_text.push_str(&format!("  Balance fetch failed: {}\n", e)),
+    } else if let Some(err_msg) = fetch_error_opt {
+        final_text.push_str(&format!("  Balance fetch failed: {}\n", err_msg));
     }
 
     final_text.push_str("\nOpen Orders: (placeholder - get_open_orders not yet implemented)\n");

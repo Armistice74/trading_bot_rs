@@ -1,0 +1,46 @@
+[2026-02-15 13:26:44] BOT RUN STARTED at 2026-02-15 13:26:44
+    
+[2026-02-15 13:26:45] INITIAL SNAPSHOT
+    Initial free USD: 189.8746
+    
+    Balances:
+      ATOM: 0.00817079
+      DOT: 0.00058456
+      INJ: 0.00000000
+      LINK: 0.00729968
+      PEPE: 38461.68000000
+      SHIB: 375644.33498000
+      SOL: 0.00000000
+      USDC: 0.00005300
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 189.87460000
+    
+    Open Orders: (placeholder - get_open_orders not yet implemented)
+    
+[2026-02-15 14:27:16] HOURLY SUMMARY at 2026-02-15 14:27:15
+    Free USD (Kraken): 1.8091
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 15:27:16] HOURLY SUMMARY at 2026-02-15 15:27:15
+    Free USD (Kraken): 1.6624
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 16:27:16] HOURLY SUMMARY at 2026-02-15 16:27:15
+    Free USD (Kraken): 190.6205
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 17:27:16] HOURLY SUMMARY at 2026-02-15 17:27:15
+    Free USD (Kraken): 190.6205
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 18:27:16] HOURLY SUMMARY at 2026-02-15 18:27:15
+    Free USD (Kraken): 1.8316
+    (Note: positions value / attempt-fill stats to be added later)
+    
+[2026-02-15 19:27:16] HOURLY SUMMARY at 2026-02-15 19:27:15
+    Free USD (Kraken): 18.7159
+    (Note: positions value / attempt-fill stats to be added later)
+    
