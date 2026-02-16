@@ -539,6 +539,8 @@ pub async fn monitor_order(
 
                     if should_check || order_age > timeout {
                         info!("Order {} for {} timed out (age={:.2}s) or price condition met, attempting cancellation", order_id, pair_item, order_age);
+                        cancels_counter.fetch_add(1, Ordering::Relaxed);
+                        let _ = report_log(&report_path, &format!("CANCEL: {} order_id={} reason=timeout", pair, target_order_id));
                         let final_trades = match fetch_trades(&client, symbol, order_id, client.startup_time(), state_manager.clone(), config, Some(1)).await {
                             Ok(t) => t,
                             Err(e) => {

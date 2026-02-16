@@ -613,6 +613,8 @@ pub mod trading_logic {
         symbol_info: &SymbolInfo,
         close_price: Decimal,
         config: &Config,
+        report_path: Arc<String>,
+        cancels_counter: Arc<AtomicU64>,
         state_manager: Arc<StateManager>,
         shutdown_tx: broadcast::Sender<()>,
     ) -> Result<
@@ -713,10 +715,12 @@ pub mod trading_logic {
                     vec![pair_clone.clone()],
                     state_manager_clone.clone(),
                     &config_clone,
+                    report_path.clone(),  // passed param
+                    cancels_counter.clone(),
                     order_id_clone,
                     avg_cost_basis,
-                    vec![],  // or buy_trade_ids_clone for sell
-                    Decimal::ZERO,  // or total_buy_qty_clone for sell
+                    vec![],  // buy has empty
+                    Decimal::ZERO,
                     shutdown_rx,
                 ).await {
                     Ok((filled, _, _, _, _)) => {
@@ -764,6 +768,8 @@ pub mod trading_logic {
         symbol_info: SymbolInfo,
         close_price: Decimal,
         config: Config,
+        report_path: Arc<String>,
+        cancels_counter: Arc<AtomicU64>,
         state_manager: Arc<StateManager>,
         buy_trade_ids: Vec<String>,
         total_buy_qty: Decimal,
@@ -834,7 +840,7 @@ pub mod trading_logic {
                 reply: tx,
             })
             .await?;
-        // In execute_sell_trade, replace the spawn block with:
+
         let order_id_opt = rx.await?;
         if let Some(order_id) = order_id_opt {
             info!("Triggered sell actor for order {} on {}", order_id, pair);
@@ -857,6 +863,8 @@ pub mod trading_logic {
                     vec![pair_clone.clone()],
                     state_manager_clone.clone(),
                     &config_clone,
+                    report_path.clone(),  // passed param
+                    cancels_counter.clone(),
                     order_id_clone,
                     avg_cost_basis,
                     buy_trade_ids_clone,
