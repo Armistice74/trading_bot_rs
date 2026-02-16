@@ -545,27 +545,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => snapshot.push_str(&format!("  Open orders fetch failed: {}\n", e)),
     }
 
-    let mut positions_str = "\nPortfolio Positions:\n".to_string();
-    for pair in &config.portfolio.api_pairs.value {
-        let position = match state_manager.get_position(pair.clone()).await {
-            Ok(p) => p,
-            Err(_) => continue,
-        };
-
-        if position.amount > Decimal::ZERO {
-            let ticker = match kraken_client.fetch_ticker(pair).await {
-                Ok(t) => t,
-                Err(_) => continue,
-            };
-
-            let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
-            let value = position.amount * close;
-
-            initial_holdings_value += value;
-            positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
-        }
-    }
-
     initial_total_value = initial_usd + initial_holdings_value;
     snapshot.push_str(&positions_str);
     snapshot.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
@@ -575,6 +554,33 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     initialize_database(&config).await?;
     let state_manager = initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
+
+    let mut positions_str = "\nINITIAL PORTFOLIO POSITIONS\n".to_string();
+for pair in &config.portfolio.api_pairs.value {
+    let position = match state_manager.get_position(pair.clone()).await {
+        Ok(p) => p,
+        Err(_) => continue,
+    };
+
+    if position.total_quantity > Decimal::ZERO {
+        let ticker = match kraken_client.fetch_ticker(pair).await {
+            Ok(t) => t,
+            Err(_) => continue,
+        };
+
+        let close = ticker["c"][0].as_str().and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+        let value = position.total_quantity * close;
+
+        initial_holdings_value += value;
+        positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.total_quantity, value));
+    }
+}
+
+initial_total_value = initial_usd + initial_holdings_value;
+positions_str.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
+positions_str.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
+
+let _ = report_log(&report_path_arc, &positions_str);
 
     let (shutdown_tx, _) = broadcast::channel::<()>(1);
 
@@ -838,17 +844,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     Err(_) => continue,
                 };
 
-                if position.amount > Decimal::ZERO {
+                if position.total_quantity > Decimal::ZERO {
                     let ticker = match kraken_client_hourly.fetch_ticker(pair).await {
                         Ok(t) => t,
                         Err(_) => continue,
                     };
 
-                    let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
-                    let value = position.amount * close;
+                    let close = ticker["c"][0].as_str().and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+                    let value = position.total_quantity * close;
 
                     holdings_value += value;
-                    positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
+                    positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.total_quantity, value));
                 }
             }
 
@@ -925,17 +931,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             Err(_) => continue,
         };
 
-        if position.amount > Decimal::ZERO {
+        if position.total_quantity > Decimal::ZERO {
             let ticker = match kraken_client.fetch_ticker(pair).await {
                 Ok(t) => t,
                 Err(_) => continue,
             };
 
-            let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
-            let value = position.amount * close;
+            let close = ticker["c"][0].as_str().and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+            let value = position.total_quantity * close;
 
             holdings_value += value;
-            positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
+            positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.total_quantity, value));
         }
     }
 
