@@ -28,3 +28,27 @@
     Free USD (Kraken): 1.8117
     (Note: positions value / attempt-fill stats to be added later)
     
+[2026-02-16 00:53:46] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-16 00:53:45
+    Final free USD: 1.8117
+    Free USD change during run: -186.9812
+    
+    Final Balances:
+      ATOM: 0.00817079
+      DOT: 125.55437783
+      INJ: 0.00000000
+      PEPE: 38461.68000000
+      SHIB: 375644.33498000
+      SOL: 0.19550000
+      USDC: 0.00005300
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 1.81170000
+    
+    Open Orders:
+      (none)
+    DB vs Kraken realized PL diff: (to be added later)
+    DB vs Kraken realized PL diff: (to be added later)
+    
