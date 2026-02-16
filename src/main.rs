@@ -749,22 +749,22 @@ let _ = report_log(&report_path_arc, &positions_str);
                         };
                         if buy_triggered {
                             buy_attempts_pair.fetch_add(1, Ordering::Relaxed);
-                            let _ = report_log(&report_path_pair, &format!("[{}] BUY ATTEMPTED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                            let _ = report_log(&report_path_pair, &format!("BUY ATTEMPTED: {}", pair_clone));
 
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
                                     OrderComplete::Success(_) => {
                                         buy_fills_pair.fetch_add(1, Ordering::Relaxed);
-                                        let _ = report_log(&report_path_pair, &format!("[{}] BUY COMPLETED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                        let _ = report_log(&report_path_pair, &format!("BUY COMPLETED: {}", pair_clone));
                                     }
                                     OrderComplete::Error(e) => {
-                                        let _ = report_log(&report_path_pair, &format!("[{}] BUY FAILED: {} reason={}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone, e));
+                                        let _ = report_log(&report_path_pair, &format!("BUY FAILED: {} reason={}", pair_clone, e));
                                     }
                                     OrderComplete::Shutdown => break,
                                     _ => {}
                                 }
                             } else {
-                                let _ = report_log(&report_path_pair, &format!("[{}] BUY CHANNEL CLOSED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                let _ = report_log(&report_path_pair, &format!("BUY CHANNEL CLOSED: {}", pair_clone));
                                 break;
                             }
                         }
@@ -777,22 +777,22 @@ let _ = report_log(&report_path_arc, &positions_str);
                         };
                         if sell_triggered {
                             sell_attempts_pair.fetch_add(1, Ordering::Relaxed);
-                            let _ = report_log(&report_path_pair, &format!("[{}] SELL ATTEMPTED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                            let _ = report_log(&report_path_pair, &format!("SELL ATTEMPTED: {}", pair_clone));
 
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
                                     OrderComplete::Success(_) => {
                                         sell_fills_pair.fetch_add(1, Ordering::Relaxed);
-                                        let _ = report_log(&report_path_pair, &format!("[{}] SELL COMPLETED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                        let _ = report_log(&report_path_pair, &format!("SELL COMPLETED: {}", pair_clone));
                                     }
                                     OrderComplete::Error(e) => {
-                                        let _ = report_log(&report_path_pair, &format!("[{}] SELL FAILED: {} reason={}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone, e));
+                                        let _ = report_log(&report_path_pair, &format!("SELL FAILED: {} reason={}", pair_clone, e));
                                     }
                                     OrderComplete::Shutdown => break,
                                     _ => {}
                                 }
                             } else {
-                                let _ = report_log(&report_path_pair, &format!("[{}] SELL CHANNEL CLOSED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                let _ = report_log(&report_path_pair, &format!("SELL CHANNEL CLOSED: {}", pair_clone));
                                 break;
                             }
                         }

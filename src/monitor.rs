@@ -22,6 +22,8 @@ use anyhow::anyhow;
 use tokio::sync::broadcast::Receiver as BroadcastReceiver;
 use tokio::time::Instant;
 use crate::statemanager::OrderStatus;
+use crate::utils::report_log;
+use std::sync::atomic::{AtomicU64, Ordering};
 
 // Monitor Function
 
@@ -30,6 +32,8 @@ pub async fn monitor_order(
     pairs: Vec<String>,
     state_manager: Arc<StateManager>,
     config: &Config,
+    report_path: Arc<String>,
+    cancels_counter: Arc<AtomicU64>,
     target_order_id: String,
     average_buy_price: Decimal,
     mut buy_trade_ids: Vec<String>,
