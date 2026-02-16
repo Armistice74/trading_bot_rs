@@ -6,6 +6,8 @@ use chrono::{DateTime, TimeZone, Utc, offset::Local};
 use rust_decimal::{Decimal, prelude::*};
 use std::fs::OpenOptions;
 use std::io::{self, Write};
+use rust_decimal::Decimal;
+use std::sync::Arc;
 
 pub fn get_current_time() -> DateTime<Local> {
     Local::now()
@@ -37,4 +39,35 @@ pub fn report_log(report_path: &str, message: &str) -> io::Result<()> {
     writeln!(file, "[{}] {}", timestamp, message.replace('\n', "\n    "))?;
 
     Ok(())
+}
+
+pub fn report_order_placed(report_path: &str, pair: &str, side: &str, qty: Decimal, price: Decimal, post_only: bool) {
+    let post = if post_only { "post_only" } else { "" };
+    let msg = format!("ORDER PLACED: {} {} {} @ {} {}", pair, side, qty, price, post).trim_end().to_string();
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_order_success(report_path: &str, pair: &str, order_id: &str) {
+    let msg = format!("ORDER SUCCESS: {} order_id={}", pair, order_id);
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_order_failed(report_path: &str, pair: &str, reason: &str) {
+    let msg = format!("ORDER FAILED: {} reason={}", pair, reason);
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_fill(report_path: &str, pair: &str, order_id: &str, filled_qty: Decimal, remaining_qty: Decimal, price: Decimal, fees: Decimal) {
+    let msg = format!("FILL: {} order_id={} filled={} remaining={} price={} fees={}", pair, order_id, filled_qty, remaining_qty, price, fees);
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_cancel(report_path: &str, pair: &str, order_id: &str, reason: &str) {
+    let msg = format!("CANCEL: {} order_id={} reason={}", pair, order_id, reason);
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_skip(report_path: &str, pair: &str, side: &str, reason: &str) {
+    let msg = format!("{} SKIPPED: {} reason={}", side.to_uppercase(), pair, reason);
+    let _ = report_log(report_path, &msg);
 }
