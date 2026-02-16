@@ -15,7 +15,7 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 dip_percentage = { value = 0.8, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
-profit_target = { value = 1.5, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
+profit_target = { value = 1.0, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
 period_minutes = { value = 30, description = "Lookback period in minutes for calculating highest price" }
 
