@@ -506,25 +506,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
     }
 
-    snapshot.push_str("Balances:\n");
-
-    match balances_res {
-        Ok(balances) => {
-            if let Some(map) = balances.as_object() {
-                for (asset, val) in map {
-                    if let Some(s) = val.as_str() {
-                        if let Ok(amt) = Decimal::from_str(s) {
-                            if amt > Decimal::ZERO {
-                                snapshot.push_str(&format!("  {}: {:.8}\n", asset, amt));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
-    }
-
     snapshot.push_str("\nOpen Orders:\n");
 
     match kraken_client.fetch_open_orders().await {
@@ -859,23 +840,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     final_text.push_str(&format!("BOT RUN SHUTDOWN at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
     final_text.push_str(&format!("Final free USD: {:.4}\n", final_usd));
     final_text.push_str(&format!("Free USD change during run: {:.4}\n\n", usd_change));
-    final_text.push_str("Final Balances:\n");
-
-    if let Some(balances) = balances_opt {
-        if let Some(map) = balances.as_object() {
-            for (asset, val) in map {
-                if let Some(s) = val.as_str() {
-                    if let Ok(amt) = Decimal::from_str(s) {
-                        if amt > Decimal::ZERO {
-                            final_text.push_str(&format!("  {}: {:.8}\n", asset, amt));
-                        }
-                    }
-                }
-            }
-        }
-    } else if let Some(err_msg) = fetch_error_opt {
-        final_text.push_str(&format!("  Balance fetch failed: {}\n", err_msg));
-    }
 
     final_text.push_str("Final Balances:\n");
 
