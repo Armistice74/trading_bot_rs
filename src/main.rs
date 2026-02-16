@@ -747,16 +747,24 @@ let _ = report_log(&report_path_arc, &positions_str);
                                 false
                             }
                         };
-                        if buy_triggered  {
+                        if buy_triggered {
+                            buy_attempts_pair.fetch_add(1, Ordering::Relaxed);
+                            let _ = report_log(&report_path_pair, &format!("[{}] BUY ATTEMPTED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
-                                    OrderComplete::Success(_) => info!("Buy completed for {}", pair_clone),
-                                    OrderComplete::Error(e) => error!("Buy error for {}: {}", pair_clone, e),
+                                    OrderComplete::Success(_) => {
+                                        buy_fills_pair.fetch_add(1, Ordering::Relaxed);
+                                        let _ = report_log(&report_path_pair, &format!("[{}] BUY COMPLETED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                    }
+                                    OrderComplete::Error(e) => {
+                                        let _ = report_log(&report_path_pair, &format!("[{}] BUY FAILED: {} reason={}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone, e));
+                                    }
                                     OrderComplete::Shutdown => break,
                                     _ => {}
                                 }
                             } else {
-                                error!("Completion CHANNEL closed for {}", pair_clone);
+                                let _ = report_log(&report_path_pair, &format!("[{}] BUY CHANNEL CLOSED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
                                 break;
                             }
                         }
@@ -768,15 +776,23 @@ let _ = report_log(&report_path_arc, &positions_str);
                             }
                         };
                         if sell_triggered {
+                            sell_attempts_pair.fetch_add(1, Ordering::Relaxed);
+                            let _ = report_log(&report_path_pair, &format!("[{}] SELL ATTEMPTED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
-                                    OrderComplete::Success(_) => info!("Sell completed for {}", pair_clone),
-                                    OrderComplete::Error(e) => error!("Sell error for {}: {}", pair_clone, e),
+                                    OrderComplete::Success(_) => {
+                                        sell_fills_pair.fetch_add(1, Ordering::Relaxed);
+                                        let _ = report_log(&report_path_pair, &format!("[{}] SELL COMPLETED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
+                                    }
+                                    OrderComplete::Error(e) => {
+                                        let _ = report_log(&report_path_pair, &format!("[{}] SELL FAILED: {} reason={}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone, e));
+                                    }
                                     OrderComplete::Shutdown => break,
                                     _ => {}
                                 }
                             } else {
-                                error!("Completion channel closed for {}", pair_clone);
+                                let _ = report_log(&report_path_pair, &format!("[{}] SELL CHANNEL CLOSED: {}", Local::now().format("%Y-%m-%d %H:%M:%S"), pair_clone));
                                 break;
                             }
                         }
@@ -1016,7 +1032,11 @@ let _ = report_log(&report_path_arc, &positions_str);
         Err(e) => final_text.push_str(&format!("  Open orders fetch failed: {}\n", e)),
     }
 
-    final_text.push_str("Realized PL approx = free USD change (fees deducted)\n");
+    let db_pl = state_manager.get_total_pl_for_crypto().await.unwrap_or(Decimal::ZERO);
+
+    final_text.push_str(&format!("DB realized PL: {:.4}\n", db_pl));
+    final_text.push_str(&format!("Kraken approx PL (free USD change): {:.4}\n", usd_change));
+    final_text.push_str(&format!("PL difference (DB - Kraken): {:.4}\n", db_pl - usd_change));
 
     let _ = report_log(&report_path_arc, &final_text);
 
