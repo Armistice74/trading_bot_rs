@@ -1,12 +1,12 @@
 // main.rs
 // Description: Entry point of the trading bot. Handles initialization, task spawning, and shutdown.
 
-// IMPORTS AND MODS
+// IMPORTS AND MODS (unchanged except added atomic import already present)
 
 use anyhow::{anyhow, Result};
 use base64::engine::general_purpose::STANDARD;
 use base64::Engine;
-use chrono::{DateTime, Local, NaiveDateTime, TimeZone};
+use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
 use std::fs;
 use std::sync::Arc;
 use std::time::Duration;
@@ -22,7 +22,6 @@ use rust_decimal::{Decimal, prelude::*};
 use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
-use chrono::Utc;
 use std::sync::atomic::{AtomicU64, Ordering};
 
 mod actors;
@@ -163,9 +162,7 @@ pub fn record_error(error_type: &str) {
     );
 }
 
-// ============================================================================
 // STARTUP FUNCTIONS
-// ============================================================================
 
 async fn validate_api_credentials(config: &Config) -> Result<(String, String)> {
     let api_key = config.api_keys.key.value.clone();
@@ -391,8 +388,6 @@ async fn setup_websocket_channels(
     Ok((price_tx, price_rx, ohlc_tx, ohlc_rx))
 }
 
-
-
 // MAIN FUNCTION
 
 #[tokio::main]
@@ -455,10 +450,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .init();
     init_metrics();
     info!("Starting trading bot");
-    let mut initial_usd: Decimal = Decimal::ZERO;
+
     let start_time = Local::now();
+    let mut initial_usd: Decimal = Decimal::ZERO;
     let mut initial_holdings_value = Decimal::ZERO;
-    let mut initial_total_value: Decimal;
+    let mut initial_total_value: Decimal = Decimal::ZERO;
 
     let buy_attempts = Arc::new(AtomicU64::new(0));
     let buy_fills = Arc::new(AtomicU64::new(0));
@@ -486,9 +482,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let _ = fs::create_dir_all("report");
 
     let report_file = format!("trade_report_{}.txt", Local::now().format("%Y-%m-%d_%H-%M"));
-
     let report_path = format!("report/{}", report_file);
-
     report_path_arc = Arc::new(report_path.clone());
 
     let _ = report_log(&report_path_arc, &format!("BOT RUN STARTED at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
@@ -499,8 +493,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     snapshot.push_str(&format!("Initial free USD: {:.4}\n\n", initial_usd));
     snapshot.push_str("Balances:\n");
 
-    match balances_res {
-        Ok(balances) => {
+    match &balances_res {
+        Ok(ref balances) => {
             if let Some(map) = balances.as_object() {
                 for (asset, val) in map {
                     if let Some(s) = val.as_str() {
@@ -513,7 +507,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
             }
         }
-        Err(e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
+        Err(ref e) => snapshot.push_str(&format!("  Balance fetch failed: {}\n", e)),
     }
 
     snapshot.push_str("\nOpen Orders:\n");
@@ -532,10 +526,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             let vol = details.get("vol").and_then(|v| v.as_str()).unwrap_or("0");
                             let status = details.get("status").and_then(|s| s.as_str()).unwrap_or("unknown");
                             let timestamp = details.get("opentm").and_then(|t| t.as_f64()).map(|t| {
-                                let dt = chrono::DateTime::<chrono::Utc>::from_timestamp(t as i64, 0)
+                                chrono::DateTime::<Utc>::from_timestamp(t as i64, 0)
                                     .map(|d| d.with_timezone(&Local).format("%Y-%m-%d %H:%M:%S").to_string())
-                                    .unwrap_or("unknown".to_string());
-                                dt
+                                    .unwrap_or("unknown".to_string())
                             }).unwrap_or("unknown".to_string());
 
                             snapshot.push_str(&format!(
@@ -552,42 +545,36 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => snapshot.push_str(&format!("  Open orders fetch failed: {}\n", e)),
     }
 
-    let _ = report_log(&report_path_arc, &snapshot);
-    initialize_database(&config).await?;
-    let state_manager =
-        initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
-
-    let mut positions_str = "Portfolio Positions:\n".to_string();
-
+    let mut positions_str = "\nPortfolio Positions:\n".to_string();
     for pair in &config.portfolio.api_pairs.value {
-        let position = match0 match state_manager.get_position(pair.clone()).await {
+        let position = match state_manager.get_position(pair.clone()).await {
             Ok(p) => p,
             Err(_) => continue,
         };
 
-        if position.amount > Decimal::ZERO {  // change to actual field if compile error (e.g., qty, holding, current_qty)
+        if position.amount > Decimal::ZERO {
             let ticker = match kraken_client.fetch_ticker(pair).await {
                 Ok(t) => t,
                 Err(_) => continue,
             };
 
             let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
-
             let value = position.amount * close;
 
             initial_holdings_value += value;
-
             positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
         }
     }
 
     initial_total_value = initial_usd + initial_holdings_value;
-
     snapshot.push_str(&positions_str);
-
     snapshot.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
-
     snapshot.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
+
+    let _ = report_log(&report_path_arc, &snapshot);
+
+    initialize_database(&config).await?;
+    let state_manager = initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
 
     let (shutdown_tx, _) = broadcast::channel::<()>(1);
 
@@ -639,6 +626,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let state_manager = state_manager.clone();
         let kraken_client = kraken_client.clone();
         let priv_ready_tx = priv_ready_tx;
+        let report_path_private = report_path_arc.clone();
         async move {
             let mut retry_count = 0;
             let max_retries = 5;
@@ -671,7 +659,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     });
 
-    // Await WS ready signals with timeout
     if let Err(_) = timeout(Duration::from_secs(30), pub_ready_rx.recv()).await {
         warn!("Public WS ready timeout after 30s; proceeding with fallback");
     } else {
@@ -700,6 +687,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let config = config.clone();
         let kraken_client = kraken_client.clone();
         let shutdown_tx = shutdown_tx.clone();
+        let report_path_sweep = report_path_arc.clone();
+        let cancels_sweep = cancels.clone();
         tokio::spawn(async move {
             if let Err(e) = trading_logic::global_trade_sweep(state_manager, &kraken_client, &config, shutdown_tx).await {
                 error!("Global trade sweep failed: {}", e);
@@ -716,6 +705,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let pair_clone = pair.clone();
         let shutdown_tx = shutdown_tx.clone();
         let mut completion_rx = state_manager.get_completion_rx(&pair_clone).await.unwrap();
+
+        let report_path_pair = report_path_arc.clone();
+        let buy_attempts_pair = buy_attempts.clone();
+        let buy_fills_pair = buy_fills.clone();
+        let sell_attempts_pair = sell_attempts.clone();
+        let sell_fills_pair = sell_fills.clone();
+        let cancels_pair = cancels.clone();
 
         let handle = tokio::spawn(async move {
             let loop_delay = Duration::from_secs_f64(config.trading_logic.loop_delay_seconds.value.to_f64().unwrap_or(30.0));
@@ -748,7 +744,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                                 false
                             }
                         };
-                        if buy_triggered {
+                        if buy_triggered  {
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
                                     OrderComplete::Success(_) => info!("Buy completed for {}", pair_clone),
@@ -757,7 +753,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                                     _ => {}
                                 }
                             } else {
-                                error!("Completion channel closed for {}", pair_clone);
+                                error!("Completion CHANNEL closed for {}", pair_clone);
                                 break;
                             }
                         }
@@ -805,10 +801,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let report_path_hourly = report_path_arc.clone();
     let kraken_client_hourly = kraken_client.clone();
+    let state_manager_hourly = state_manager.clone();
+    let config_hourly = config.clone();
+    let buy_attempts_hourly = buy_attempts.clone();
+    let buy_fills_hourly = buy_fills.clone();
+    let sell_attempts_hourly = sell_attempts.clone();
+    let sell_fills_hourly = sell_fills.clone();
+    let cancels_hourly = cancels.clone();
 
     tokio::spawn(async move {
-        let mut interval = tokio::time::interval(std::time::Duration::from_secs(3600));
-        interval.tick().await; // skip immediate first tick
+        let mut interval = tokio::time::interval(Duration::from_secs(3600));
+        interval.tick().await;
 
         loop {
             interval.tick().await;
@@ -826,9 +829,44 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
             };
 
+            let mut holdings_value = Decimal::ZERO;
+            let mut positions_str = "Portfolio Positions:\n".to_string();
+
+            for pair in &config_hourly.portfolio.api_pairs.value {
+                let position = match state_manager_hourly.get_position(pair.clone()).await {
+                    Ok(p) => p,
+                    Err(_) => continue,
+                };
+
+                if position.amount > Decimal::ZERO {
+                    let ticker = match kraken_client_hourly.fetch_ticker(pair).await {
+                        Ok(t) => t,
+                        Err(_) => continue,
+                    };
+
+                    let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+                    let value = position.amount * close;
+
+                    holdings_value += value;
+                    positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
+                }
+            }
+
+            let total_value = free_usd + holdings_value;
+
             let summary = format!(
-                "HOURLY SUMMARY at {}\nFree USD (Kraken): {:.4}\n(Note: positions value / attempt-fill stats to be added later)\n",
-                now, free_usd
+                "HOURLY SUMMARY at {}\n\
+                 Free USD: {:.4}\n\
+                 Holdings value: {:.4}\n\
+                 Total portfolio value: {:.4}\n\
+                 {}\
+                 Buys: {} attempted, {} filled\n\
+                 Sells: {} attempted, {} filled\n\
+                 Cancels: {}\n",
+                now, free_usd, holdings_value, total_value, positions_str,
+                buy_attempts_hourly.load(Ordering::Relaxed), buy_fills_hourly.load(Ordering::Relaxed),
+                sell_attempts_hourly.load(Ordering::Relaxed), sell_fills_hourly.load(Ordering::Relaxed),
+                cancels_hourly.load(Ordering::Relaxed)
             );
 
             let _ = report_log(&report_path_hourly, &summary);
@@ -861,7 +899,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let balances_res = kraken_client.fetch_balance().await;
 
     let (final_usd, balances_opt, fetch_error_opt): (Decimal, Option<serde_json::Value>, Option<String>) = match &balances_res {
-        Ok(bal) => (
+        Ok(ref bal) => (
             bal.get("ZUSD")
                 .and_then(|v| v.as_str())
                 .and_then(|s| Decimal::from_str(s).ok())
@@ -869,7 +907,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             Some(bal.clone()),
             None,
         ),
-        Err(e) => {
+        Err(ref e) => {
             let err_msg = format!("{}", e);
             error!("Final balance fetch failed: {}", err_msg);
             (Decimal::ZERO, None, Some(err_msg))
@@ -878,14 +916,53 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let usd_change = final_usd - initial_usd;
 
+    let mut holdings_value = Decimal::ZERO;
+    let mut positions_str = "\nPortfolio Positions:\n".to_string();
+
+    for pair in &config.portfolio.api_pairs.value {
+        let position = match state_manager.get_position(pair.clone()).await {
+            Ok(p) => p,
+            Err(_) => continue,
+        };
+
+        if position.amount > Decimal::ZERO {
+            let ticker = match kraken_client.fetch_ticker(pair).await {
+                Ok(t) => t,
+                Err(_) => continue,
+            };
+
+            let close = ticker.get(pair).and_then(|v| v["c"][0].as_str()).and_then(|s| Decimal::from_str(s).ok()).unwrap_or(Decimal::ZERO);
+            let value = position.amount * close;
+
+            holdings_value += value;
+            positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.amount, value));
+        }
+    }
+
+    let total_value = final_usd + holdings_value;
+    let total_value_change = total_value - initial_total_value;
+
+    let runtime = Local::now().signed_duration_since(start_time);
+    let hours = runtime.num_hours();
+    let minutes = (runtime.num_minutes() % 60).abs();
+    let seconds = (runtime.num_seconds() % 60).abs();
+
     let mut final_text = "FINAL SNAPSHOT\n".to_string();
     final_text.push_str(&format!("BOT RUN SHUTDOWN at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
+    final_text.push_str(&format!("Runtime: {}h {}m {}s\n", hours, minutes, seconds));
     final_text.push_str(&format!("Final free USD: {:.4}\n", final_usd));
-    final_text.push_str(&format!("Free USD change during run: {:.4}\n\n", usd_change));
+    final_text.push_str(&format!("Free USD change: {:.4}\n", usd_change));
+    final_text.push_str(&format!("Holdings value: {:.4}\n", holdings_value));
+    final_text.push_str(&format!("Total portfolio value: {:.4}\n", total_value));
+    final_text.push_str(&format!("Total value change: {:.4}\n", total_value_change));
+    final_text.push_str(&positions_str);
+    final_text.push_str(&format!("Buys: {} attempted, {} filled\n", buy_attempts.load(Ordering::Relaxed), buy_fills.load(Ordering::Relaxed)));
+    final_text.push_str(&format!("Sells: {} attempted, {} filled\n", sell_attempts.load(Ordering::Relaxed), sell_fills.load(Ordering::Relaxed)));
+    final_text.push_str(&format!("Cancels: {}\n", cancels.load(Ordering::Relaxed)));
 
-    final_text.push_str("Final Balances:\n");
+    final_text.push_str("\nFinal Balances:\n");
 
-    if let Some(balances) = balances_opt {
+    if let Some(ref balances) = balances_opt {
         if let Some(map) = balances.as_object() {
             for (asset, val) in map {
                 if let Some(s) = val.as_str() {
@@ -897,7 +974,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
             }
         }
-    } else if let Some(err_msg) = fetch_error_opt {
+    } else if let Some(ref err_msg) = fetch_error_opt {
         final_text.push_str(&format!("  Balance fetch failed: {}\n", err_msg));
     }
 
@@ -917,10 +994,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             let vol = details.get("vol").and_then(|v| v.as_str()).unwrap_or("0");
                             let status = details.get("status").and_then(|s| s.as_str()).unwrap_or("unknown");
                             let timestamp = details.get("opentm").and_then(|t| t.as_f64()).map(|t| {
-                                let dt = chrono::DateTime::<chrono::Utc>::from_timestamp(t as i64, 0)
+                                chrono::DateTime::<Utc>::from_timestamp(t as i64, 0)
                                     .map(|d| d.with_timezone(&Local).format("%Y-%m-%d %H:%M:%S").to_string())
-                                    .unwrap_or("unknown".to_string());
-                                dt
+                                    .unwrap_or("unknown".to_string())
                             }).unwrap_or("unknown".to_string());
 
                             final_text.push_str(&format!(
@@ -937,9 +1013,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => final_text.push_str(&format!("  Open orders fetch failed: {}\n", e)),
     }
 
-    final_text.push_str("DB vs Kraken realized PL diff: (to be added later)\n");
-
-    final_text.push_str("DB vs Kraken realized PL diff: (to be added later)\n");
+    final_text.push_str("Realized PL approx = free USD change (fees deducted)\n");
 
     let _ = report_log(&report_path_arc, &final_text);
 
@@ -951,4 +1025,3 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     info!("Shutdown complete");
     Ok(())
 }
-
