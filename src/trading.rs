@@ -26,6 +26,8 @@ use crate::indicators::indicators::market_condition_check;
 use crate::statemanager::OrderComplete;
 use tokio::sync::mpsc;
 use tokio::sync::broadcast;
+use crate::utils::report_log;
+use std::sync::atomic::{AtomicU64, Ordering};
 
 // Trading Logic
 
@@ -628,8 +630,6 @@ pub mod trading_logic {
         ),
         anyhow::Error,
     > {
-        let report_path_monitor = report_path_pair.clone();  // report_path_pair from main loop
-        let cancels_monitor = cancels_pair.clone();  // cancels_pair from main loop
         let base_currency = pair.split("USD").next().unwrap_or("");
         let timeout = Decimal::from(config.trading_logic.buy_order_timeout.value);
         let post_only = config.bot_operation.buy_post_only.value;
@@ -713,12 +713,10 @@ pub mod trading_logic {
                     vec![pair_clone.clone()],
                     state_manager_clone.clone(),
                     &config_clone,
-                    report_path_monitor,
-                    cancels_monitor,
                     order_id_clone,
                     avg_cost_basis,
-                    buy_trade_ids_clone,  // or vec![] for buy
-                    total_buy_qty_clone,  // or Decimal::ZERO for buy
+                    vec![],  // or buy_trade_ids_clone for sell
+                    Decimal::ZERO,  // or total_buy_qty_clone for sell
                     shutdown_rx,
                 ).await {
                     Ok((filled, _, _, _, _)) => {
@@ -786,8 +784,6 @@ pub mod trading_logic {
         )>,
         anyhow::Error,
     > {
-        let report_path_monitor = report_path_pair.clone();  // report_path_pair from main loop
-        let cancels_monitor = cancels_pair.clone();  // cancels_pair from main loop
         let base_currency = pair.split("USD").next().unwrap_or("");
         info!(
             "Starting execute_sell_trade for {}, amount={:.4}, reason={}",
