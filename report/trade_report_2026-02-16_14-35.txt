@@ -51,3 +51,37 @@
     
 [2026-02-16 17:01:54] [2026-02-16 17:01:54] SELL ATTEMPTED: ATOMUSD
 [2026-02-16 17:01:54] [2026-02-16 17:01:54] SELL COMPLETED: ATOMUSD
+[2026-02-16 17:02:47] [2026-02-16 17:02:47] SELL ATTEMPTED: ATOMUSD
+[2026-02-16 17:02:47] [2026-02-16 17:02:47] SELL COMPLETED: ATOMUSD
+[2026-02-16 17:03:11] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-16 17:03:11
+    Runtime: 2h 27m 49s
+    Final free USD: 186.5170
+    Free USD change: 1.1107
+    Holdings value: 0.0000
+    Total portfolio value: 186.5170
+    Total value change: 1.1107
+    
+    Portfolio Positions:
+    Buys: 3 attempted, 3 filled
+    Sells: 2 attempted, 2 filled
+    Cancels: 0
+    
+    Final Balances:
+      DOT: 0.00000000
+      INJ: 0.00000000
+      PEPE: 38461.68000000
+      SOL: 0.00000000
+      USDC: 0.00005300
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 186.51700000
+    
+    Open Orders:
+      (none)
+    DB realized PL: 1.1106
+    Kraken approx PL (free USD change): 1.1107
+    PL difference (DB - Kraken): -0.0000
+    
