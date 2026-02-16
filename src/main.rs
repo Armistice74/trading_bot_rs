@@ -546,9 +546,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     initial_total_value = initial_usd + initial_holdings_value;
-    snapshot.push_str(&positions_str);
-    snapshot.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
-    snapshot.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
 
     let _ = report_log(&report_path_arc, &snapshot);
 
