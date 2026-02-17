@@ -23,6 +23,8 @@ use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
 use std::sync::atomic::{AtomicU64, Ordering};
+use crate::utils::{report_log, report_cancel};
+use std::sync::atomic::{AtomicU64, Ordering};
 
 mod actors;
 mod api;
@@ -693,8 +695,7 @@ let _ = report_log(&report_path_arc, &positions_str);
         let report_path_sweep = report_path_arc.clone();
         let cancels_sweep = cancels.clone();
         tokio::spawn(async move {
-            if let Err(e) = trading_logic::global_trade_sweep(state_manager, &kraken_client, &config, shutdown_tx).await {
-                error!("Global trade sweep failed: {}", e);
+            if let Err(e) = trading_logic::global_trade_sweep(state_manager, &kraken_client, &config, shutdown_tx, report_path_arc.clone(), cancels.clone()).await {
             }
         })
     };

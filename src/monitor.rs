@@ -22,6 +22,8 @@ use anyhow::anyhow;
 use tokio::sync::broadcast::Receiver as BroadcastReceiver;
 use tokio::time::Instant;
 use crate::statemanager::OrderStatus;
+use crate::utils::{report_log, report_cancel};
+use std::sync::atomic::{AtomicU64, Ordering};
 
 // Monitor Function
 
@@ -35,6 +37,8 @@ pub async fn monitor_order(
     mut buy_trade_ids: Vec<String>,
     mut total_buy_qty: Decimal,
     mut shutdown_rx: BroadcastReceiver<()>,
+    report_path: Arc<String>,
+    cancels: Arc<AtomicU64>,
 ) -> Result<(bool, Decimal, Decimal, Decimal, Vec<String>), anyhow::Error> {
     let (tx_check, rx_check) = oneshot::channel();
     if state_manager.trade_manager_tx.send(TradeManagerMessage::IsMonitoring {
@@ -547,6 +551,9 @@ pub async fn monitor_order(
                         match client.cancel_order(symbol, order_id).await {
                             Ok(_) => {
                                 info!("Order {} for {} canceled successfully", order_id, pair_item);
+                                let reason = if should_check { "adverse_price_move" } else { "timeout" };
+                                let _ = report_cancel(&report_path, &pair_item, order_id, reason);
+                                cancels.fetch_add(1, Ordering::Relaxed);
                             }
                             Err(e) => {
                                 warn!(
@@ -677,6 +684,8 @@ fn is_terminal(status: &str) -> bool {
 async fn escalate_to_cancel(client: &KrakenClient, symbol: &str, order_id: &str, pair_item: &str, state_manager: Arc<StateManager>) {
     match client.cancel_order(symbol, order_id).await {
         Ok(_) => info!("Escalated cancel for order {} on {}", order_id, pair_item),
+        let _ = report_cancel(&report_path, pair_item, order_id, "stagnant_accumulation");
+        cancels.fetch_add(1, Ordering::Relaxed);
         Err(e) => warn!("Failed escalated cancel for {}: {}", order_id, e),
     }
     state_manager.remove_open_order(pair_item.to_string(), order_id.to_string()).await.ok();

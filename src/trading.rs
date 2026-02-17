@@ -26,6 +26,8 @@ use crate::indicators::indicators::market_condition_check;
 use crate::statemanager::OrderComplete;
 use tokio::sync::mpsc;
 use tokio::sync::broadcast;
+use crate::utils::{report_log, report_cancel};
+use std::sync::atomic::{AtomicU64, Ordering};
 
 // Trading Logic
 
@@ -255,6 +257,8 @@ pub mod trading_logic {
         config: &Config,
         completion_rx: &mut mpsc::UnboundedReceiver<OrderComplete>,
         shutdown_tx: broadcast::Sender<()>,
+        report_path: Arc<String>,
+            cancels: Arc<AtomicU64>,
     ) -> Result<(bool, Decimal), anyhow::Error> {
         info!("Entering buy_logic for {}", pair);
         let pause_minutes = config.stop_loss_behavior.pause_after_stop_minutes.value;
@@ -349,6 +353,8 @@ pub mod trading_logic {
             config,
             state_manager.clone(),
             shutdown_tx.clone(),
+            report_path.clone(),
+            cancels.clone(),
         ).await?;
         let triggered = result.0.is_some();
         if triggered {
@@ -376,6 +382,8 @@ pub mod trading_logic {
         config: &Config,
         completion_rx: &mut mpsc::UnboundedReceiver<OrderComplete>,
         shutdown_tx: broadcast::Sender<()>,
+        report_path: Arc<String>,
+            cancels: Arc<AtomicU64>,
     ) -> Result<bool, anyhow::Error> {
         info!("Entering sell_logic for {}", pair);
         let mut open_trades = state_manager.get_open_trades(pair.to_string()).await?;
@@ -448,6 +456,8 @@ pub mod trading_logic {
                         trade_ids_to_sell.clone(),
                         total_buy_qty,
                         shutdown_tx.clone(),
+                        report_path.clone(),
+                        cancels.clone(),
                     )
                     .await;
                     match result {
@@ -613,8 +623,10 @@ pub mod trading_logic {
         config: &Config,
         state_manager: Arc<StateManager>,
         shutdown_tx: broadcast::Sender<()>,
-    ) -> Result<
-        (
+        report_path: Arc<String>,
+            cancels: Arc<AtomicU64>,
+        ) -> Result<
+            (
             Option<String>,
             Decimal,
             Decimal,
@@ -713,9 +725,11 @@ pub mod trading_logic {
                     &config_clone,
                     order_id_clone,
                     avg_cost_basis,
-                    vec![],
-                    Decimal::ZERO,
+                    buy_trade_ids_clone,
+                    total_buy_qty_clone,
                     shutdown_rx,
+                    report_path.clone(),
+                    cancels.clone(),
                 ).await {
                     Ok((filled, _, _, _, _)) => {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -766,8 +780,10 @@ pub mod trading_logic {
         buy_trade_ids: Vec<String>,
         total_buy_qty: Decimal,
         shutdown_tx: broadcast::Sender<()>,
-    ) -> Result<
-        Option<(
+        report_path: Arc<String>,
+            cancels: Arc<AtomicU64>,
+        ) -> Result<
+            Option<(
             String,
             Decimal,
             Decimal,
@@ -860,6 +876,8 @@ pub mod trading_logic {
                     buy_trade_ids_clone,
                     total_buy_qty_clone,
                     shutdown_rx,
+                    report_path.clone(),
+                    cancels.clone(),
                 ).await {
                     Ok((filled, _, _, _, _)) => {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -1037,12 +1055,13 @@ pub mod trading_logic {
             }
         }
         Ok(())
-    }
     pub async fn global_trade_sweep(
         state_manager: Arc<StateManager>,
         client: &KrakenClient,
         config: &Config,
         shutdown_tx: broadcast::Sender<()>,
+        report_path: Arc<String>,
+        cancels: Arc<AtomicU64>,
     ) -> Result<()> {
         let pairs = config.portfolio.api_pairs.value.clone();
         let ws_enabled = true;
@@ -1104,6 +1123,8 @@ pub mod trading_logic {
                                 buy_trade_ids,
                                 total_buy_qty,
                                 shutdown_rx,
+                                report_path.clone(),
+                                cancels.clone(),
                             ).await {
                                 Ok((filled, _, _, _, _)) => {
                                     let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
