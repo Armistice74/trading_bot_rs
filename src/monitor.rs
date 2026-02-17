@@ -70,22 +70,10 @@ pub async fn monitor_order(
     let monitor_loop_delay = Duration::from_secs_f64(config.delays.monitor_loop_delay.value.to_f64().unwrap_or(0.0));
     let monitor_partial_delay = Duration::from_secs_f64(config.delays.monitor_partial_delay.value.to_f64().unwrap_or(0.0));
     let pair_delay = Duration::from_secs_f64(config.delays.monitor_pair_delay.value.to_f64().unwrap_or(0.0));
-    let pair = pairs.first().cloned().unwrap_or_default();
-        report_order_attempt(
-        &report_path,
-        trade_type,
-        pair_item,
-        &target_order_id,
-        limit_price,
-        info.vol,
-        &reason,
-        close_price,
-        best_ask,
-        best_bid,
-    );
     let report_path_clone = report_path.clone();
     let cancels_clone = cancels.clone();
     let near_timeout_threshold = 0.8;  // 80% of timeout for "near"
+    let pair_item = pairs.first().cloned().unwrap_or_default();
 
     info!("Starting order monitoring for {}: loop_delay=30s (WS fallback), pair_delay={:.1}s, partial_delay=10s", 
         target_order_id, config.delays.monitor_pair_delay.value.to_f64().unwrap_or(0.0));
@@ -97,7 +85,7 @@ pub async fn monitor_order(
         tokio::select! {
             _ = shutdown_rx.recv() => {
                 info!("Shutdown received in monitor for order {}", target_order_id);
-                let _ = state_manager.send_completion(pair.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
+                let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
                 clear_monitoring_flag(&state_manager, &target_order_id).await;
                 return Err(anyhow!("Shutdown in monitor"));
             }
@@ -115,7 +103,7 @@ pub async fn monitor_order(
             let tracked_orders = state_manager.get_open_orders(pair_item.to_string()).await?;
             if !tracked_orders.iter().any(|(id, _)| id == &target_order_id) {
                 info!("Target order {} no longer tracked, exiting monitor", target_order_id);
-                let _ = state_manager.send_completion(pair.clone(), OrderComplete::Success(false)).await;
+                let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Success(false)).await;
                 clear_monitoring_flag(&state_manager, &target_order_id).await;
                 return Ok((false, Decimal::ZERO, Decimal::ZERO, Decimal::ZERO, vec![]));
             }
@@ -303,10 +291,12 @@ pub async fn monitor_order(
                                     client,
                                     symbol,
                                     order_id,
-                                    pair_item,
+                                    pair_item.as_str(),
                                     state_manager.clone(),
                                     report_path.clone(),
                                     cancels.clone(),
+                                    trade_type,
+                                    executed_qty_total,
                                 ).await;
                                 break;
                             }
@@ -314,7 +304,7 @@ pub async fn monitor_order(
                             tokio::select! {
                                 _ = shutdown_rx.recv() => {
                                     info!("Shutdown in partial loop for order {}", order_id);
-                                    let _ = state_manager.send_completion(pair.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
+                                    let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
                                     clear_monitoring_flag(&state_manager, &target_order_id).await;
                                     return Err(anyhow!("Shutdown in partial loop"));
                                 }
@@ -356,10 +346,12 @@ pub async fn monitor_order(
                                             client,
                                             symbol,
                                             order_id,
-                                            pair_item,
+                                            pair_item.as_str(),
                                             state_manager.clone(),
                                             report_path.clone(),
                                             cancels.clone(),
+                                            trade_type,
+                                            executed_qty_total,
                                         ).await;
                                         if !trades.is_empty() {
                                             info!(
@@ -426,7 +418,7 @@ pub async fn monitor_order(
                                             state_manager
                                                 .remove_open_order(pair_item.to_string(), order_id.clone())
                                                 .await?;
-                                            let _ = state_manager.send_completion(pair.clone(), OrderComplete::Success(filled)).await;
+                                            let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Success(filled)).await;
                                             clear_monitoring_flag(&state_manager, &target_order_id).await;
                                             return Ok((
                                                 filled,
@@ -567,7 +559,7 @@ pub async fn monitor_order(
                         state_manager
                             .remove_open_order(pair_item.to_string(), order_id.clone())
                             .await?;
-                        let _ = state_manager.send_completion(pair.clone(), OrderComplete::Success(filled)).await;
+                        let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Success(filled)).await;
                         clear_monitoring_flag(&state_manager, &target_order_id).await;
                         return Ok((
                             filled,
@@ -596,7 +588,7 @@ pub async fn monitor_order(
                                 let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
                                 cancels.fetch_add(1, Ordering::Relaxed);
                                 let _ = state_manager.send_completion(
-                                    pair.clone(),
+                                    pair_item.clone(),
                                     OrderComplete::Cancelled {
                                         filled_qty: executed_qty_total,
                                         reason: reason.to_string(),
@@ -668,7 +660,7 @@ pub async fn monitor_order(
                                 }
                             }
 
-                            let _ = state_manager.send_completion(pair.clone(), OrderComplete::Success(filled)).await;
+                            let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Success(filled)).await;
                             clear_monitoring_flag(&state_manager, &target_order_id).await;
                             return Ok((
                                 filled,
@@ -679,7 +671,7 @@ pub async fn monitor_order(
                             ));
                         }
 
-                        let _ = state_manager.send_completion(pair.clone(), OrderComplete::Error(Arc::new(anyhow!("Timeout with no fills")))).await;
+                        let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Error(Arc::new(anyhow!("Timeout with no fills")))).await;
                         clear_monitoring_flag(&state_manager, &target_order_id).await;
                         return Ok((
                             filled,
@@ -693,7 +685,7 @@ pub async fn monitor_order(
             }
         }
     }
-    let _ = state_manager.send_completion(pair.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
+    let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Error(Arc::new(anyhow!("Shutdown")))).await;
     clear_monitoring_flag(&state_manager, &target_order_id).await;
     Ok((
         filled,
@@ -739,11 +731,15 @@ async fn escalate_to_cancel(
     state_manager: Arc<StateManager>,
     report_path: Arc<String>,
     cancels: Arc<AtomicU64>,
+    trade_type: &str,
+    executed_qty_total: Decimal,
+    cancel_reason: &str,
 ) {
     match client.cancel_order(symbol, order_id).await {
         Ok(_) => {
             info!("Escalated cancel for order {} on {}", order_id, pair_item);
-            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
+            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", 
+                trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, cancel_reason));
             cancels.fetch_add(1, Ordering::Relaxed);
             let _ = state_manager.send_completion(
                 pair_item.to_string(),

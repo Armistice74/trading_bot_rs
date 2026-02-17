@@ -571,6 +571,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         initial_holdings_value += value;
         positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.total_quantity, value));
     }
+}
 
     initial_total_value = initial_usd + initial_holdings_value;
     positions_str.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));

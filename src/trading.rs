@@ -714,6 +714,7 @@ pub mod trading_logic {
             let shutdown_tx_clone = shutdown_tx.clone();
             let buy_trade_ids_clone = vec![];
             let total_buy_qty_clone = Decimal::ZERO;
+            let reason_owned = reason.to_string();
             if state_manager.is_monitoring(order_id_clone.clone()).await.unwrap_or(true) {
                 info!("Skipping monitor spawn for already monitoring order {}", order_id_clone);
                 return Ok((Some(order_id.clone()), Decimal::ZERO, Decimal::ZERO, Decimal::ZERO, base_currency.to_string(), Decimal::ZERO, None, Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
@@ -733,7 +734,7 @@ pub mod trading_logic {
                     report_path.clone(),
                     cancels.clone(),
                     limit_price,
-                    reason.to_string(),
+                    reason_owned,
                 ).await {
                     Ok((filled, _, _, _, _)) => {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -837,6 +838,7 @@ pub mod trading_logic {
         info!("Executing sell for {}: amount={:.8} {}, limit_price={:.8}, post_only={}", pair, amount.to_f64().unwrap_or(0.0), base_currency, limit_price.to_f64().unwrap_or(0.0), post_only);
         info!("Decision close_price for sell on {}: {:.6}", pair, close_price.to_f64().unwrap_or(0.0));
         let (tx, rx) = oneshot::channel();
+        let reason_clone = reason.clone();
         state_manager
             .execute_sell_tx
             .send(SellMessage::Execute {
