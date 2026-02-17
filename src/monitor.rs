@@ -291,12 +291,13 @@ pub async fn monitor_order(
                                     client,
                                     symbol,
                                     order_id,
-                                    pair_item.as_str(),
+                                    pair_item,
                                     state_manager.clone(),
                                     report_path.clone(),
                                     cancels.clone(),
                                     trade_type,
                                     executed_qty_total,
+                                    "stagnant_accumulation",
                                 ).await;
                                 break;
                             }
@@ -346,12 +347,13 @@ pub async fn monitor_order(
                                             client,
                                             symbol,
                                             order_id,
-                                            pair_item.as_str(),
+                                            pair_item,
                                             state_manager.clone(),
                                             report_path.clone(),
                                             cancels.clone(),
                                             trade_type,
                                             executed_qty_total,
+                                            "stagnant_accumulation",
                                         ).await;
                                         if !trades.is_empty() {
                                             info!(
@@ -733,13 +735,12 @@ async fn escalate_to_cancel(
     cancels: Arc<AtomicU64>,
     trade_type: &str,
     executed_qty_total: Decimal,
-    cancel_reason: &str,
+    reason: &str,
 ) {
     match client.cancel_order(symbol, order_id).await {
         Ok(_) => {
             info!("Escalated cancel for order {} on {}", order_id, pair_item);
-            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", 
-                trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, cancel_reason));
+            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
             cancels.fetch_add(1, Ordering::Relaxed);
             let _ = state_manager.send_completion(
                 pair_item.to_string(),
