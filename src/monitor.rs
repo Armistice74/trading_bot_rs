@@ -283,7 +283,15 @@ pub async fn monitor_order(
                         loop {
                             if iteration >= max_iterations || overall_start.elapsed() > overall_timeout {
                                 warn!("Accumulation exceeded limits for {} (iter={}, time={:?}), escalating to cancel", order_id, iteration, overall_start.elapsed());
-                                escalate_to_cancel(client, symbol, order_id, pair_item, state_manager.clone()).await;
+                                escalate_to_cancel(
+                                    client,
+                                    symbol,
+                                    order_id,
+                                    pair_item,
+                                    state_manager.clone(),
+                                    report_path.clone(),
+                                    cancels.clone(),
+                                ).await;
                                 break;
                             }
 
@@ -328,8 +336,15 @@ pub async fn monitor_order(
                                     let db_trades = state_manager.get_trades_for_order(order_id.clone(), pair_item.clone(), client.startup_time()).await.unwrap_or(vec![]);
                                     trades.extend(db_trades.iter().filter(|t| !trades.contains(t)).cloned().collect::<Vec<_>>());
                                     if trades.len() == prev_trades_len {
-                                        escalate_to_cancel(client, symbol, order_id, pair_item, state_manager.clone()).await;
-                                        // NEW: Ensure process if !empty after escalate
+                                        escalate_to_cancel(
+                                            client,
+                                            symbol,
+                                            order_id,
+                                            pair_item,
+                                            state_manager.clone(),
+                                            report_path.clone(),
+                                            cancels.clone(),
+                                        ).await;
                                         if !trades.is_empty() {
                                             info!(
                                                 "Order {} for {}: processing accumulated trades after escalate, status={}, trades_len={}",
@@ -681,13 +696,24 @@ fn is_terminal(status: &str) -> bool {
     ["closed", "canceled", "filled", "expired"].contains(&status)
 }
 
-async fn escalate_to_cancel(client: &KrakenClient, symbol: &str, order_id: &str, pair_item: &str, state_manager: Arc<StateManager>) {
+async fn escalate_to_cancel(
+    client: &KrakenClient,
+    symbol: &str,
+    order_id: &str,
+    pair_item: &str,
+    state_manager: Arc<StateManager>,
+    report_path: Arc<String>,
+    cancels: Arc<AtomicU64>,
+) {
     match client.cancel_order(symbol, order_id).await {
-        Ok(_) => info!("Escalated cancel for order {} on {}", order_id, pair_item),
-        let _ = report_cancel(&report_path, pair_item, order_id, "stagnant_accumulation");
-        cancels.fetch_add(1, Ordering::Relaxed);
-        Err(e) => warn!("Failed escalated cancel for {}: {}", order_id, e),
+        Ok(_) => {
+            info!("Escalated cancel for order {} on {}", order_id, pair_item);
+            let _ = report_cancel(&report_path, pair_item, order_id, "stagnant_accumulation");
+            cancels.fetch_add(1, Ordering::Relaxed);
+        }
+        Err(e) => {
+            warn!("Failed escalated cancel for {}: {}", order_id, e);
+        }
     }
     state_manager.remove_open_order(pair_item.to_string(), order_id.to_string()).await.ok();
-    // Signal error or partial success as appropriate
 }

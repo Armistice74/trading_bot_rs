@@ -23,8 +23,6 @@ use crate::statemanager::OrderComplete;
 use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
 use crate::utils::report_log;
 use std::sync::atomic::{AtomicU64, Ordering};
-use crate::utils::{report_log, report_cancel};
-use std::sync::atomic::{AtomicU64, Ordering};
 
 mod actors;
 mod api;
@@ -695,7 +693,15 @@ let _ = report_log(&report_path_arc, &positions_str);
         let report_path_sweep = report_path_arc.clone();
         let cancels_sweep = cancels.clone();
         tokio::spawn(async move {
-            if let Err(e) = trading_logic::global_trade_sweep(state_manager, &kraken_client, &config, shutdown_tx, report_path_arc.clone(), cancels.clone()).await {
+            if let Err(e) = trading_logic::global_trade_sweep(
+                state_manager,
+                &kraken_client,
+                &config,
+                shutdown_tx,
+                report_path_sweep,
+                cancels_sweep,
+            ).await {
+                error!("Global trade sweep failed: {}", e);
             }
         })
     };
@@ -741,7 +747,16 @@ let _ = report_log(&report_path_arc, &positions_str);
                         if let Err(e) = trading_logic::fetch_and_store_market_data(&pair_clone, &kraken_client, &config, state_manager.clone()).await {
                             error!("Market data fetch failed for {}: {}", pair_clone, e);
                         }
-                        let buy_triggered = match trading_logic::buy_logic(&pair_clone, state_manager.clone(), &kraken_client, &config, &mut completion_rx, shutdown_tx.clone()).await {
+                        let buy_triggered = match trading_logic::buy_logic(
+                            &pair_clone,
+                            state_manager.clone(),
+                            &kraken_client,
+                            &config,
+                            &mut completion_rx,
+                            shutdown_tx.clone(),
+                            report_path_pair.clone(),
+                            cancels_pair.clone(),
+                        ).await {
                             Ok((triggered, _)) => triggered,
                             Err(e) => {
                                 error!("Buy logic failed for {}: {}", pair_clone, e);
@@ -769,7 +784,16 @@ let _ = report_log(&report_path_arc, &positions_str);
                                 break;
                             }
                         }
-                        let sell_triggered = match trading_logic::sell_logic(&pair_clone, state_manager.clone(), &kraken_client, &config, &mut completion_rx, shutdown_tx.clone()).await {
+                        let sell_triggered = match trading_logic::sell_logic(
+                            &pair_clone,
+                            state_manager.clone(),
+                            &kraken_client,
+                            &config,
+                            &mut completion_rx,
+                            shutdown_tx.clone(),
+                            report_path_pair.clone(),
+                            cancels_pair.clone(),
+                        ).await {
                             Ok(triggered) => triggered,
                             Err(e) => {
                                 error!("Sell logic failed for {}: {}", pair_clone, e);
@@ -831,7 +855,7 @@ let _ = report_log(&report_path_arc, &positions_str);
 
     tokio::spawn(async move {
         let mut interval = tokio::time::interval(Duration::from_secs(3600));
-        interval.tick().await;
+        interval.tick().await;  // skip first immediate tick
 
         loop {
             interval.tick().await;

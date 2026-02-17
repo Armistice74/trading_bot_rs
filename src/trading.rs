@@ -712,6 +712,8 @@ pub mod trading_logic {
             let config_clone = config.clone();
             let pair_clone = pair.to_string();
             let shutdown_tx_clone = shutdown_tx.clone();
+            let buy_trade_ids_clone = vec![];
+            let total_buy_qty_clone = Decimal::ZERO;
             if state_manager.is_monitoring(order_id_clone.clone()).await.unwrap_or(true) {
                 info!("Skipping monitor spawn for already monitoring order {}", order_id_clone);
                 return Ok((Some(order_id.clone()), Decimal::ZERO, Decimal::ZERO, Decimal::ZERO, base_currency.to_string(), Decimal::ZERO, None, Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
@@ -1055,6 +1057,7 @@ pub mod trading_logic {
             }
         }
         Ok(())
+    }
     pub async fn global_trade_sweep(
         state_manager: Arc<StateManager>,
         client: &KrakenClient,
@@ -1092,8 +1095,8 @@ pub mod trading_logic {
 
                         let mut buy_trade_ids = vec![];
                         let mut total_buy_qty = Decimal::ZERO;
-                        let open_orders = state_manager.get_open_orders(pair.clone()).await?;
-                        if let Some(order_info) = open_orders.get(&order_id) {
+                        let open_orders_inner = state_manager.get_open_orders(pair.clone()).await?;
+                        if let Some(order_info) = open_orders_inner.get(&order_id) {
                             buy_trade_ids = order_info.buy_trade_ids.clone();
                             total_buy_qty = order_info.total_buy_qty;
                             info!("Sweep: Fetched {} buy_trade_ids and total_buy_qty {} for lingering order {}", buy_trade_ids.len(), total_buy_qty, order_id);
@@ -1107,6 +1110,9 @@ pub mod trading_logic {
                         let pair_clone = pair.clone();
                         let shutdown_tx_clone = shutdown_tx.clone();
                         let order_id_clone = order_id.clone();
+                        let report_path_clone = report_path.clone();  // Clone here
+                        let cancels_clone = cancels.clone();            // Clone here
+
                         if state_manager.is_monitoring(order_id_clone.clone()).await.unwrap_or(true) {
                             info!("Skipping monitor spawn for already monitoring order {}", order_id_clone);
                             continue;
@@ -1123,8 +1129,8 @@ pub mod trading_logic {
                                 buy_trade_ids,
                                 total_buy_qty,
                                 shutdown_rx,
-                                report_path.clone(),
-                                cancels.clone(),
+                                report_path_clone,
+                                cancels_clone,
                             ).await {
                                 Ok((filled, _, _, _, _)) => {
                                     let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -1140,11 +1146,11 @@ pub mod trading_logic {
                 }
             }
             if swept_orders > 0 {
-                info!(target: "trade", "Global sweep completed (WS=true): monitored {} lingering orders across {} pairs", swept_orders, pairs.len());
-            } else if ws_enabled {
-                info!(target: "trade", "Global sweep: no lingering orders >{}s (WS handling)", linger_threshold.as_secs());
+                    info!(target: "trade", "Global sweep completed (WS=true): monitored {} lingering orders across {} pairs", swept_orders, pairs.len());
+                } else if ws_enabled {
+                    info!(target: "trade", "Global sweep: no lingering orders >{}s (WS handling)", linger_threshold.as_secs());
+                }
             }
-        }
-        Ok(())
+            Ok(())
     }
 }
