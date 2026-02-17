@@ -732,6 +732,8 @@ pub mod trading_logic {
                     shutdown_rx,
                     report_path.clone(),
                     cancels.clone(),
+                    limit_price,
+                    reason.to_string(),
                 ).await {
                     Ok((filled, _, _, _, _)) => {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -880,6 +882,8 @@ pub mod trading_logic {
                     shutdown_rx,
                     report_path.clone(),
                     cancels.clone(),
+                    limit_price,
+                    reason.clone(),
                 ).await {
                     Ok((filled, _, _, _, _)) => {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
@@ -1131,6 +1135,8 @@ pub mod trading_logic {
                                 shutdown_rx,
                                 report_path_clone,
                                 cancels_clone,
+                                Decimal::ZERO,                    // limit_price (dummy value - sweep doesn't have real limit price)
+                                "lingering_order_sweep".to_string()  // reason
                             ).await {
                                 Ok((filled, _, _, _, _)) => {
                                     let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;

@@ -22,8 +22,8 @@ use anyhow::anyhow;
 use tokio::sync::broadcast::Receiver as BroadcastReceiver;
 use tokio::time::Instant;
 use crate::statemanager::OrderStatus;
-use crate::utils::{report_log, report_cancel};
 use std::sync::atomic::{AtomicU64, Ordering};
+use crate::utils::{report_log, report_cancel, report_order_attempt, report_order_partial, report_order_full};
 
 // Monitor Function
 
@@ -39,6 +39,8 @@ pub async fn monitor_order(
     mut shutdown_rx: BroadcastReceiver<()>,
     report_path: Arc<String>,
     cancels: Arc<AtomicU64>,
+    limit_price: Decimal,
+    reason: String,
 ) -> Result<(bool, Decimal, Decimal, Decimal, Vec<String>), anyhow::Error> {
     let (tx_check, rx_check) = oneshot::channel();
     if state_manager.trade_manager_tx.send(TradeManagerMessage::IsMonitoring {
@@ -68,7 +70,21 @@ pub async fn monitor_order(
     let monitor_loop_delay = Duration::from_secs_f64(config.delays.monitor_loop_delay.value.to_f64().unwrap_or(0.0));
     let monitor_partial_delay = Duration::from_secs_f64(config.delays.monitor_partial_delay.value.to_f64().unwrap_or(0.0));
     let pair_delay = Duration::from_secs_f64(config.delays.monitor_pair_delay.value.to_f64().unwrap_or(0.0));
-    let pair = pairs.first().cloned().unwrap_or_default();  // Assume single pair for signal
+    let pair = pairs.first().cloned().unwrap_or_default();
+        report_order_attempt(
+        &report_path,
+        trade_type,
+        pair_item,
+        &target_order_id,
+        limit_price,
+        info.vol,
+        &reason,
+        close_price,
+        best_ask,
+        best_bid,
+    );
+    let report_path_clone = report_path.clone();
+    let cancels_clone = cancels.clone();
     let near_timeout_threshold = 0.8;  // 80% of timeout for "near"
 
     info!("Starting order monitoring for {}: loop_delay=30s (WS fallback), pair_delay={:.1}s, partial_delay=10s", 
@@ -376,7 +392,12 @@ pub async fn monitor_order(
                                                     / executed_qty_total;
                                             }
                                             trade_ids.extend(new_trade_ids);
-                                            filled = !trades.is_empty();
+                                            let is_partial = status == "partial" || (status == "closed" && executed_qty_total < info.vol);  // simple partial check
+                                            if is_partial && executed_qty_total > Decimal::ZERO {
+                                                let _ = report_order_partial(&report_path, trade_type, pair_item, order_id, executed_qty_total, info.vol - executed_qty_total, avg_price_total, fees_usd_total);
+                                            } else if executed_qty_total > Decimal::ZERO {
+                                                let _ = report_order_full(&report_path, trade_type, pair_item, order_id, executed_qty_total, avg_price_total, fees_usd_total);
+                                            }
 
                                             if trade_type == "sell" && qty > Decimal::ZERO {
                                                 info!("Sell fill for order {}: actual avg_price={:.6}, fees={:.2}; compare to decision close_price from evaluate_trade logs",
@@ -512,7 +533,12 @@ pub async fn monitor_order(
                                 / executed_qty_total;
                         }
                         trade_ids.extend(new_trade_ids);
-                        filled = !trades.is_empty();
+                        let is_partial = status == "partial" || (status == "closed" && executed_qty_total < info.vol);  // simple partial check
+                            if is_partial && executed_qty_total > Decimal::ZERO {
+                                let _ = report_order_partial(&report_path, trade_type, pair_item, order_id, executed_qty_total, info.vol - executed_qty_total, avg_price_total, fees_usd_total);
+                            } else if executed_qty_total > Decimal::ZERO {
+                                let _ = report_order_full(&report_path, trade_type, pair_item, order_id, executed_qty_total, avg_price_total, fees_usd_total);
+                            }
 
                         if trade_type == "sell" && qty > Decimal::ZERO {
                             info!("Sell fill for order {}: actual avg_price={:.6}, fees={:.2}; compare to decision close_price from evaluate_trade logs",
@@ -567,14 +593,18 @@ pub async fn monitor_order(
                             Ok(_) => {
                                 info!("Order {} for {} canceled successfully", order_id, pair_item);
                                 let reason = if should_check { "adverse_price_move" } else { "timeout" };
-                                let _ = report_cancel(&report_path, &pair_item, order_id, reason);
+                                let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
                                 cancels.fetch_add(1, Ordering::Relaxed);
+                                let _ = state_manager.send_completion(
+                                    pair.clone(),
+                                    OrderComplete::Cancelled {
+                                        filled_qty: executed_qty_total,
+                                        reason: reason.to_string(),
+                                    },
+                                ).await;
                             }
                             Err(e) => {
-                                warn!(
-                                    "Failed to cancel order {} for {}: {}",
-                                    order_id, pair_item, e
-                                );
+                                warn!("Failed to cancel order {} for {}: {}", order_id, pair_item, e);
                             }
                         }
 
@@ -608,7 +638,12 @@ pub async fn monitor_order(
                                     / executed_qty_total;
                             }
                             trade_ids.extend(new_trade_ids);
-                            filled = !trades.is_empty();
+                            let is_partial = status == "partial" || (status == "closed" && executed_qty_total < info.vol);  // simple partial check
+                            if is_partial && executed_qty_total > Decimal::ZERO {
+                                let _ = report_order_partial(&report_path, trade_type, pair_item, order_id, executed_qty_total, info.vol - executed_qty_total, avg_price_total, fees_usd_total);
+                            } else if executed_qty_total > Decimal::ZERO {
+                                let _ = report_order_full(&report_path, trade_type, pair_item, order_id, executed_qty_total, avg_price_total, fees_usd_total);
+                            }
 
                             if trade_type == "sell" && qty > Decimal::ZERO {
                                 info!("Sell fill for order {}: actual avg_price={:.6}, fees={:.2}; compare to decision close_price from evaluate_trade logs",
@@ -708,8 +743,15 @@ async fn escalate_to_cancel(
     match client.cancel_order(symbol, order_id).await {
         Ok(_) => {
             info!("Escalated cancel for order {} on {}", order_id, pair_item);
-            let _ = report_cancel(&report_path, pair_item, order_id, "stagnant_accumulation");
+            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
             cancels.fetch_add(1, Ordering::Relaxed);
+            let _ = state_manager.send_completion(
+                pair_item.to_string(),
+                OrderComplete::Cancelled {
+                    filled_qty: Decimal::ZERO,
+                    reason: "stagnant_accumulation".to_string(),
+                },
+            ).await;
         }
         Err(e) => {
             warn!("Failed escalated cancel for {}: {}", order_id, e);

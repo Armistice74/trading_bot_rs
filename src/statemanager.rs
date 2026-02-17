@@ -467,9 +467,13 @@ pub enum DatabaseMessage {
     },
 }
 
-#[derive(Debug, Clone)]
+#[derive(Clone, Debug)]
 pub enum OrderComplete {
     Success(bool),
+    Cancelled {
+        filled_qty: Decimal,
+        reason: String,
+    },
     Error(Arc<anyhow::Error>),
     Shutdown,
     DelayElapsed,

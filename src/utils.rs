@@ -70,3 +70,39 @@ pub fn report_skip(report_path: &str, pair: &str, side: &str, reason: &str) {
     let msg = format!("{} SKIPPED: {} reason={}", side.to_uppercase(), pair, reason);
     let _ = report_log(report_path, &msg);
 }
+
+pub fn report_order_attempt(report_path: &str, side: &str, pair: &str, order_id: &str, limit_price: Decimal, ordered_qty: Decimal, reason: &str, close_price: Decimal, best_ask: Decimal, best_bid: Decimal) {
+    let slippage = if side == "buy" && best_ask > Decimal::ZERO {
+        ((limit_price - best_ask) / best_ask * Decimal::from(100)).abs()
+    } else if side == "sell" && best_bid > Decimal::ZERO {
+        ((best_bid - limit_price) / best_bid * Decimal::from(100)).abs()
+    } else {
+        Decimal::ZERO
+    };
+    let msg = format!(
+        "{} ATTEMPTED: {}\n    Order ID: {}\n    Limit Price: {:.5}\n    Ordered Qty: {:.8}\n    Reason: {}\n    Market: close={:.5} best_ask={:.5} best_bid={:.5} slippage={:.2}%",
+        side.to_uppercase(), pair, order_id, limit_price, ordered_qty, reason, close_price, best_ask, best_bid, slippage
+    );
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_order_partial(report_path: &str, side: &str, pair: &str, order_id: &str, filled_qty: Decimal, remaining_qty: Decimal, avg_price: Decimal, fees: Decimal) {
+    let pct = if filled_qty > Decimal::ZERO && (filled_qty + remaining_qty) > Decimal::ZERO {
+        (filled_qty / (filled_qty + remaining_qty) * Decimal::from(100)).round_dp(1)
+    } else {
+        Decimal::ZERO
+    };
+    let msg = format!(
+        "{} PARTIAL FILL: {}\n    Order ID: {}\n    Filled Qty: {:.8} ({:.1}%) / Remaining: {:.8}\n    Avg Fill Price: {:.5}\n    Fees USD: {:.4}",
+        side.to_uppercase(), pair, order_id, filled_qty, pct, remaining_qty, avg_price, fees
+    );
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_order_full(report_path: &str, side: &str, pair: &str, order_id: &str, filled_qty: Decimal, avg_price: Decimal, fees: Decimal) {
+    let msg = format!(
+        "{} FULL FILL: {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Avg Fill Price: {:.5}\n    Fees USD: {:.4}",
+        side.to_uppercase(), pair, order_id, filled_qty, avg_price, fees
+    );
+    let _ = report_log(report_path, &msg);
+}

@@ -553,7 +553,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let state_manager = initialize_state_manager(&config, kraken_client.clone(), usd_balance).await?;
 
     let mut positions_str = "\nINITIAL PORTFOLIO POSITIONS\n".to_string();
-for pair in &config.portfolio.api_pairs.value {
+    for pair in &config.portfolio.api_pairs.value {
     let position = match state_manager.get_position(pair.clone()).await {
         Ok(p) => p,
         Err(_) => continue,
@@ -571,13 +571,12 @@ for pair in &config.portfolio.api_pairs.value {
         initial_holdings_value += value;
         positions_str.push_str(&format!("  {}: {} (value {:.4} USD)\n", pair, position.total_quantity, value));
     }
-}
 
-initial_total_value = initial_usd + initial_holdings_value;
-positions_str.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
-positions_str.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
+    initial_total_value = initial_usd + initial_holdings_value;
+    positions_str.push_str(&format!("Holdings value: {:.4}\n", initial_holdings_value));
+    positions_str.push_str(&format!("Total portfolio value: {:.4}\n", initial_total_value));
 
-let _ = report_log(&report_path_arc, &positions_str);
+    let _ = report_log(&report_path_arc, &positions_str);
 
     let (shutdown_tx, _) = broadcast::channel::<()>(1);
 
@@ -765,13 +764,15 @@ let _ = report_log(&report_path_arc, &positions_str);
                         };
                         if buy_triggered {
                             buy_attempts_pair.fetch_add(1, Ordering::Relaxed);
-                            let _ = report_log(&report_path_pair, &format!("BUY ATTEMPTED: {}", pair_clone));
 
                             if let Some(sig) = completion_rx.recv().await {
                                 match sig {
                                     OrderComplete::Success(_) => {
                                         buy_fills_pair.fetch_add(1, Ordering::Relaxed);
-                                        let _ = report_log(&report_path_pair, &format!("BUY COMPLETED: {}", pair_clone));
+                                    }
+                                    OrderComplete::Cancelled { filled_qty, reason } => {
+                                        cancels_pair.fetch_add(1, Ordering::Relaxed);
+                                        let _ = report_log(&report_path_pair, &format!("BUY CANCELLED: {} reason={} filled={:.8}", pair_clone, reason, filled_qty));
                                     }
                                     OrderComplete::Error(e) => {
                                         let _ = report_log(&report_path_pair, &format!("BUY FAILED: {} reason={}", pair_clone, e));
@@ -809,6 +810,10 @@ let _ = report_log(&report_path_arc, &positions_str);
                                     OrderComplete::Success(_) => {
                                         sell_fills_pair.fetch_add(1, Ordering::Relaxed);
                                         let _ = report_log(&report_path_pair, &format!("SELL COMPLETED: {}", pair_clone));
+                                    }
+                                    OrderComplete::Cancelled { filled_qty, reason } => {
+                                        cancels_pair.fetch_add(1, Ordering::Relaxed);
+                                        let _ = report_log(&report_path_pair, &format!("SELL CANCELLED: {} reason={} filled={:.8}", pair_clone, reason, filled_qty));
                                     }
                                     OrderComplete::Error(e) => {
                                         let _ = report_log(&report_path_pair, &format!("SELL FAILED: {} reason={}", pair_clone, e));
