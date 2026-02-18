@@ -1,0 +1,61 @@
+[2026-02-17 17:04:10] BOT RUN STARTED at 2026-02-17 17:04:10
+    
+[2026-02-17 17:04:11] INITIAL SNAPSHOT
+    Initial free USD: 174.3141
+    
+    Balances:
+      ATOM: 0.01287622
+      DOT: 0.00000000
+      INJ: 0.00000000
+      PEPE: 38461.68000000
+      SOL: 0.00000000
+      USDC: 0.00005300
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 174.31410000
+    
+    Open Orders:
+      (none)
+    
+[2026-02-17 17:04:11] 
+    INITIAL PORTFOLIO POSITIONS
+    Holdings value: 0.0000
+    Total portfolio value: 174.3141
+    
+[2026-02-17 18:04:42] HOURLY SUMMARY at 2026-02-17 18:04:41
+    Free USD: 174.3141
+    Holdings value: 0.0000
+    Total portfolio value: 174.3141
+    Portfolio Positions:
+    Buys: 0 attempted, 0 filled
+    Sells: 0 attempted, 0 filled
+    Cancels: 0
+    
+[2026-02-17 18:07:18] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OPN2HW-ASBTO-CPJ5YO
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 18:11:25] BUY FULL FILL: ATOMUSD
+        Order ID: OJC5TX-Y3JT6-EFVT7Z
+        Filled Qty: 70.35000000
+        Avg Fill Price: 2.22900
+        Fees USD: 0.3136
+[2026-02-17 18:16:16] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OX4LLS-KCMCY-VRKPZM
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 18:16:16] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-17 18:58:25] SELL ATTEMPTED: ATOMUSD
+[2026-02-17 18:58:25] SELL COMPLETED: ATOMUSD
+[2026-02-17 19:00:21] SELL CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OD42YQ-V6PYZ-O4BN3J
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 19:00:26] SELL ATTEMPTED: ATOMUSD
+[2026-02-17 19:00:31] SELL COMPLETED: ATOMUSD
+[2026-02-17 19:01:31] SELL ATTEMPTED: ATOMUSD
+[2026-02-17 19:01:31] SELL COMPLETED: ATOMUSD
+[2026-02-17 19:02:31] SELL ATTEMPTED: ATOMUSD
+[2026-02-17 19:02:31] SELL COMPLETED: ATOMUSD
