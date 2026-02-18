@@ -106,3 +106,29 @@ pub fn report_order_full(report_path: &str, side: &str, pair: &str, order_id: &s
     );
     let _ = report_log(report_path, &msg);
 }
+
+pub fn format_volume_with_commas(volume: Decimal) -> String {
+    let mut s = volume.to_string();
+    if let Some(dot_pos) = s.find('.') {
+        let integer_part = s[..dot_pos].to_string();
+        let fractional_part = &s[dot_pos..];
+        let mut formatted_integer = String::new();
+        for (i, c) in integer_part.chars().rev().enumerate() {
+            if i > 0 && i % 3 == 0 {
+                formatted_integer.push(',');
+            }
+            formatted_integer.push(c);
+        }
+        formatted_integer = formatted_integer.chars().rev().collect();
+        format!("{}{}", formatted_integer, fractional_part)
+    } else {
+        let mut formatted = String::new();
+        for (i, c) in s.chars().rev().enumerate() {
+            if i > 0 && i % 3 == 0 {
+                formatted.push(',');
+            }
+            formatted.push(c);
+        }
+        formatted.chars().rev().collect()
+    }
+}

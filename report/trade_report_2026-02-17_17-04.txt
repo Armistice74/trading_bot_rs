@@ -74,3 +74,101 @@
     Sells: 4 attempted, 4 filled
     Cancels: 4
     
+[2026-02-17 19:55:20] BUY CANCELLED (PARTIAL): SOLUSD
+        Order ID: OM66MT-F7ZZF-DX3I46
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 20:00:27] BUY CANCELLED (PARTIAL): SOLUSD
+        Order ID: OBXJGA-7OEDV-O66SUO
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 20:00:27] BUY CANCELLED: SOLUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-17 20:04:13] BUY FULL FILL: SOLUSD
+        Order ID: ONCXN4-K2M3I-7XMNWS
+        Filled Qty: 1.80660000
+        Avg Fill Price: 84.79000
+        Fees USD: 0.3063
+[2026-02-17 20:04:42] HOURLY SUMMARY at 2026-02-17 20:04:41
+    Free USD: 16.7549
+    Holdings value: 157.6473
+    Total portfolio value: 174.4022
+    Portfolio Positions:
+      SOLUSD: 1.8066 (value 152.8564 USD)
+      ATOMUSD: 2.16000000 (value 4.7908 USD)
+    Buys: 8 attempted, 6 filled
+    Sells: 4 attempted, 4 filled
+    Cancels: 7
+    
+[2026-02-17 20:08:44] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OF7REO-J2ORW-LACHNQ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 20:08:44] BUY FULL FILL: ATOMUSD
+        Order ID: OF7REO-J2ORW-LACHNQ
+        Filled Qty: 4.08669568
+        Avg Fill Price: 2.21700
+        Fees USD: 0.0181
+[2026-02-17 21:04:42] HOURLY SUMMARY at 2026-02-17 21:04:41
+    Free USD: 7.6766
+    Holdings value: 166.5530
+    Total portfolio value: 174.2296
+    Portfolio Positions:
+      SOLUSD: 1.8066 (value 152.5854 USD)
+      ATOMUSD: 6.24669568 (value 13.9676 USD)
+    Buys: 9 attempted, 7 filled
+    Sells: 4 attempted, 4 filled
+    Cancels: 8
+    
+[2026-02-17 22:04:42] HOURLY SUMMARY at 2026-02-17 22:04:41
+    Free USD: 7.6766
+    Holdings value: 167.2739
+    Total portfolio value: 174.9505
+    Portfolio Positions:
+      SOLUSD: 1.8066 (value 153.0370 USD)
+      ATOMUSD: 6.24669568 (value 14.2368 USD)
+    Buys: 9 attempted, 7 filled
+    Sells: 4 attempted, 4 filled
+    Cancels: 8
+    
+[2026-02-17 22:45:48] SELL ATTEMPTED: SOLUSD
+[2026-02-17 22:45:48] SELL COMPLETED: SOLUSD
+[2026-02-17 22:47:43] SELL CANCELLED (PARTIAL): SOLUSD
+        Order ID: ORXXQ4-JVZLL-5XMLHN
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 22:48:48] SELL ATTEMPTED: SOLUSD
+[2026-02-17 22:48:48] SELL COMPLETED: SOLUSD
+[2026-02-17 22:50:43] SELL CANCELLED (PARTIAL): SOLUSD
+        Order ID: OHL5X7-3IIJV-LMDDAI
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-17 23:04:42] HOURLY SUMMARY at 2026-02-17 23:04:41
+    Free USD: 161.3632
+    Holdings value: 14.2168
+    Total portfolio value: 175.5800
+    Portfolio Positions:
+      ATOMUSD: 6.24669568 (value 14.2168 USD)
+    Buys: 9 attempted, 7 filled
+    Sells: 6 attempted, 6 filled
+    Cancels: 10
+    
+[2026-02-18 00:04:42] HOURLY SUMMARY at 2026-02-18 00:04:41
+    Free USD: 161.3632
+    Holdings value: 14.2468
+    Total portfolio value: 175.6100
+    Portfolio Positions:
+      ATOMUSD: 6.24669568 (value 14.2468 USD)
+    Buys: 9 attempted, 7 filled
+    Sells: 6 attempted, 6 filled
+    Cancels: 10
+    
+[2026-02-18 01:04:42] HOURLY SUMMARY at 2026-02-18 01:04:41
+    Free USD: 161.3632
+    Holdings value: 14.3224
+    Total portfolio value: 175.6856
+    Portfolio Positions:
+      ATOMUSD: 6.24669568 (value 14.3224 USD)
+    Buys: 9 attempted, 7 filled
+    Sells: 6 attempted, 6 filled
+    Cancels: 10
+    

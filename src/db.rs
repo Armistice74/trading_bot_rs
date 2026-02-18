@@ -985,3 +985,33 @@ pub async fn export_positions_to_csv(pool: &deadpool_postgres::Pool) -> Result<(
     wtr.flush()?;
     Ok(())
 }
+
+pub async fn get_cumulative_volume(
+    pool: &Pool,
+    start_time_str: &str,
+) -> Result<Decimal> {
+    let client = pool.get().await?;
+    let row = client
+        .query_one(
+            "SELECT COALESCE(SUM(execution_price * amount), 0::NUMERIC) FROM trades WHERE timestamp >= $1",
+            &[&start_time_str],
+        )
+        .await?;
+    let volume: Decimal = row.get(0);
+    Ok(volume)
+}
+
+pub async fn get_avg_fee_last_hour(
+    pool: &Pool,
+    hour_start_str: &str,
+    hour_end_str: &str,
+) -> Result<Option<Decimal>> {
+    let client = pool.get().await?;
+    let row = client
+        .query_opt(
+            "SELECT AVG(fee_percentage) FROM trades WHERE timestamp >= $1 AND timestamp < $2",
+            &[&hour_start_str, &hour_end_str],
+        )
+        .await?;
+    Ok(row.map(|r| r.get(0)))
+}

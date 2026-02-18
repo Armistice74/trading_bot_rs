@@ -4,47 +4,35 @@
 // IMPORTS AND MODS (unchanged except added atomic import already present)
 
 use anyhow::{anyhow, Result};
-use base64::engine::general_purpose::STANDARD;
-use base64::Engine;
-use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc};
-use std::fs;
-use std::sync::Arc;
-use std::time::Duration;
-use tokio::signal;
-use tokio::sync::{mpsc, broadcast};
-use tracing::{error, info, Level};
-use tracing_subscriber::filter::filter_fn;
-use tracing_subscriber::fmt::time::ChronoLocal;
-use tracing_subscriber::prelude::*;
-use tracing::warn;
-use tokio::time::timeout;
+use base64::{engine::general_purpose::STANDARD, Engine};
+use chrono::{DateTime, Local, NaiveDateTime, TimeZone, Utc, prelude::*};
 use rust_decimal::{Decimal, prelude::*};
-use crate::statemanager::OrderComplete;
-use crate::db::{create_pool, export_trades_to_csv, export_positions_to_csv};
-use crate::utils::report_log;
-use std::sync::atomic::{AtomicU64, Ordering};
+use std::fs;
+use std::sync::{atomic::{AtomicU64, Ordering}, Arc};
+use std::time::Duration;
+use tokio::{signal, time::timeout};
+use tokio::sync::{broadcast, mpsc};
+use tracing::{error, info, warn, Level};
+use tracing_subscriber::{filter::filter_fn, fmt::time::ChronoLocal, prelude::*};
+
+use crate::db::{create_pool, export_positions_to_csv, export_trades_to_csv, get_avg_fee_last_hour, get_cumulative_volume, init_db};
+use crate::statemanager::{MarketDataMessage, OhlcUpdate, OrderComplete, Position, PriceData, PriceUpdate, StateManager, Trade};
+use crate::utils::{format_volume_with_commas, report_log};
+use crate::{api::KrakenClient, config::{load_config, Config}, trading::trading_logic};
 
 mod actors;
 mod api;
 mod config;
 mod db;
 mod fetch;
+mod indicators;
+mod monitor;
+mod processing;
 mod statemanager;
 mod stop;
 mod trading;
-mod websocket;
 mod utils;
-mod monitor;
-mod indicators;
-mod processing;
-
-use api::KrakenClient;
-use config::{load_config, Config};
-use db::init_db;
-use statemanager::{
-    MarketDataMessage, OhlcUpdate, Position, PriceData, PriceUpdate, StateManager, Trade,
-};
-use trading::trading_logic;
+mod websocket;
 
 // UTILITY FUNCTIONS
 
@@ -858,15 +846,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let sell_attempts_hourly = sell_attempts.clone();
     let sell_fills_hourly = sell_fills.clone();
     let cancels_hourly = cancels.clone();
+    let start_time_str = start_time.format("%Y-%m-%d %H:%M:%S").to_string();
+    let pool_hourly = pool.clone();
 
     tokio::spawn(async move {
         let mut interval = tokio::time::interval(Duration::from_secs(3600));
         interval.tick().await;  // skip first immediate tick
 
+        let mut prev_avg_fee: Option<Decimal> = None;
+
         loop {
             interval.tick().await;
 
-            let now = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+            let now_dt = Local::now();
+            let now = now_dt.format("%Y-%m-%d %H:%M:%S").to_string();
+            let last_hour_start_dt = now_dt - chrono::Duration::hours(1);
+            let last_hour_start = last_hour_start_dt.format("%Y-%m-%d %H:%M:%S").to_string();
 
             let free_usd = match kraken_client_hourly.fetch_balance().await {
                 Ok(bal) => bal.get("ZUSD")
@@ -904,6 +899,35 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
             let total_value = free_usd + holdings_value;
 
+            // New: Cumulative volume
+            let cum_volume = match get_cumulative_volume(&pool_hourly, &start_time_str).await {
+                Ok(v) => v,
+                Err(e) => {
+                    let _ = report_log(&report_path_hourly, &format!("[{}] Volume query error: {}", now, e));
+                    Decimal::ZERO
+                }
+            };
+            let volume_formatted = format_volume_with_commas(cum_volume);
+
+            // New: Avg fee last hour with fallback
+            let avg_fee_opt = match get_avg_fee_last_hour(&pool_hourly, &last_hour_start, &now).await {
+                Ok(opt) => opt,
+                Err(e) => {
+                    let _ = report_log(&report_path_hourly, &format!("[{}] Avg fee query error: {}", now, e));
+                    None
+                }
+            };
+            let avg_fee_str = match avg_fee_opt {
+                Some(avg) => {
+                    prev_avg_fee = Some(avg);
+                    format!("{:.2}", avg)
+                }
+                None => match prev_avg_fee {
+                    Some(prev) => format!("{:.2} (Copied from Prev)", prev),
+                    None => "N/A".to_string(),
+                }
+            };
+
             let summary = format!(
                 "HOURLY SUMMARY at {}\n\
                  Free USD: {:.4}\n\
@@ -912,11 +936,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                  {}\
                  Buys: {} attempted, {} filled\n\
                  Sells: {} attempted, {} filled\n\
-                 Cancels: {}\n",
+                 Cancels: {}\n\
+                 Bot Trade Volume (Run Total USD): {}\n\
+                 Avg Fee % (Last Hour): {}",
                 now, free_usd, holdings_value, total_value, positions_str,
                 buy_attempts_hourly.load(Ordering::Relaxed), buy_fills_hourly.load(Ordering::Relaxed),
                 sell_attempts_hourly.load(Ordering::Relaxed), sell_fills_hourly.load(Ordering::Relaxed),
-                cancels_hourly.load(Ordering::Relaxed)
+                cancels_hourly.load(Ordering::Relaxed),
+                volume_formatted,
+                avg_fee_str
             );
 
             let _ = report_log(&report_path_hourly, &summary);

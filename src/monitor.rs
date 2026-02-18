@@ -299,7 +299,21 @@ pub async fn monitor_order(
                                     executed_qty_total,
                                     "stagnant_accumulation",
                                 ).await;
-                                break;
+                                state_manager
+                                    .remove_open_order(pair_item.to_string(), order_id.clone())
+                                    .await?;
+                                let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Cancelled {
+                                    filled_qty: Decimal::ZERO,
+                                    reason: "stagnant_accumulation".to_string(),
+                                }).await;
+                                clear_monitoring_flag(&state_manager, &target_order_id).await;
+                                return Ok((
+                                    filled,
+                                    executed_qty_total,
+                                    fees_usd_total,
+                                    avg_price_total,
+                                    trade_ids,
+                                ));
                             }
 
                             tokio::select! {
@@ -355,82 +369,21 @@ pub async fn monitor_order(
                                             executed_qty_total,
                                             "stagnant_accumulation",
                                         ).await;
-                                        if !trades.is_empty() {
-                                            info!(
-                                                "Order {} for {}: processing accumulated trades after escalate, status={}, trades_len={}",
-                                                order_id,
-                                                pair_item,
-                                                status,
-                                                trades.len()
-                                            );
-                                            let (qty, fees, avg_price, new_trade_ids, _trade_data_list) =
-                                                process_trade_data(
-                                                    client,
-                                                    pair_item,
-                                                    trade_type,
-                                                    order_id,
-                                                    info.start_time,
-                                                    state_manager.clone(),
-                                                    info.reason.as_str(),
-                                                    config,
-                                                    average_buy_price,
-                                                    None,
-                                                    Some(trades.clone()),
-                                                    Some(total_buy_qty),
-                                                )
-                                                .await?;
-                                            executed_qty_total += qty;
-                                            fees_usd_total += fees;
-                                            if qty > Decimal::ZERO {
-                                                avg_price_total = (avg_price_total * (executed_qty_total - qty) + avg_price * qty)
-                                                    / executed_qty_total;
-                                            }
-                                            trade_ids.extend(new_trade_ids);
-                                            let is_partial = status == "partial" || (status == "closed" && executed_qty_total < info.vol);  // simple partial check
-                                            if is_partial && executed_qty_total > Decimal::ZERO {
-                                                let _ = report_order_partial(&report_path, trade_type, pair_item, order_id, executed_qty_total, info.vol - executed_qty_total, avg_price_total, fees_usd_total);
-                                            } else if executed_qty_total > Decimal::ZERO {
-                                                let _ = report_order_full(&report_path, trade_type, pair_item, order_id, executed_qty_total, avg_price_total, fees_usd_total);
-                                            }
-
-                                            if trade_type == "sell" && qty > Decimal::ZERO {
-                                                info!("Sell fill for order {}: actual avg_price={:.6}, fees={:.2}; compare to decision close_price from evaluate_trade logs",
-                                                    order_id, avg_price.to_f64().unwrap_or(0.0), fees.to_f64().unwrap_or(0.0));
-                                                let base_currency = pair_item.split("USD").next().unwrap_or("");
-                                                let mut trade_ids_to_sell = buy_trade_ids.clone();
-                                                if buy_trade_ids.is_empty() {
-                                                    warn!("Sell monitoring: buy_trade_ids empty, skipping fallback to avoid incorrect reductions");
-                                                    // UPDATED: No fallback to get_open_trades; just skip to prevent mismatches
-                                                } else {
-                                                    if let Err(e) = update_remaining_quantities(
-                                                        pair_item,
-                                                        qty,
-                                                        trade_ids_to_sell,
-                                                        state_manager.clone(),
-                                                        config,
-                                                        base_currency,
-                                                    )
-                                                    .await
-                                                    {
-                                                        error!("Failed to update remaining quantities after sell order {} for {}: {}", order_id, pair_item, e);
-                                                    }
-                                                }
-                                            }
-
-                                            state_manager
-                                                .remove_open_order(pair_item.to_string(), order_id.clone())
-                                                .await?;
-                                            let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Success(filled)).await;
-                                            clear_monitoring_flag(&state_manager, &target_order_id).await;
-                                            return Ok((
-                                                filled,
-                                                executed_qty_total,
-                                                fees_usd_total,
-                                                avg_price_total,
-                                                trade_ids,
-                                            ));
-                                        }
-                                        break;
+                                        state_manager
+                                            .remove_open_order(pair_item.to_string(), order_id.clone())
+                                            .await?;
+                                        let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Cancelled {
+                                            filled_qty: Decimal::ZERO,
+                                            reason: "stagnant_accumulation".to_string(),
+                                        }).await;
+                                        clear_monitoring_flag(&state_manager, &target_order_id).await;
+                                        return Ok((
+                                            filled,
+                                            executed_qty_total,
+                                            fees_usd_total,
+                                            avg_price_total,
+                                            trade_ids,
+                                        ));
                                     }
                                 }
                             } else {
