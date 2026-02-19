@@ -2,11 +2,12 @@
 setlocal enabledelayedexpansion
 
 :: Set paths relative to bat location (in \trading_bot_rs\)
-set "PG_DIR=%~dp0..\postgre"
+set "PG_DIR=%~dp0postgre"
 set "PG_BIN=%PG_DIR%\bin"
 set "PG_DATA=%PG_DIR%\data"
 set "PG_LOG=%PG_DIR%\logfile.log"
 set "VC_REDIST=%~dp0vc_redist.x64.exe"
+set "PW_FILE=%PG_DIR%\pw.txt"
 
 :: Hardcoded details from config.toml
 set "SUPERUSER=postgres"
@@ -34,19 +35,27 @@ if %errorlevel% neq 0 (
 :: Check if data dir initialized
 if not exist "%PG_DATA%\PG_VERSION" (
     echo Initializing PostgreSQL data cluster...
-    "%PG_BIN%\initdb.exe" -D "%PG_DATA%" -U %SUPERUSER% --pwfile=<(echo %SUPER_PASS%)
+    echo %SUPER_PASS% > "%PW_FILE%"
+    "%PG_BIN%\initdb.exe" -D "%PG_DATA%" -U %SUPERUSER% --pwfile="%PW_FILE%"
+    del "%PW_FILE%"
     if %errorlevel% neq 0 (
-        echo initdb failed - check paths and permissions.
+        echo initdb failed - check paths/permissions and ensure initdb.exe exists in %PG_BIN%.
         pause
         exit /b 1
     )
     echo Data cluster initialized.
 )
 
-:: Edit postgresql.conf for port and listen
+:: Edit postgresql.conf for port and listen (append if not present)
 set "CONF_FILE=%PG_DATA%\postgresql.conf"
-echo port = %PG_PORT% >> "%CONF_FILE%"
-echo listen_addresses = '*' >> "%CONF_FILE%"
+findstr /C:"port = %PG_PORT%" "%CONF_FILE%" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo port = %PG_PORT% >> "%CONF_FILE%"
+)
+findstr /C:"listen_addresses = '*'" "%CONF_FILE%" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo listen_addresses = '*' >> "%CONF_FILE%"
+)
 echo Config files updated.
 
 :: Edit pg_hba.conf for md5 auth (add if needed)
