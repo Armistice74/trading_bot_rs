@@ -42,4 +42,4 @@ if not exist trading_bot_rs.exe (
     pause
     exit
 )
-trading_bot_rs.exe
+start /B trading_bot_rs.exe
