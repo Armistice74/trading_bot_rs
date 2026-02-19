@@ -1,8 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Set paths relative to bat location (in \trading_bot_rs\)
-set "PG_DIR=%~dp0postgre"
+:: Set paths relative to drive root for portability (assuming postgre at SD root)
+set "PG_DIR=%~d0\postgre"
 set "PG_BIN=%PG_DIR%\bin"
 set "PG_DATA=%PG_DIR%\data"
 set "PG_LOG=%PG_DIR%\logfile.log"
@@ -19,6 +19,7 @@ set "PG_PORT=6969"
 
 :: Debug: Print paths and list bin contents
 echo Debug: Current dir: %~dp0
+echo Debug: Drive root: %~d0\
 echo Debug: PG_DIR=%PG_DIR%
 echo Debug: PG_BIN=%PG_BIN%
 echo Debug: PG_DATA=%PG_DATA%
