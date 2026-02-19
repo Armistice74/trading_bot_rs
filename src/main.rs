@@ -847,6 +847,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let sell_fills_hourly = sell_fills.clone();
     let cancels_hourly = cancels.clone();
     let start_time_str = start_time.format("%Y-%m-%d %H:%M:%S").to_string();
+    let cum_volume = get_cumulative_volume(&pool, &start_time_str).await.unwrap_or(Decimal::ZERO);
+    let volume_formatted = format_volume_with_commas(cum_volume);
     let pool_hourly = pool.clone();
 
     tokio::spawn(async move {
@@ -1028,6 +1030,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut final_text = "FINAL SNAPSHOT\n".to_string();
     final_text.push_str(&format!("BOT RUN SHUTDOWN at {}\n", Local::now().format("%Y-%m-%d %H:%M:%S")));
     final_text.push_str(&format!("Runtime: {}h {}m {}s\n", hours, minutes, seconds));
+    final_text.push_str(&format!("Bot Trade Volume (Run Total USD): {}\n", volume_formatted));
     final_text.push_str(&format!("Final free USD: {:.4}\n", final_usd));
     final_text.push_str(&format!("Free USD change: {:.4}\n", usd_change));
     final_text.push_str(&format!("Holdings value: {:.4}\n", holdings_value));
