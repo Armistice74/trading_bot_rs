@@ -45,9 +45,9 @@ sell_order_timeout = { value = 30, description = "Timeout in seconds for non-exp
 
 [stop_loss_behavior]
 
-fixed_stop_initial = { value = 5.0, description = "Initial fixed stop-loss percentage" }
+fixed_stop_initial = { value = 1.5, description = "Initial fixed stop-loss percentage" }
 
-fixed_stop_min = { value = 5.0, description = "Minimum fixed stop-loss percentage after tightening" }
+fixed_stop_min = { value = 1.5, description = "Minimum fixed stop-loss percentage after tightening" }
 
 fixed_stop_tightening_period = { value = 30, description = "Time in minutes to tighten fixed stop-loss from fixed_stop_initial to fixed_stop_min" }
 
