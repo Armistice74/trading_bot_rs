@@ -17,7 +17,7 @@ set "BOT_PASS=12345"
 set "BOT_DB=trading_bot_db"
 set "PG_PORT=6969"
 
-:: Debug: Print paths
+:: Debug: Print paths and list bin contents
 echo Debug: Current dir: %~dp0
 echo Debug: PG_DIR=%PG_DIR%
 echo Debug: PG_BIN=%PG_BIN%
@@ -25,10 +25,12 @@ echo Debug: PG_DATA=%PG_DATA%
 echo Debug: PG_LOG=%PG_LOG%
 echo Debug: VC_REDIST=%VC_REDIST%
 echo Debug: PW_FILE=%PW_FILE%
+echo Debug: Listing contents of PG_BIN:
+dir "%PG_BIN%" /b
 
 :: Check if key exes exist
 if not exist "%PG_BIN%\initdb.exe" (
-    echo Error: initdb.exe not found in %PG_BIN%.
+    echo Error: initdb.exe not found in %PG_BIN%. Verify ZIP extraction placed bin\initdb.exe here.
     pause
     exit /b 1
 )
@@ -43,6 +45,16 @@ if not exist "%PG_BIN%\psql.exe" (
     exit /b 1
 )
 echo Debug: PostgreSQL binaries found.
+
+:: Create data dir if not exists (though initdb will create it)
+if not exist "%PG_DATA%" (
+    mkdir "%PG_DATA%"
+    if %errorlevel% neq 0 (
+        echo Failed to create data dir - check permissions.
+        pause
+        exit /b 1
+    )
+)
 
 :: Check VC++ Redist
 reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Installed >nul 2>&1
