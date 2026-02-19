@@ -17,6 +17,33 @@ set "BOT_PASS=12345"
 set "BOT_DB=trading_bot_db"
 set "PG_PORT=6969"
 
+:: Debug: Print paths
+echo Debug: Current dir: %~dp0
+echo Debug: PG_DIR=%PG_DIR%
+echo Debug: PG_BIN=%PG_BIN%
+echo Debug: PG_DATA=%PG_DATA%
+echo Debug: PG_LOG=%PG_LOG%
+echo Debug: VC_REDIST=%VC_REDIST%
+echo Debug: PW_FILE=%PW_FILE%
+
+:: Check if key exes exist
+if not exist "%PG_BIN%\initdb.exe" (
+    echo Error: initdb.exe not found in %PG_BIN%.
+    pause
+    exit /b 1
+)
+if not exist "%PG_BIN%\pg_ctl.exe" (
+    echo Error: pg_ctl.exe not found in %PG_BIN%.
+    pause
+    exit /b 1
+)
+if not exist "%PG_BIN%\psql.exe" (
+    echo Error: psql.exe not found in %PG_BIN%.
+    pause
+    exit /b 1
+)
+echo Debug: PostgreSQL binaries found.
+
 :: Check VC++ Redist
 reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Installed >nul 2>&1
 if %errorlevel% neq 0 (
@@ -48,6 +75,11 @@ if not exist "%PG_DATA%\PG_VERSION" (
 
 :: Edit postgresql.conf for port and listen (append if not present)
 set "CONF_FILE=%PG_DATA%\postgresql.conf"
+if not exist "%CONF_FILE%" (
+    echo Error: postgresql.conf not found - initdb may have failed.
+    pause
+    exit /b 1
+)
 findstr /C:"port = %PG_PORT%" "%CONF_FILE%" >nul 2>&1
 if %errorlevel% neq 0 (
     echo port = %PG_PORT% >> "%CONF_FILE%"
@@ -60,6 +92,11 @@ echo Config files updated.
 
 :: Edit pg_hba.conf for md5 auth (add if needed)
 set "HBA_FILE=%PG_DATA%\pg_hba.conf"
+if not exist "%HBA_FILE%" (
+    echo Error: pg_hba.conf not found - initdb may have failed.
+    pause
+    exit /b 1
+)
 findstr /C:"host    all             all             127.0.0.1/32            md5" "%HBA_FILE%" >nul 2>&1
 if %errorlevel% neq 0 (
     echo host    all             all             127.0.0.1/32            md5 >> "%HBA_FILE%"
