@@ -154,14 +154,8 @@ if %errorlevel% neq 0 (
 :: Unset PGPASSWORD
 set "PGPASSWORD="
 
-:: Stop server
-echo Stopping PostgreSQL...
-"%PG_BIN%\pg_ctl.exe" -D "%PG_DATA%" -l "%PG_LOG%" stop
-if %errorlevel% neq 0 (
-    echo Stop failed - check %PG_LOG%.
-    pause
-    exit /b 1
-)
+:: Do not stop server - leave running for bot
+echo Server left running for bot use.
 
 echo Initialization complete. Run start_bot.bat to start server and bot.
 pause
