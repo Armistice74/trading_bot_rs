@@ -21,7 +21,7 @@ period_minutes = { value = 30, description = "Lookback period in minutes for cal
 
 data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
 
-trade_percentage = { value = 90.0, description = "Percentage of available USD balance to use per buy trade" }
+trade_percentage = { value = 50.0, description = "Percentage of available USD balance to use per buy trade" }
 
 loop_delay_seconds = { value = 30.0, description = "Delay in seconds between trading loop iterations" }
 
