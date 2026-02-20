@@ -1,0 +1,579 @@
+[2026-02-19 16:22:20] BOT RUN STARTED at 2026-02-19 16:22:20
+    
+[2026-02-19 16:22:21] INITIAL SNAPSHOT
+    Initial free USD: 662.9105
+    
+    Balances:
+      DOT: 0.00000000
+      INJ: 0.00000000
+      PEPE: 38461.68000000
+      SOL: 0.00000000
+      USDG: 0.01957634
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 662.91050000
+    
+    Open Orders:
+      (none)
+    
+[2026-02-19 16:22:28] 
+    INITIAL PORTFOLIO POSITIONS
+    Holdings value: 0.0000
+    Total portfolio value: 662.9105
+    
+[2026-02-19 17:05:11] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OAUPEG-6KACP-SAQDK4
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:05:11] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:10:15] BUY FULL FILL: INJUSD
+        Order ID: OSH4AX-5UPB3-ZZDOQM
+        Filled Qty: 100.28900000
+        Avg Fill Price: 3.30400
+        Fees USD: 0.6627
+[2026-02-19 17:15:13] BUY FULL FILL: INJUSD
+        Order ID: OSZL36-ASRUF-2GUCHM
+        Filled Qty: 50.30290000
+        Avg Fill Price: 3.28800
+        Fees USD: 0.3308
+[2026-02-19 17:18:14] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OY4S5I-7UV4G-QTRVX2
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:18:14] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:19:31] BUY FULL FILL: INJUSD
+        Order ID: OPHPMH-2BRXQ-PNKMJ6
+        Filled Qty: 25.17010000
+        Avg Fill Price: 3.28000
+        Fees USD: 0.1651
+[2026-02-19 17:21:44] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OW5ZOU-YMXKC-BVQE3G
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:21:49] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:23:02] HOURLY SUMMARY at 2026-02-19 17:23:01
+    Free USD: 82.4432
+    Holdings value: 576.4993
+    Total portfolio value: 658.9425
+    Portfolio Positions:
+      INJUSD: 175.7620 (value 576.4993 USD)
+    Buys: 10 attempted, 7 filled
+    Sells: 0 attempted, 0 filled
+    Cancels: 6
+    Bot Trade Volume (Run Total USD): 579.30871920000000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 17:23:58] BUY FULL FILL: INJUSD
+        Order ID: OERBFE-E4NN4-6DXI6V
+        Filled Qty: 12.56750000
+        Avg Fill Price: 3.27900
+        Fees USD: 0.0824
+[2026-02-19 17:30:27] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OOYZBE-KWLWE-GAJY3E
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:30:33] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:32:29] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OZ667D-TMJBA-4LSBZT
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:33:46] BUY CANCELLED (PARTIAL): SOLUSD
+        Order ID: ODU54H-W3VIK-PJAKUP
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:33:46] BUY CANCELLED: SOLUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:34:33] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OPTT5P-XWMAX-C3P742
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:34:39] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:36:36] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OH2CKE-3ISGR-6UYSF5
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:37:13] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:38:09] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OEPUJS-RKKX2-FPWS3Q
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:38:09] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:39:10] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: ONCVME-7AKCZ-XBIDX3
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:40:38] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OSNI2J-QHQOV-NTXI63
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:40:38] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:41:13] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OO4Y3P-ZWDXL-33BD3M
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:41:18] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:43:07] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: ORW42F-4EQGU-TV7X62
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:43:15] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OJSIRD-NELEE-S6OTKD
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:45:27] SELL ATTEMPTED: INJUSD
+[2026-02-19 17:45:27] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:45:51] SELL FULL FILL: INJUSD
+        Order ID: O3Q7GT-MP5ET-7Y4WCH
+        Filled Qty: 12.56750000
+        Avg Fill Price: 3.29800
+        Fees USD: 0.0829
+[2026-02-19 17:45:59] SELL ATTEMPTED: INJUSD
+[2026-02-19 17:45:59] SELL COMPLETED: INJUSD
+[2026-02-19 17:47:57] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OTS2SS-CGQIX-L53IZ2
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:48:03] SELL ATTEMPTED: INJUSD
+[2026-02-19 17:48:03] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:50:00] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OET7DJ-I72GU-HB5APS
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:50:05] SELL ATTEMPTED: INJUSD
+[2026-02-19 17:50:05] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 17:52:01] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: ODBSPV-MKQEE-FPYW2C
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 17:54:12] SELL ATTEMPTED: INJUSD
+[2026-02-19 17:54:12] SELL COMPLETED: INJUSD
+[2026-02-19 17:54:57] SELL FULL FILL: INJUSD
+        Order ID: OZ4ZBO-E5WCA-HBCZRW
+        Filled Qty: 25.17010000
+        Avg Fill Price: 3.30300
+        Fees USD: 0.1662
+[2026-02-19 18:00:25] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:00:25] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:02:21] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OEEQS6-DM34L-2CWPRF
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:02:22] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OWKZK6-MHLWN-WLT3AT
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:02:28] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:02:28] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:04:24] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OXVOCF-ZI55S-OY7UAP
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:04:25] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OEYMZ2-CVAOJ-SWLOCZ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:04:32] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:04:32] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:06:27] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OWUZ7Z-X7CQP-M263MR
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:06:28] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OJOYTQ-S7OPJ-YY55QN
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:06:35] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:06:35] SELL COMPLETED: INJUSD
+[2026-02-19 18:08:30] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OUDEGW-D3MRB-FD6GKF
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:08:31] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OLWPFY-HRBI4-JA3UWZ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:20:30] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:22:28] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OKHXVS-S6E7A-PJLO4A
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:23:01] HOURLY SUMMARY at 2026-02-19 18:23:01
+    Free USD: 165.4872
+    Holdings value: 496.9532
+    Total portfolio value: 662.4404
+    Portfolio Positions:
+      INJUSD: 150.5919 (value 496.9532 USD)
+    Buys: 26 attempted, 15 filled
+    Sells: 9 attempted, 3 filled
+    Cancels: 43
+    Bot Trade Volume (Run Total USD): 745.10200700000000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 18:25:45] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:25:45] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:26:29] SELL FULL FILL: INJUSD
+        Order ID: OM6HIQ-ITX6A-LXFWSH
+        Filled Qty: 41.00000000
+        Avg Fill Price: 3.30900
+        Fees USD: 0.2713
+[2026-02-19 18:26:30] SELL FULL FILL: INJUSD
+        Order ID: OWRLDK-NSPK6-OELJK5
+        Filled Qty: 9.30290000
+        Avg Fill Price: 3.30900
+        Fees USD: 0.0615
+[2026-02-19 18:33:59] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:33:59] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:35:54] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: O6FROD-PX7GA-U7DLRF
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:35:54] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OSGQTL-GKTN4-L4CJ64
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:35:55] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OZWK4H-AYEWV-EVODQJ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:36:03] SELL ATTEMPTED: INJUSD
+[2026-02-19 18:36:03] SELL COMPLETED: INJUSD
+[2026-02-19 18:36:35] SELL FULL FILL: INJUSD
+        Order ID: OY7TGY-3I4G6-CXI2WD
+        Filled Qty: 41.00000000
+        Avg Fill Price: 3.32300
+        Fees USD: 0.2724
+[2026-02-19 18:36:37] SELL FULL FILL: INJUSD
+        Order ID: OBOFJM-F6WK3-2W3YML
+        Filled Qty: 41.00000000
+        Avg Fill Price: 3.32300
+        Fees USD: 0.2724
+[2026-02-19 18:36:37] SELL FULL FILL: INJUSD
+        Order ID: OK5UIP-Y36XJ-FIVVFI
+        Filled Qty: 18.28900000
+        Avg Fill Price: 3.32300
+        Fees USD: 0.1215
+[2026-02-19 18:49:18] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:49:42] BUY FULL FILL: INJUSD
+        Order ID: OU3MV5-3RLJE-JHEIMM
+        Filled Qty: 101.00370000
+        Avg Fill Price: 3.28700
+        Fees USD: 0.6640
+[2026-02-19 18:49:49] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:52:47] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OXZMAF-SFAHJ-BKK5CR
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:52:52] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:54:38] BUY FULL FILL: INJUSD
+        Order ID: OVCHA7-REQCB-P4N365
+        Filled Qty: 50.43150000
+        Avg Fill Price: 3.28600
+        Fees USD: 0.3314
+[2026-02-19 18:54:53] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:56:50] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OL6GA4-N3BKX-TRKALF
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:58:51] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OBP3KF-N27SU-VGEZP7
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 18:58:56] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 18:59:21] BUY FULL FILL: INJUSD
+        Order ID: ORME4B-OSIEO-ED22YK
+        Filled Qty: 25.11950000
+        Avg Fill Price: 3.29300
+        Fees USD: 0.1654
+[2026-02-19 19:00:34] SELL ATTEMPTED: INJUSD
+[2026-02-19 19:00:34] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 19:00:54] SELL FULL FILL: INJUSD
+        Order ID: OPZ3HR-OEU33-CLA2LF
+        Filled Qty: 101.00370000
+        Avg Fill Price: 3.22900
+        Fees USD: 0.6522
+[2026-02-19 19:00:55] SELL FULL FILL: INJUSD
+        Order ID: O5AZ4A-VXJBK-7XSVAW
+        Filled Qty: 50.43150000
+        Avg Fill Price: 3.22900
+        Fees USD: 0.3256
+[2026-02-19 19:00:57] SELL FULL FILL: INJUSD
+        Order ID: O4WKK3-ZW42I-C7A32L
+        Filled Qty: 22.02910000
+        Avg Fill Price: 3.22900
+        Fees USD: 0.1422
+[2026-02-19 19:03:07] SELL ATTEMPTED: INJUSD
+[2026-02-19 19:03:07] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 19:05:04] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: O5I2XB-QLNTM-5HBPRO
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 19:05:08] SELL ATTEMPTED: INJUSD
+[2026-02-19 19:05:09] SELL COMPLETED: INJUSD
+[2026-02-19 19:06:10] SELL ATTEMPTED: INJUSD
+[2026-02-19 19:06:10] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 19:06:34] SELL FULL FILL: INJUSD
+        Order ID: OPXGAJ-UGBAM-A5YQCG
+        Filled Qty: 3.09030000
+        Avg Fill Price: 3.17800
+        Fees USD: 0.0196
+[2026-02-19 19:23:03] HOURLY SUMMARY at 2026-02-19 19:23:02
+    Free USD: 651.4012
+    Holdings value: 0.0003
+    Total portfolio value: 651.4015
+    Portfolio Positions:
+      INJUSD: 0.00010000 (value 0.0003 USD)
+    Buys: 34 attempted, 18 filled
+    Sells: 16 attempted, 5 filled
+    Cancels: 60
+    Bot Trade Volume (Run Total USD): 2,395.1874326000000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 20:04:16] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OARFZF-KB7F4-PZWI53
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:10:42] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: ODGC5Q-3HOHH-J24BXN
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:11:11] BUY FULL FILL: INJUSD
+        Order ID: OBC47I-4EBTK-U7YE73
+        Filled Qty: 82.72510000
+        Avg Fill Price: 3.21800
+        Fees USD: 0.5324
+[2026-02-19 20:13:21] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 20:15:17] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OWWHNL-ZG63J-HZBCJV
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:17:19] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O4JB5F-6DU7Y-BH2LFG
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:19:08] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OWYIBO-3QHXY-65EHIS
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:23:02] HOURLY SUMMARY at 2026-02-19 20:23:02
+    Free USD: 265.8426
+    Holdings value: 385.7915
+    Total portfolio value: 651.6341
+    Portfolio Positions:
+      INJUSD: 119.55116190 (value 385.7915 USD)
+    Buys: 42 attempted, 25 filled
+    Sells: 16 attempted, 5 filled
+    Cancels: 66
+    Bot Trade Volume (Run Total USD): 2,779.9764017180000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 20:30:39] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 20:32:36] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O4FQP4-Q2S4F-E7R7LZ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:33:42] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:33:42] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 20:35:39] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OKBLOR-XUDVI-QRZBSP
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:35:44] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:35:44] SELL COMPLETED: INJUSD
+[2026-02-19 20:37:40] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OYQ2OM-XZ42N-FDZ5OC
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:37:46] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:37:46] SELL COMPLETED: INJUSD
+[2026-02-19 20:39:04] SELL FULL FILL: INJUSD
+        Order ID: OQSY2N-NLJVF-SRUBBG
+        Filled Qty: 82.72510000
+        Avg Fill Price: 3.23700
+        Fees USD: 0.5355
+[2026-02-19 20:39:17] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:39:17] SELL COMPLETED: INJUSD
+[2026-02-19 20:41:14] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OATTLA-SDIOR-3K4C2Z
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:41:19] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:41:19] SELL COMPLETED: INJUSD
+[2026-02-19 20:43:16] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OHSPE2-SLFQU-CC2BYI
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:43:20] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:43:20] SELL COMPLETED: INJUSD
+[2026-02-19 20:45:16] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OLXL5F-MCIX3-UAMTUN
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 20:45:22] SELL ATTEMPTED: INJUSD
+[2026-02-19 20:45:22] SELL COMPLETED: INJUSD
+[2026-02-19 20:46:49] SELL FULL FILL: INJUSD
+        Order ID: OSZL5C-JA5BD-4QJA3V
+        Filled Qty: 36.82590000
+        Avg Fill Price: 3.24100
+        Fees USD: 0.2387
+[2026-02-19 21:00:02] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OYB2ZZ-IXG6O-DQ43PD
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 21:23:03] HOURLY SUMMARY at 2026-02-19 21:23:02
+    Free USD: 652.2022
+    Holdings value: 0.0005
+    Total portfolio value: 652.2027
+    Portfolio Positions:
+      INJUSD: 0.00016190 (value 0.0005 USD)
+    Buys: 44 attempted, 26 filled
+    Sells: 23 attempted, 11 filled
+    Cancels: 75
+    Bot Trade Volume (Run Total USD): 3,167.1102923180000000000000000
+    Avg Fee % (Last Hour): 0.16
+[2026-02-19 21:25:30] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 21:27:28] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O73FCN-CI3MS-DJJAGD
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 21:29:30] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OXKPBP-MEW6M-JDO35E
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 21:50:53] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OAHDM5-QENPM-IUXKUA
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 21:55:01] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 21:57:39] BUY FULL FILL: INJUSD
+        Order ID: OI7VZ6-FOLUM-5LTBQI
+        Filled Qty: 100.89760000
+        Avg Fill Price: 3.23100
+        Fees USD: 0.6520
+[2026-02-19 22:00:09] BUY FULL FILL: INJUSD
+        Order ID: OW656B-5EK5X-DEQWHD
+        Filled Qty: 50.37910000
+        Avg Fill Price: 3.23000
+        Fees USD: 0.3254
+[2026-02-19 22:05:42] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:08:47] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:10:51] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:12:47] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OCSGTF-X4JHB-O2TQGK
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:12:52] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:14:50] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O5Q3BM-NLLKH-R777VE
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:17:02] BUY FULL FILL: INJUSD
+        Order ID: OCY66T-7X6EB-JAKKAP
+        Filled Qty: 25.27210000
+        Avg Fill Price: 3.21400
+        Fees USD: 0.1624
+[2026-02-19 22:17:25] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:18:51] BUY FULL FILL: INJUSD
+        Order ID: OOGOKX-EZZOY-7CM5RH
+        Filled Qty: 12.61870000
+        Avg Fill Price: 3.21300
+        Fees USD: 0.0810
+[2026-02-19 22:18:57] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:21:56] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O4JSQ4-P7J3G-XM7RUU
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:23:02] HOURLY SUMMARY at 2026-02-19 22:23:02
+    Free USD: 40.4880
+    Holdings value: 610.0657
+    Total portfolio value: 650.5537
+    Portfolio Positions:
+      INJUSD: 189.16766190 (value 610.0657 USD)
+    Buys: 61 attempted, 35 filled
+    Sells: 23 attempted, 11 filled
+    Cancels: 89
+    Bot Trade Volume (Run Total USD): 3,777.6033434180000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 22:38:03] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:41:02] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OMPZFL-7RYRF-IFYC3M
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:44:43] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:46:40] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: ONED2C-5ZX6K-7IULQD
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:49:13] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OQBN4Q-DIFQF-73FJVR
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 22:49:19] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 22:51:15] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OTJZBZ-ESDO5-ZNOMIC
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:10:56] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:12:53] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OZHAAI-YRKAV-OW4HUU
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:14:55] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: OQF7VP-CMJRI-AQ4XHV
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:16:57] BUY CANCELLED (PARTIAL): INJUSD
+        Order ID: O7GI57-BWUSJ-RBI23A
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:18:04] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:18:38] BUY FULL FILL: INJUSD
+        Order ID: OO4344-FFGWO-2V5EXF
+        Filled Qty: 6.34810000
+        Avg Fill Price: 3.18800
+        Fees USD: 0.0404
+[2026-02-19 23:19:06] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:21:09] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:22:12] BUY CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:23:02] HOURLY SUMMARY at 2026-02-19 23:23:02
+    Free USD: 20.2098
+    Holdings value: 623.3042
+    Total portfolio value: 643.5140
+    Portfolio Positions:
+      INJUSD: 195.51576190 (value 623.3042 USD)
+    Buys: 74 attempted, 40 filled
+    Sells: 23 attempted, 11 filled
+    Cancels: 104
+    Bot Trade Volume (Run Total USD): 3,797.8410862180000000000000000
+    Avg Fee % (Last Hour): 0.20
+[2026-02-19 23:24:17] SELL ATTEMPTED: INJUSD
+[2026-02-19 23:24:17] SELL COMPLETED: INJUSD
+[2026-02-19 23:25:02] SELL FULL FILL: INJUSD
+        Order ID: O2FUXA-X3LN4-6XXSTR
+        Filled Qty: 50.37910000
+        Avg Fill Price: 3.16800
+        Fees USD: 0.3192
+[2026-02-19 23:25:12] SELL FULL FILL: INJUSD
+        Order ID: OE5MKZ-2ZRQ4-TRCZPS
+        Filled Qty: 100.89760000
+        Avg Fill Price: 3.16800
+        Fees USD: 0.6392
+[2026-02-19 23:28:28] BUY CANCELLED (PARTIAL): LINKUSD
+        Order ID: OHX3NK-KSTMD-E445HB
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:28:28] BUY CANCELLED: LINKUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:28:55] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:30:08] BUY CANCELLED (PARTIAL): DOTUSD
+        Order ID: O4KIYT-EMTLI-VWJTO2
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:30:08] BUY CANCELLED: DOTUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:30:52] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: O3AHE5-YOPFA-NGJKWA
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:30:57] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-19 23:32:53] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OTD2LP-LHI44-K4BFYP
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-19 23:34:54] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: O4L44V-UN5VB-BK3L3K
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
