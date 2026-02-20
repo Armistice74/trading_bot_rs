@@ -390,3 +390,13 @@
 [2026-02-20 10:15:52.209502400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13617977.92233
 [2026-02-20 10:15:58.346935600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=14302150.92233
 [2026-02-20 10:16:30.634327600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2643423
+[2026-02-20 10:21:10.649187300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4702194.35737
+[2026-02-20 10:21:49.305820600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8626794.35737
+[2026-02-20 10:22:24.142408900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=329518
+[2m2026-02-20 10:22:28 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to send UpdateOhlc for LINKUSD
+[2m2026-02-20 10:22:28 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to update price for LINKUSD: channel closed
+[2m2026-02-20 10:22:28 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to send UpdateOhlc for DOTUSD
+[2m2026-02-20 10:22:29 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to update price for DOTUSD: channel closed
+[2m2026-02-20 10:22:29 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to send UpdateOhlc for DOTUSD
+[2m2026-02-20 10:22:29 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Failed to update price for DOTUSD: channel closed
+[2m2026-02-20 10:22:30 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Price processing task completed

@@ -733,3 +733,49 @@
         Fees USD: 0.1302
 [2026-02-20 10:19:11] SELL ATTEMPTED: ATOMUSD
 [2026-02-20 10:19:12] SELL COMPLETED: ATOMUSD
+[2026-02-20 10:21:27] SELL CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OIFZOV-YXVFB-SAEVN4
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 10:21:31] SELL ATTEMPTED: ATOMUSD
+[2026-02-20 10:21:31] SELL CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 10:22:27] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-20 10:22:26
+    Runtime: 8h 54m 7s
+    Bot Trade Volume (Run Total USD): 0
+    Final free USD: 167.9660
+    Free USD change: -470.9015
+    Holdings value: 450.5835
+    Total portfolio value: 618.5495
+    Total value change: -20.3179
+    
+    Portfolio Positions:
+      LINKUSD: 14.9557 (value 130.4436 USD)
+      ATOMUSD: 78.74040419 (value 187.1895 USD)
+      DOTUSD: 99.17970094 (value 132.9503 USD)
+    Buys: 88 attempted, 49 filled
+    Sells: 48 attempted, 36 filled
+    Cancels: 118
+    
+    Final Balances:
+      ATOM: 78.74909650
+      DOT: 99.17970000
+      INJ: 5.97503841
+      LINK: 14.95570000
+      PEPE: 38461.68000000
+      SOL: 0.00012779
+      USDC: 0.00198950
+      USDG: 0.01958385
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 167.96600000
+    
+    Open Orders:
+      OGRL47-7KH7E-4SREYQ: SOLUSD buy 1.23060000 @ 83.65 (status: open) opened: 2026-02-20 10:22:25
+      OHMFKJ-BAJMO-W444M6: ATOMUSD sell 51.26000000 @ 2.3820 (status: open) opened: 2026-02-20 10:21:31
+      OMSINK-WOT36-ZNZHIQ: SHIBUSD buy 5156051.00000 @ 0.00000631 (status: open) opened: 2026-02-20 10:20:34
+    DB realized PL: -7.9770
+    Kraken approx PL (free USD change): -470.9015
+    PL difference (DB - Kraken): 462.9244
+    
