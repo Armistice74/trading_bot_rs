@@ -35,9 +35,9 @@ sell_safety_cap = { value = 0.0, description = "Optional safety cap as a percent
 
 default_fee_rate = { value = 0.002, description = "Default fee rate (as a decimal, e.g., 0.0016 for 0.16%) for trades when actual fees are unavailable" }
 
-liquidity_threshold = { value = 2000.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
+liquidity_threshold = { value = 0.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
 
-price_modifier = { value = 0.0005, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.0005" }
+price_modifier = { value = 0.0, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.00025-0.0005" }
 
 buy_order_timeout = { value = 30, description = "Timeout in seconds for buy orders." }
 
