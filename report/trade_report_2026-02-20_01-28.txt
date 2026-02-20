@@ -637,3 +637,99 @@
         Filled Qty: 52.36000000
         Avg Fill Price: 2.36200
         Fees USD: 0.2473
+[2026-02-20 09:43:09] SELL ATTEMPTED: DOTUSD
+[2026-02-20 09:43:09] SELL COMPLETED: DOTUSD
+[2026-02-20 09:45:07] SELL CANCELLED (PARTIAL): DOTUSD
+        Order ID: OXKWGF-GWN2N-LC6XJZ
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 09:47:13] BUY FULL FILL: SOLUSD
+        Order ID: O2RDOL-DXSSA-RX2EU7
+        Filled Qty: 2.71550000
+        Avg Fill Price: 82.87000
+        Fees USD: 0.4500
+[2026-02-20 09:48:17] BUY FULL FILL: SOLUSD
+        Order ID: OB6VN4-JTKGK-UMGT7D
+        Filled Qty: 1.35740000
+        Avg Fill Price: 82.77000
+        Fees USD: 0.2247
+[2026-02-20 09:50:04] BUY CANCELLED (PARTIAL): LINKUSD
+        Order ID: OBUBZX-L7JHL-DWNGAM
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 09:52:11] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: ODWDYS-6H7DO-QFHVDT
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 09:53:32] SELL ATTEMPTED: DOTUSD
+[2026-02-20 09:53:32] SELL CANCELLED: DOTUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 09:54:28] BUY FULL FILL: SOLUSD
+        Order ID: OYX7I4-F22EP-4B6KU7
+        Filled Qty: 0.67730000
+        Avg Fill Price: 82.81000
+        Fees USD: 0.1121
+[2026-02-20 09:55:29] SELL CANCELLED (PARTIAL): DOTUSD
+        Order ID: OF5SZH-SXFHN-C754NE
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 10:01:04] SELL ATTEMPTED: DOTUSD
+[2026-02-20 10:01:04] SELL COMPLETED: DOTUSD
+[2026-02-20 10:01:08] SELL ATTEMPTED: SOLUSD
+[2026-02-20 10:01:08] SELL COMPLETED: SOLUSD
+[2026-02-20 10:01:28] SELL FULL FILL: DOTUSD
+        Order ID: OEB7AK-SZJT2-4X7DD6
+        Filled Qty: 53.27970000
+        Avg Fill Price: 1.30830
+        Fees USD: 0.1394
+[2026-02-20 10:01:34] SELL FULL FILL: SOLUSD
+        Order ID: OWT4X5-M5OZZ-2SV7LS
+        Filled Qty: 1.35740000
+        Avg Fill Price: 83.31000
+        Fees USD: 0.2261
+[2026-02-20 10:01:41] SELL ATTEMPTED: SOLUSD
+[2026-02-20 10:02:05] SELL FULL FILL: SOLUSD
+        Order ID: ONDKMD-GREA6-SQJUPR
+        Filled Qty: 2.71550000
+        Avg Fill Price: 84.01000
+        Fees USD: 0.4562
+[2026-02-20 10:02:05] SELL COMPLETED: SOLUSD
+[2026-02-20 10:02:06] SELL FULL FILL: SOLUSD
+        Order ID: O2N5V5-WQDQQ-6JIRPZ
+        Filled Qty: 0.67730000
+        Avg Fill Price: 84.01000
+        Fees USD: 0.1138
+[2026-02-20 10:07:20] BUY FULL FILL: ATOMUSD
+        Order ID: ORLWBU-UE2PF-RNLM22
+        Filled Qty: 110.51000000
+        Avg Fill Price: 2.36500
+        Fees USD: 0.5227
+[2026-02-20 10:07:28] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 10:09:27] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OPDZ2W-S3BE2-RVBM4H
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 10:09:31] SELL ATTEMPTED: ATOMUSD
+[2026-02-20 10:09:31] SELL COMPLETED: ATOMUSD
+[2026-02-20 10:09:36] BUY CANCELLED: DOTUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 10:11:32] SELL CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OIIF5M-DQITZ-ALSMHE
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 10:11:33] BUY CANCELLED (PARTIAL): DOTUSD
+        Order ID: OPK3EU-XPDHV-56KVGI
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-20 10:11:39] BUY CANCELLED: LINKUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 10:11:47] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-20 10:12:03] BUY FULL FILL: LINKUSD
+        Order ID: OHGU53-V4NY6-VBU42L
+        Filled Qty: 14.95570000
+        Avg Fill Price: 8.72294
+        Fees USD: 0.2609
+[2026-02-20 10:12:12] BUY FULL FILL: ATOMUSD
+        Order ID: O5CFMS-XNOXI-FHGIE2
+        Filled Qty: 27.48000000
+        Avg Fill Price: 2.37000
+        Fees USD: 0.1302
+[2026-02-20 10:19:11] SELL ATTEMPTED: ATOMUSD
+[2026-02-20 10:19:12] SELL COMPLETED: ATOMUSD
