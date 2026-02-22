@@ -13,15 +13,15 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 [trading_logic]
 
-dip_percentage = { value = 1.0, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+dip_percentage = { value = 1.8, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
 profit_target = { value = 0.7, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
-period_minutes = { value = 30, description = "Lookback period in minutes for calculating highest price" }
+period_minutes = { value = 45, description = "Lookback period in minutes for calculating highest price" }
 
 data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
 
-trade_percentage = { value = 20.0, description = "Percentage of available USD balance to use per buy trade" }
+trade_percentage = { value = 8.0, description = "Percentage of available USD balance to use per buy trade" }
 
 loop_delay_seconds = { value = 15.0, description = "Delay in seconds between trading loop iterations" }
 
@@ -37,7 +37,7 @@ default_fee_rate = { value = 0.002, description = "Default fee rate (as a decima
 
 liquidity_threshold = { value = 1.0, description = "Minimum liquidity in USD to use full trade_percentage; below this, scale to 5%" }
 
-price_modifier = { value = 0.0, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.00025-0.0005" }
+price_modifier = { value = 0.00025, description = "Used to slightly alter the limit price to avoid taker trades. Default = 0.00025-0.0005" }
 
 buy_order_timeout = { value = 30, description = "Timeout in seconds for buy orders." }
 
@@ -45,15 +45,15 @@ sell_order_timeout = { value = 30, description = "Timeout in seconds for non-exp
 
 [stop_loss_behavior]
 
-fixed_stop_initial = { value = 2.0, description = "Initial fixed stop-loss percentage" }
+fixed_stop_initial = { value = 5.0, description = "Initial fixed stop-loss percentage" }
 
-fixed_stop_min = { value = 2.0, description = "Minimum fixed stop-loss percentage after tightening" }
+fixed_stop_min = { value = 5.0, description = "Minimum fixed stop-loss percentage after tightening" }
 
 fixed_stop_tightening_period = { value = 30, description = "Time in minutes to tighten fixed stop-loss from fixed_stop_initial to fixed_stop_min" }
 
-trailing_stop_percentage = { value = 2.0, description = "Constant trailing stop-loss percentage" }
+trailing_stop_percentage = { value = 4.5, description = "Constant trailing stop-loss percentage" }
 
-pause_after_stop_minutes = { value = 60.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
+pause_after_stop_minutes = { value = 30.0, description = "Minutes to pause buys after a stop-loss sell (0 to disable)" }
 
 [database]
 
@@ -93,9 +93,9 @@ roc_down_threshold = { value = -1.0, description = "ROC percentage threshold bel
 
 [bot_operation]
 
-fixed_stop_loss = { value = true, description = "Enable fixed stop-loss to sell when price falls below a tightening threshold relative to average buy price" }
+fixed_stop_loss = { value = false, description = "Enable fixed stop-loss to sell when price falls below a tightening threshold relative to average buy price" }
 
-trailing_stop_loss = { value = false, description = "Enable trailing stop-loss to sell when price falls below a constant threshold relative to highest price since buy" }
+trailing_stop_loss = { value = true, description = "Enable trailing stop-loss to sell when price falls below a constant threshold relative to highest price since buy" }
 
 buy_post_only = { value = true, description = "Enable post-only limit orders for buys to prioritize maker fees." }
 
