@@ -1,0 +1,136 @@
+[2026-02-22 09:03:27.417492600 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
+[2026-02-22 09:04:36.646617600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3421647.81906
+[2026-02-22 09:05:08.902551300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11496421
+[2026-02-22 09:20:20.249660500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3700743
+[2026-02-22 09:20:23.611159900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5159025
+[2026-02-22 09:23:58.247424300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1554672
+[2026-02-22 09:27:49.093429200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3738485
+[2026-02-22 09:29:44.599018900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13238032
+[2026-02-22 09:30:13.438513 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15200921
+[2026-02-22 09:30:49.388518200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=19246228.44336
+[2026-02-22 09:32:19.279677100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=231702.15217
+[2026-02-22 09:34:23.915368200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=156466
+[2026-02-22 09:34:56.982531900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=859160
+[2026-02-22 09:38:20.573691300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7720586
+[2026-02-22 09:38:53.600277900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15481368
+[2026-02-22 09:41:16.697745500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=311326.86084
+[2026-02-22 09:46:06.009616800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3246700
+[2026-02-22 09:46:07.519341800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3246753.24675
+[2026-02-22 09:46:08.535058100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6246753.24675
+[2026-02-22 09:46:08.553349 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7044481.24675
+[2026-02-22 09:46:37.267333900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7669140.33765
+[2026-02-22 09:47:15.725433100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=143637437.55591
+[2026-02-22 09:47:39.174843600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=144262080.41305
+[2026-02-22 09:47:57.910485800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=173378601.25978
+[2026-02-22 09:51:21.034943300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000000
+[2026-02-22 09:52:44.933163200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000000
+[2026-02-22 09:53:29.443150900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=134686212
+[2026-02-22 09:53:36.038919300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1004953787.9799
+[2026-02-22 09:54:12.287123300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=833093499.46622
+[2026-02-22 09:54:58.832514400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=836980179.46622
+[2026-02-22 09:55:51.494955900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13254125
+[2026-02-22 09:58:51.920314200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7773360
+[2026-02-22 09:59:23.442602500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7773360
+[2m2026-02-22 10:01:06 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WS error: IO error: An existing connection was forcibly closed by the remote host. (os error 10054)
+[2m2026-02-22 10:01:18 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WS error: IO error: An existing connection was forcibly closed by the remote host. (os error 10054)
+[2m2026-02-22 10:01:19 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:01:31 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:01:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:01:42 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:01:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:07 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:10 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:10 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 1/5 in 5 seconds...
+[2m2026-02-22 10:02:15 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:17 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:21 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 1/5 in 5 seconds...
+[2m2026-02-22 10:02:30 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
+[2m2026-02-22 10:02:31 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
+[2m2026-02-22 10:02:33 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
+[2m2026-02-22 10:02:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
+[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
+[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2026-02-22 10:02:45.517193 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:02:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 2/5 in 5 seconds...
+[2m2026-02-22 10:02:51 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:07 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:21 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 2/5 in 5 seconds...
+[2m2026-02-22 10:03:44 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
+[2m2026-02-22 10:03:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:03:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
+[2m2026-02-22 10:03:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
+[2m2026-02-22 10:03:51 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
+[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
+[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2026-02-22 10:04:11.811412 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 3/5 in 5 seconds...
+[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:17 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:18 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:32 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:04:48 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:05 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:05 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 3/5 in 5 seconds...
+[2m2026-02-22 10:05:08 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
+[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
+[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 4/5 in 5 seconds...
+[2m2026-02-22 10:05:26 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
+[2m2026-02-22 10:05:41 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:42 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
+[2m2026-02-22 10:05:43 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
+[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2026-02-22 10:05:50.118588600 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
+[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:05:55 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2m2026-02-22 10:06:04 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
+[2026-02-22 10:06:53.995423100 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
+[2026-02-22 10:07:31.759469100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3922298
+[2m2026-02-22 10:07:49 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Invalid OHLC values for DOTUSD: open=1.3124, high=1.3124, low=1.3124, close=1.3124, volume=1.3124
+[2026-02-22 10:14:44.356167700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=20150313
+[2026-02-22 10:16:12.203548 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12144962
+[2026-02-22 10:16:31.167887 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=26270086
+[2026-02-22 10:17:50.034870800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8109807
+[2026-02-22 10:19:04.252211800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11824757.37808
+[2026-02-22 10:20:32.308754 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=163900.02911
+[2026-02-22 10:22:28.781990600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=778598
+[2026-02-22 10:24:02.002876300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=912456042.67352
+[2026-02-22 10:25:06.086636800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100000000
+[2026-02-22 10:25:06.088526 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=105515700
+[2026-02-22 10:25:06.209431300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128610200
+[2026-02-22 10:25:06.289341700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128610214.90429
+[2026-02-22 10:25:57.898302900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128822912.51016
+[2026-02-22 10:26:25.281752800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1922755.26742
+[2026-02-22 10:26:57.073140 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17016708.26742
+[2026-02-22 10:29:22.899308400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1876433
+[2026-02-22 10:30:14.668031300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11438050.38718
+[2026-02-22 10:30:43.299671500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15660025.38718
+[2026-02-22 10:33:31.907455900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=531348
+[2026-02-22 10:35:10.683532400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1044417
+[2026-02-22 10:38:58.078822900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40380690
+[2026-02-22 10:39:39.328523300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4516862
+[2m2026-02-22 10:41:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order ODULGB-QT5CH-M6G67L for INJUSD: Trade T3HC3L-7NSHQ-TJKW6M not found for INJUSD
+[2026-02-22 10:42:13.244367 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17569958
+[2026-02-22 10:47:13.552892900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15471494
+[2026-02-22 10:47:48.539479 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16437677.57488
+[2026-02-22 10:49:36.819479 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=923785
+[2026-02-22 10:53:16.724049200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=21490888

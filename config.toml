@@ -13,7 +13,7 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 [trading_logic]
 
-dip_percentage = { value = 0.8, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+dip_percentage = { value = 0.5, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
 profit_target = { value = 0.7, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
@@ -21,7 +21,7 @@ period_minutes = { value = 20, description = "Lookback period in minutes for cal
 
 data_fetch_period = { value = 120, description = "Interval in seconds for fetching market data (e.g., OHLCV and order book)" }
 
-trade_percentage = { value = 8.0, description = "Percentage of available USD balance to use per buy trade" }
+trade_percentage = { value = 20.0, description = "Percentage of available USD balance to use per buy trade" }
 
 loop_delay_seconds = { value = 15.0, description = "Delay in seconds between trading loop iterations" }
 
