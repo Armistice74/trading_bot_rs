@@ -1,136 +1,575 @@
-[2026-02-22 09:03:27.417492600 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
-[2026-02-22 09:04:36.646617600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3421647.81906
-[2026-02-22 09:05:08.902551300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11496421
-[2026-02-22 09:20:20.249660500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3700743
-[2026-02-22 09:20:23.611159900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5159025
-[2026-02-22 09:23:58.247424300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1554672
-[2026-02-22 09:27:49.093429200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3738485
-[2026-02-22 09:29:44.599018900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13238032
-[2026-02-22 09:30:13.438513 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15200921
-[2026-02-22 09:30:49.388518200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=19246228.44336
-[2026-02-22 09:32:19.279677100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=231702.15217
-[2026-02-22 09:34:23.915368200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=156466
-[2026-02-22 09:34:56.982531900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=859160
-[2026-02-22 09:38:20.573691300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7720586
-[2026-02-22 09:38:53.600277900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15481368
-[2026-02-22 09:41:16.697745500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=311326.86084
-[2026-02-22 09:46:06.009616800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3246700
-[2026-02-22 09:46:07.519341800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3246753.24675
-[2026-02-22 09:46:08.535058100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6246753.24675
-[2026-02-22 09:46:08.553349 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7044481.24675
-[2026-02-22 09:46:37.267333900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7669140.33765
-[2026-02-22 09:47:15.725433100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=143637437.55591
-[2026-02-22 09:47:39.174843600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=144262080.41305
-[2026-02-22 09:47:57.910485800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=173378601.25978
-[2026-02-22 09:51:21.034943300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000000
-[2026-02-22 09:52:44.933163200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000000
-[2026-02-22 09:53:29.443150900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=134686212
-[2026-02-22 09:53:36.038919300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1004953787.9799
-[2026-02-22 09:54:12.287123300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=833093499.46622
-[2026-02-22 09:54:58.832514400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=836980179.46622
-[2026-02-22 09:55:51.494955900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13254125
-[2026-02-22 09:58:51.920314200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7773360
-[2026-02-22 09:59:23.442602500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7773360
-[2m2026-02-22 10:01:06 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WS error: IO error: An existing connection was forcibly closed by the remote host. (os error 10054)
-[2m2026-02-22 10:01:18 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WS error: IO error: An existing connection was forcibly closed by the remote host. (os error 10054)
-[2m2026-02-22 10:01:19 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:01:31 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:01:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:01:42 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:01:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:07 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:10 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:10 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 1/5 in 5 seconds...
-[2m2026-02-22 10:02:15 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:17 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:21 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 1/5 in 5 seconds...
-[2m2026-02-22 10:02:30 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
-[2m2026-02-22 10:02:31 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
-[2m2026-02-22 10:02:33 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
-[2m2026-02-22 10:02:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
-[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
-[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2026-02-22 10:02:45.517193 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:02:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:02:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 2/5 in 5 seconds...
-[2m2026-02-22 10:02:51 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:07 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:21 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 2/5 in 5 seconds...
-[2m2026-02-22 10:03:44 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
-[2m2026-02-22 10:03:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:03:45 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
-[2m2026-02-22 10:03:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
-[2m2026-02-22 10:03:51 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
-[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
-[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2026-02-22 10:04:11.811412 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:04:11 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 3/5 in 5 seconds...
-[2m2026-02-22 10:04:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:17 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:18 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:32 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:37 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:04:48 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:05 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:05 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m Private WebSocket task failed: Max reconnect attempts reached for private WS. Retrying 3/5 in 5 seconds...
-[2m2026-02-22 10:05:08 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 1/5
-[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 2/5
-[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:24 -05:00[0m [31mERROR[0m [2mtrading_bot_rs[0m[2m:[0m [2msrc\main.rs[0m[2m:[0m WebSocket task failed: Max reconnect attempts reached for public WS. Retrying 4/5 in 5 seconds...
-[2m2026-02-22 10:05:26 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 3/5
-[2m2026-02-22 10:05:41 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:42 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 4/5
-[2m2026-02-22 10:05:43 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:47 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m WS token refresh failed: Failed to fetch time: error sending request for url (https://api.kraken.com/0/public/Time), attempt 5/5
-[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::api[0m[2m:[0m [2msrc\api.rs[0m[2m:[0m Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed initial private WS token: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2026-02-22 10:05:50.118588600 -05:00] Private token refresh failed: Failed to refresh WS token after 5 attempts - check API permissions (e.g., Query Trades)
-[2m2026-02-22 10:05:50 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:05:55 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2m2026-02-22 10:06:04 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Private WebSocket connection error: IO error: No such host is known. (os error 11001)
-[2026-02-22 10:06:53.995423100 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
-[2026-02-22 10:07:31.759469100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3922298
-[2m2026-02-22 10:07:49 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::trading::trading_logic[0m[2m:[0m [2msrc\trading.rs[0m[2m:[0m Invalid OHLC values for DOTUSD: open=1.3124, high=1.3124, low=1.3124, close=1.3124, volume=1.3124
-[2026-02-22 10:14:44.356167700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=20150313
-[2026-02-22 10:16:12.203548 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12144962
-[2026-02-22 10:16:31.167887 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=26270086
-[2026-02-22 10:17:50.034870800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8109807
-[2026-02-22 10:19:04.252211800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11824757.37808
-[2026-02-22 10:20:32.308754 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=163900.02911
-[2026-02-22 10:22:28.781990600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=778598
-[2026-02-22 10:24:02.002876300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=912456042.67352
-[2026-02-22 10:25:06.086636800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100000000
-[2026-02-22 10:25:06.088526 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=105515700
-[2026-02-22 10:25:06.209431300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128610200
-[2026-02-22 10:25:06.289341700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128610214.90429
-[2026-02-22 10:25:57.898302900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=128822912.51016
-[2026-02-22 10:26:25.281752800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1922755.26742
-[2026-02-22 10:26:57.073140 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17016708.26742
-[2026-02-22 10:29:22.899308400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1876433
-[2026-02-22 10:30:14.668031300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11438050.38718
-[2026-02-22 10:30:43.299671500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15660025.38718
-[2026-02-22 10:33:31.907455900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=531348
-[2026-02-22 10:35:10.683532400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1044417
-[2026-02-22 10:38:58.078822900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40380690
-[2026-02-22 10:39:39.328523300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4516862
-[2m2026-02-22 10:41:34 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order ODULGB-QT5CH-M6G67L for INJUSD: Trade T3HC3L-7NSHQ-TJKW6M not found for INJUSD
-[2026-02-22 10:42:13.244367 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17569958
-[2026-02-22 10:47:13.552892900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15471494
-[2026-02-22 10:47:48.539479 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16437677.57488
-[2026-02-22 10:49:36.819479 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=923785
-[2026-02-22 10:53:16.724049200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=21490888
+[2026-02-22 12:10:18.741803800 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
+[2026-02-22 12:10:18.746278400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=118559525
+[2026-02-22 12:11:43.180612900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=69734196
+[2026-02-22 12:14:46.078722600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=860052.29117
+[2026-02-22 12:16:19.834067500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3886376.30076
+[2026-02-22 12:20:00.224861600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1455604.0757
+[2026-02-22 12:25:06.287841300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2014389
+[2026-02-22 12:25:42.806829 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3348725
+[2026-02-22 12:26:17.476235 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=14000000
+[2026-02-22 12:30:38.904535900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1234859
+[2026-02-22 12:30:58.815283200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2308525
+[2026-02-22 12:31:37.296337200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=260150.44092
+[2026-02-22 12:32:11.562010700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 12:33:10.471718400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=20269400
+[2026-02-22 12:33:10.474665100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=28290500
+[2026-02-22 12:33:10.529933900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=51385000
+[2026-02-22 12:34:25.792378900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=470625093.67336
+[2026-02-22 12:37:41.723834900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=115813008
+[2026-02-22 12:39:21.299885500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=807413.73648
+[2026-02-22 12:39:28.086435200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8115333.73648
+[2026-02-22 12:40:02.726746900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1457624
+[2026-02-22 12:40:32.573623600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1957608
+[2026-02-22 12:41:06.613003900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9369087
+[2026-02-22 12:41:57.105067900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9602666
+[2026-02-22 12:41:59.795270600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=10296973
+[2026-02-22 12:42:32.009528900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1139384.11669
+[2026-02-22 12:43:00.226760700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=693039.66974
+[2026-02-22 12:46:12.232720800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=262987.60518
+[2026-02-22 12:47:19.909774100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1430593.10345
+[2026-02-22 12:50:21.624161400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=46725910
+[2026-02-22 12:55:36.738367200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=27184466.01941
+[2026-02-22 12:58:56.572984700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2000000
+[2026-02-22 12:59:46.391684900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=21069692.05834
+[2026-02-22 13:02:49.963914500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=162337662.33767
+[2026-02-22 13:04:39.363362600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=313946
+[2026-02-22 13:05:39.206483700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1399634
+[2026-02-22 13:06:24.176813800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1758345
+[2026-02-22 13:07:38.174458300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1557196
+[2026-02-22 13:09:22.772730200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2051300
+[2026-02-22 13:10:11.772039700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13681113
+[2026-02-22 13:12:33.551524 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=72890016
+[2026-02-22 13:17:42.554314600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2092276
+[2026-02-22 13:27:37.028280700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1620482.14286
+[2026-02-22 13:29:42.741431200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=18911947
+[2026-02-22 13:30:39.488949800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1620745.54295
+[2026-02-22 13:33:11.891241200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5163964
+[2026-02-22 13:33:51.546681200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5731089
+[2026-02-22 13:36:53.169150 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=679590.08563
+[2026-02-22 13:50:02.069410500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2203161
+[2m2026-02-22 13:51:17 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OFA7AB-HUQ5J-4VJ4FM for DOTUSD: Trade TEB3MZ-XXG35-3C3AOK not found for DOTUSD
+[2026-02-22 13:51:28.413056 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=291731.39158
+[2026-02-22 13:51:59.874730900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1325936.39158
+[2026-02-22 13:58:17.084706 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=51480353
+[2026-02-22 13:58:27.888114700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=73204704
+[2m2026-02-22 14:02:23 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OFWIIH-66Z2Q-MUR6CW for SOLUSD: Trade TT7YJH-BMQW5-B23SOC not found for SOLUSD
+[2026-02-22 14:04:55.156413800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160470
+[2026-02-22 14:06:20.758320800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4193886
+[2026-02-22 14:07:40.817621400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000
+[2026-02-22 14:07:52.304520400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15924851
+[2026-02-22 14:08:02.257628200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=777336
+[2026-02-22 14:08:08.442399500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1350201
+[2026-02-22 14:12:00.013968700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16874700
+[2026-02-22 14:12:00.015861700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=32477200
+[2026-02-22 14:19:15.900287 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=14977235
+[2026-02-22 14:21:45.400399900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=285555.66502
+[2026-02-22 14:24:11.737924200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=744607
+[2026-02-22 14:29:32.082806 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=89000000
+[2026-02-22 14:30:01.793973300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1393920
+[2026-02-22 14:30:44.980728900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1626321
+[2026-02-22 14:31:02.125162 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5615818
+[2026-02-22 14:31:12.207961 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=87917049
+[2026-02-22 14:35:32.379709400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2937029
+[2026-02-22 14:35:49.426397800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=52937029
+[2026-02-22 14:35:49.428985300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100885729
+[2026-02-22 14:35:49.429976900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=121718829
+[2026-02-22 14:35:59.215570800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=122668557.1448
+[2026-02-22 14:36:31.412749900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3917973
+[2026-02-22 14:37:28.103810800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=31256756
+[2m2026-02-22 14:37:32 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OJNKOW-ORNVA-KDEVGM for SOLUSD: Trade TPPP53-QB4UP-V2UFPY not found for SOLUSD
+[2026-02-22 14:40:59.226666700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3643054
+[2026-02-22 14:44:12.873387600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2020679
+[2026-02-22 14:44:28.676240600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3910709
+[2026-02-22 14:45:42.023730 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=163869
+[2026-02-22 14:46:14.300607400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6394366
+[2026-02-22 14:48:19.169669200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1602102
+[2026-02-22 14:48:37.319661800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1947177
+[2026-02-22 14:50:52.279883400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=210402929
+[2026-02-22 14:56:36.489782900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1359790
+[2026-02-22 14:57:29.940441400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=810372.77147
+[2026-02-22 14:59:09.139666800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=117153
+[2026-02-22 15:01:31.358270900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1554672
+[2026-02-22 15:01:49.791140500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=56837606
+[2026-02-22 15:02:21.710506400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5000000
+[2026-02-22 15:03:49.451259300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7442215
+[2026-02-22 15:04:59.587103400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 15:05:02.739215600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1456728
+[2026-02-22 15:05:36.940699700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1616728
+[2026-02-22 15:06:59.470250200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2209936
+[2026-02-22 15:07:17.208461 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=322237.15078
+[2026-02-22 15:07:36.209058200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=72427991.59463
+[2026-02-22 15:11:22.873317400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=39425311
+[2026-02-22 15:11:29.492763900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=39684118
+[2026-02-22 15:13:01.828401700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4000000
+[2026-02-22 15:17:53.127459100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=795773
+[2026-02-22 15:21:40.894527200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8437500
+[2026-02-22 15:28:21.425592100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4000000
+[2026-02-22 15:33:15.634707100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1000000
+[2026-02-22 15:33:21.185280700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1500990.36169
+[2026-02-22 15:33:28.852002 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9274350.36169
+[2026-02-22 15:35:45.474192900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6177435
+[2026-02-22 15:36:16.103628400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1554672
+[2026-02-22 15:37:42.871557800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7773360
+[2026-02-22 15:39:38.041709900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1500000
+[2026-02-22 15:42:37.500743100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3109344
+[2026-02-22 15:45:16.285924500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=500000
+[2026-02-22 15:46:14.033902600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5415584
+[2026-02-22 15:50:52.815791 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2841163
+[2026-02-22 15:52:49.976009100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2000000
+[2026-02-22 15:53:44.493340200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1121951.21951
+[2026-02-22 15:56:27.076986200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3000000
+[2026-02-22 15:57:48.873988500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40719339
+[2026-02-22 15:59:51.122072800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=20091217
+[2026-02-22 16:01:22.202167900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12337134
+[2026-02-22 16:02:04.090898700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40716612.37785
+[2026-02-22 16:09:31.636995800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1540424
+[2026-02-22 16:12:56.210293700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1625237
+[2026-02-22 16:13:07.389814900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1543233.43061
+[2026-02-22 16:16:21.554985 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1871673
+[2026-02-22 16:17:45.562023 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4246761
+[2026-02-22 16:18:59.794670300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=29166900
+[2026-02-22 16:18:59.797358100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=229166900
+[2026-02-22 16:19:54.652949700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4129303
+[2026-02-22 16:23:21.827642400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100000000
+[2026-02-22 16:23:21.836919700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=150000000
+[2026-02-22 16:27:40.209807800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6238911
+[2026-02-22 16:29:06.597135700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11382113.82113
+[2026-02-22 16:29:11.195323 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13120289.71689
+[2026-02-22 16:29:11.732571900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=14744892.71689
+[2026-02-22 16:29:16.028194300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=30990922.71689
+[2026-02-22 16:33:02.754335700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1562268
+[2026-02-22 16:34:14.115734 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1023965
+[2026-02-22 16:34:19.611210600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2633882
+[2026-02-22 16:37:23.336032300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1172929.08712
+[2026-02-22 16:38:33.855510500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16313213.7031
+[2026-02-22 16:38:50.615302200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=31286334.7031
+[2026-02-22 16:39:39.413293100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=50000000
+[2026-02-22 16:39:39.531107200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100000000
+[2026-02-22 16:39:39.873677 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=116094395.401
+[2026-02-22 16:39:40.067492100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=117727582.93943
+[2026-02-22 16:40:00.508994200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1948051.94805
+[2026-02-22 16:40:21.897262700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2972427.59994
+[2026-02-22 16:40:33.484424600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4306473.33448
+[2026-02-22 16:40:35.928079300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5931473.33448
+[2026-02-22 16:42:09.191466200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40518638.57375
+[2026-02-22 16:42:13.607459500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=41419612.59972
+[2026-02-22 16:43:04.689887600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=251924
+[2026-02-22 16:45:33.891612900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=89082562.85141
+[2026-02-22 16:46:54.176244 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=631884
+[2026-02-22 16:47:01.073114600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=311831.44246
+[2026-02-22 16:47:38.341576800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=26473113.44246
+[2026-02-22 16:47:39.783132100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=29258659.44246
+[2026-02-22 16:49:36.592040500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=215507715
+[2026-02-22 16:50:45.180668200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=30440514.46945
+[2026-02-22 16:54:04.897813200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3134379
+[2026-02-22 16:59:55.797611400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2323011
+[2026-02-22 17:05:46.788700800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1610073
+[2026-02-22 17:06:41.613461100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3113478.9644
+[2026-02-22 17:07:05.219737400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7430172
+[2026-02-22 17:07:43.586705300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=31681851
+[2026-02-22 17:10:46.149716600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=228434.0383
+[2026-02-22 17:11:25.202907700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=425458
+[2026-02-22 17:12:32.064637600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=113291
+[2026-02-22 17:13:00.267098400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=184162
+[2026-02-22 17:13:49.680290 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=364162
+[2026-02-22 17:17:58.631730 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=783595
+[2026-02-22 17:19:48.743588800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=375725.54312
+[2026-02-22 17:21:17.070105600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=741079
+[2026-02-22 17:21:27.750138800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=36065851.775
+[2026-02-22 17:21:27.822173500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=231323604
+[2026-02-22 17:22:05.682285200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1581278
+[2026-02-22 17:22:51.863722900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2493937.67741
+[2026-02-22 17:23:11.997017200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=250000
+[2026-02-22 17:23:37.099659100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=404715
+[2026-02-22 17:23:51.074118500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=564715
+[2026-02-22 17:23:55.699562200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=831071
+[2026-02-22 17:24:02.431988800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 17:24:12.455799800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=320000
+[2026-02-22 17:24:22.944243700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=20320000
+[2026-02-22 17:24:54.625631800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=29793140.2636
+[2026-02-22 17:31:20.010768100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=670440.42257
+[2026-02-22 17:31:46.068961900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=830133.42257
+[2026-02-22 17:36:47.295434700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2611174
+[2026-02-22 17:41:53.836774400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 17:44:32.336355100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2000000
+[2026-02-22 17:45:50.899205 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=536274.19354
+[2026-02-22 17:52:52.996019400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1010016.10305
+[2026-02-22 17:56:44.760708300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8000000
+[2026-02-22 17:57:00.159188500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3119237
+[2026-02-22 17:57:17.587184900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16119237
+[2026-02-22 17:57:26.918274700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=30619237
+[2m2026-02-22 17:58:59 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Failed to update remaining quantities after WS sell trade THVGZG-6IFD7-AF5VG4: Trade T5AIXI-KFIQP-POUB74 not found for SOLUSD
+[2026-02-22 17:59:47.284342900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=168261
+[2026-02-22 18:00:24.185231900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=268158
+[2026-02-22 18:01:29.268493100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=285125
+[2026-02-22 18:01:45.478386 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=35875193.90322
+[2026-02-22 18:02:17.109604200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=523000
+[2026-02-22 18:05:40.646869400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2107225
+[2026-02-22 18:06:39.931088500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=200000
+[2026-02-22 18:08:58.023165900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 18:09:21.088815100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5172120
+[2026-02-22 18:10:37.853073500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1536016
+[2026-02-22 18:11:29.228936100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=68550023
+[2026-02-22 18:12:10.947033500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3665899
+[2026-02-22 18:22:18.187335700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3695684
+[2026-02-22 18:25:58.638101900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3212650
+[2026-02-22 18:27:25.072803 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=443850
+[2026-02-22 18:34:01.906290300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3147848.67558
+[2026-02-22 18:38:24.610434800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3180842
+[2026-02-22 18:38:36.190193 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4225259
+[2026-02-22 18:39:23.134125600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6971972
+[2026-02-22 18:41:18.484231900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=940314
+[2026-02-22 18:43:07.529210400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12526896
+[2026-02-22 18:48:40.081698300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=271331.70591
+[2026-02-22 18:50:22.260328300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1153121
+[2026-02-22 18:51:35.282471700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3000000
+[2026-02-22 19:01:13.543660200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1280400
+[2026-02-22 19:01:13.588695100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1280409.73111
+[2026-02-22 19:01:59.600079300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7188627.44145
+[2026-02-22 19:11:26.376224 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=200945
+[2026-02-22 19:12:06.086148800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=642148386.78847
+[2026-02-22 19:20:59.274024500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=169033
+[2026-02-22 19:22:08.385655300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2496484
+[2026-02-22 19:25:40.856000900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=931294
+[2026-02-22 19:26:32.966111300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6898651
+[2026-02-22 19:26:46.697158300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16261674
+[2026-02-22 19:28:32.453973300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=27283831
+[2026-02-22 19:30:21.294539300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7089069
+[2026-02-22 19:31:57.755529800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2000000
+[2026-02-22 19:35:00.630597400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1714343
+[2026-02-22 19:35:28.542288700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3385207
+[2026-02-22 19:35:40.602319700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=84422484.14749
+[2026-02-22 19:37:31.528298500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 19:39:24.649278600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=591986.77393
+[2026-02-22 19:39:56.909411200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1504646.45134
+[2026-02-22 19:46:20.765123500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=15980504
+[2026-02-22 19:47:10.928251200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 19:48:47.458780400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=157228
+[2026-02-22 19:49:32.202808600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1459092
+[2026-02-22 19:51:13.909527200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17565716
+[2026-02-22 19:52:54.344744500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=113860
+[2026-02-22 19:53:29.983948700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=78613880
+[2026-02-22 19:56:03.190204800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1177343
+[2026-02-22 19:58:02.180082500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4071661.23779
+[2026-02-22 19:58:05.961131300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4861661.23779
+[2026-02-22 19:58:06.310460500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=26906961.23779
+[2026-02-22 19:58:06.359702200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=26907028.28509
+[2026-02-22 19:58:17.608881900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=28510292.28509
+[2026-02-22 19:58:27.639034600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=43243447.32764
+[2026-02-22 19:58:34.321574100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=44155355.97364
+[2026-02-22 19:59:21.363863500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=48547385.62091
+[2026-02-22 19:59:26.380483100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=150307556.69228
+[2026-02-22 20:00:11.842274100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1615672.66883
+[2026-02-22 20:00:15.420569500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1859784.01068
+[2026-02-22 20:00:40.498722600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2676328.40653
+[2026-02-22 20:00:41.494375100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17306553.48691
+[2026-02-22 20:00:57.001997700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=18694148.36438
+[2026-02-22 20:01:14.986583700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=141675564.93505
+[2026-02-22 20:01:17.843708 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=142856859.93505
+[2026-02-22 20:01:38.043667300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=145167059.93505
+[2026-02-22 20:01:38.485765400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=145167090.95815
+[2026-02-22 20:02:15.256142700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=10849773.17683
+[2026-02-22 20:02:17.035676600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12467582.17683
+[2026-02-22 20:02:33.233647200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12627582.17683
+[2026-02-22 20:02:44.195294 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=29721109.83347
+[2026-02-22 20:02:44.677237 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=285805591.01576
+[2026-02-22 20:02:45.291476500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=286726191.01576
+[2026-02-22 20:02:45.303343500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=315370691.01576
+[2026-02-22 20:02:45.464683800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=356058291.01576
+[2026-02-22 20:02:45.488412300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=357715265.63065
+[2026-02-22 20:02:45.506127100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=366808924.34907
+[2026-02-22 20:02:51.987927300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=499990442.07956
+[2026-02-22 20:02:51.990497400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=514967238.19553
+[2026-02-22 20:03:07.610889800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=49781200
+[2026-02-22 20:03:07.612387300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=98281200
+[2026-02-22 20:03:07.614213700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=146781200
+[2026-02-22 20:03:07.797530900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=158982500
+[2026-02-22 20:03:07.829291400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=158982511.92368
+[2026-02-22 20:03:16.387090 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=175635370.92368
+[2026-02-22 20:03:18.355616600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=179993970.92368
+[2026-02-22 20:03:18.367077200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=179994066.57585
+[2026-02-22 20:03:24.407794500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=213355479.57585
+[2026-02-22 20:03:25.047741100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=218285919.57585
+[2026-02-22 20:03:26.436177800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=219929399.57585
+[2026-02-22 20:03:33.099936100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=223257186.59749
+[2026-02-22 20:03:43.420394900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=271804572.2184
+[2026-02-22 20:03:49.171168300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=273788043.29278
+[2026-02-22 20:04:13.049614700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2106642.52333
+[2026-02-22 20:04:20.133809200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2266642.52333
+[2026-02-22 20:04:38.683480600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2426642.52333
+[2026-02-22 20:05:15.777204100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=374998551
+[2026-02-22 20:05:26.580871500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=375158551
+[2026-02-22 20:05:29.691576300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=443679099.47261
+[2026-02-22 20:05:33.779596500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=473513830.25687
+[2026-02-22 20:05:52.489100600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=480645021.11882
+[2026-02-22 20:05:55.602145500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=481049795.02459
+[2026-02-22 20:05:56.961072100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=482280633.44824
+[2026-02-22 20:05:57.185223900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=488292749.85777
+[2026-02-22 20:06:02.317665400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:06:07.526177200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=82693003.30033
+[2026-02-22 20:06:12.646893100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=85735587.6285
+[2026-02-22 20:06:23.596576900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=88906604.6285
+[2026-02-22 20:06:25.740437900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=105009286.64916
+[2026-02-22 20:06:47.932446600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=145666586.64916
+[2026-02-22 20:06:47.935619800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=194166586.64916
+[2026-02-22 20:06:56.195466300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=242666586.64916
+[2026-02-22 20:06:56.198391300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=291166586.64916
+[2026-02-22 20:06:56.219333700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=339666586.64916
+[2026-02-22 20:06:56.680035600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=351456046.67198
+[2026-02-22 20:07:01.471930 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=971973.55372
+[2026-02-22 20:07:03.687931900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1199726.77199
+[2026-02-22 20:07:05.229724700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=71292307.99118
+[2026-02-22 20:07:29.135526500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=410792307.99118
+[2026-02-22 20:07:29.137931300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=504082307.99118
+[2026-02-22 20:07:45.396972600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=504310061.20945
+[2026-02-22 20:08:01.384919100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=234800
+[2026-02-22 20:08:01.392112200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=234857.95086
+[2026-02-22 20:09:01.727162200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3710000
+[2026-02-22 20:09:02.438875600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=28367206.69015
+[2026-02-22 20:09:05.331557600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=28833518.48336
+[2026-02-22 20:09:07.718174200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=45117618.48336
+[2026-02-22 20:09:07.781711600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=45117625.45061
+[2026-02-22 20:09:11.890964300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=47969925.45061
+[2026-02-22 20:09:11.979301300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=47969974.4442
+[2026-02-22 20:09:12.339162700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=55390451.4442
+[2026-02-22 20:09:12.341735200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=59574621.4442
+[2026-02-22 20:09:12.380071900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=62574621.4442
+[2026-02-22 20:09:14.015564200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=70260288.8852
+[2026-02-22 20:09:18.204836400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=94949333.64311
+[2026-02-22 20:09:19.613489100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=312541819.55866
+[2026-02-22 20:09:20.285012 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=322373671.62096
+[2026-02-22 20:09:22.054697300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=344407781.64443
+[2026-02-22 20:09:35.897377100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=723076810.52025
+[2m2026-02-22 20:09:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order ONQYMJ-IACEX-Y2LN3L for SOLUSD: Trade TXGPJJ-NIQ5G-AVQ3UP not found for SOLUSD
+[2m2026-02-22 20:09:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OOL2DD-ZR53W-4DZWY3 for SOLUSD: Trade TEGGPK-35RHA-3HJH55 not found for SOLUSD
+[2m2026-02-22 20:09:39 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OFYR57-BJ7Y4-F26HB3 for SOLUSD: Trade TRFD7K-LCPKG-4RAM5F not found for SOLUSD
+[2m2026-02-22 20:09:40 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OEIBQR-NYKHM-VURN66 for SOLUSD: Trade TIS47Y-A2ZNT-TGSAHG not found for SOLUSD
+[2m2026-02-22 20:09:40 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order O4BUDZ-YNPJ2-UR5GYN for SOLUSD: Trade TMRC23-OUHIW-LYYGLG not found for SOLUSD
+[2m2026-02-22 20:09:40 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order ORG74K-UIH5I-NROWYU for SOLUSD: Trade TF3R5C-ASN6T-JC6T3T not found for SOLUSD
+[2026-02-22 20:09:49.086935200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=749100012.17412
+[2026-02-22 20:10:13.535728800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=192881.7187
+[2m2026-02-22 20:10:41 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order ON6IFF-KG65N-EWT7EF for SOLUSD: Trade TQR3JD-NYQ7F-DFZHKK not found for SOLUSD
+[2026-02-22 20:10:53.799699500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=67829281.7187
+[2026-02-22 20:10:53.825612200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=116329281.7187
+[2m2026-02-22 20:11:12 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order O2NHU2-4HX53-O7TBIA for SOLUSD: Trade T5SJS4-VI4HJ-VN2S2A not found for SOLUSD
+[2m2026-02-22 20:11:12 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OIMARF-NK6AD-ET6ZKL for SOLUSD: Trade TRTXW4-FREQ3-VNUYMG not found for SOLUSD
+[2m2026-02-22 20:11:13 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::monitor[0m[2m:[0m [2msrc\monitor.rs[0m[2m:[0m Failed to update remaining quantities after sell order OCVJDM-HLYHC-XDMU73 for SOLUSD: Trade TATAHT-3BY7B-QK5R7E not found for SOLUSD
+[2026-02-22 20:11:34.589706 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=708215297.45043
+[2026-02-22 20:12:22.334644100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6688963.21071
+[2026-02-22 20:12:25.873516800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=168816153.21071
+[2026-02-22 20:12:37.804680 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=169250284.13968
+[2026-02-22 20:12:45.622962700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=170622190.93848
+[2026-02-22 20:13:08.638651200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4049009
+[2026-02-22 20:13:10.154548800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6348957.08247
+[2026-02-22 20:13:11.215877800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7402405.16522
+[2026-02-22 20:13:41.781955 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9088284.97114
+[2026-02-22 20:13:52.324567900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=57588284.97114
+[2026-02-22 20:14:12.773985700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=289929.46212
+[2026-02-22 20:14:14.895472200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=579829.46212
+[2026-02-22 20:14:15.267585300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=579858.92424
+[2026-02-22 20:14:53.872919100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=49079858.92424
+[2026-02-22 20:14:53.929964900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=97579858.92424
+[2026-02-22 20:14:53.932461700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=146079858.92424
+[2026-02-22 20:14:53.942946100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=194579858.92424
+[2026-02-22 20:15:13.181432100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1085767.88935
+[2026-02-22 20:15:31.493435500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=242500067.88935
+[2026-02-22 20:15:31.514685300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=291000067.88935
+[2026-02-22 20:15:31.557811400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=339500067.88935
+[2026-02-22 20:15:31.609457400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=388000067.88935
+[2026-02-22 20:15:31.657193100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=436500067.88935
+[2026-02-22 20:15:31.660595100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=485000067.88935
+[2026-02-22 20:15:31.668181800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=533500067.88935
+[2026-02-22 20:15:31.818559100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=598870226.41198
+[2026-02-22 20:15:32.791296600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=614910905.41198
+[2026-02-22 20:15:39.629329 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=615159152.36331
+[2026-02-22 20:16:06.778286300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=971973.55372
+[2026-02-22 20:16:10.315797600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1706881.97793
+[2026-02-22 20:16:20.894961100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6356781.97793
+[2026-02-22 20:16:23.268999500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8031823.85398
+[2026-02-22 20:16:36.114458800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9704064.65666
+[2026-02-22 20:16:48.890392400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11377977.70013
+[2026-02-22 20:17:07.307980200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1230585.28428
+[2026-02-22 20:17:47.392848 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4160586.28428
+[2026-02-22 20:18:00.266862600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8167941.62794
+[2026-02-22 20:18:00.440809600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16335883.25588
+[2026-02-22 20:18:02.530682100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16877013.25588
+[2026-02-22 20:18:11.235920500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17037013.25588
+[2026-02-22 20:18:38.630999200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17197013.25588
+[2026-02-22 20:18:40.135786800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=17197086.64384
+[2026-02-22 20:19:00.627917400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:19:17.170099700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=84210420.16806
+[2026-02-22 20:19:17.320462 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=84373197.16806
+[2026-02-22 20:19:17.474044200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=149743355.69069
+[2026-02-22 20:19:17.579140300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=195955773.62457
+[2026-02-22 20:19:18.787010300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=211665705.62457
+[2026-02-22 20:19:21.097504200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=226508008.36021
+[2026-02-22 20:19:23.377330 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=373628008.36021
+[2026-02-22 20:19:23.380011300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=819823163.54469
+[2026-02-22 20:19:30.046038 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=819983163.54469
+[2026-02-22 20:19:45.516670800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=820143163.54469
+[2026-02-22 20:19:53.487165800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=931019490.36047
+[2026-02-22 20:19:56.079892100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=932572415.36047
+[2026-02-22 20:20:03.655285500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:20:13.086332600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=320000
+[2026-02-22 20:20:13.860460 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1058438.29268
+[2026-02-22 20:20:25.228408700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1218438.29268
+[2026-02-22 20:20:28.614039700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2847753.29268
+[2026-02-22 20:20:57.965810800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=84561559.0641
+[2026-02-22 20:21:49.276012400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40664292
+[2026-02-22 20:22:04.604717300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=639900867.43363
+[2026-02-22 20:22:36.247162100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=640162812.82729
+[2026-02-22 20:23:02.783536800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=32274462
+[2026-02-22 20:23:34.451858100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=39021167.85133
+[2026-02-22 20:23:37.948259500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=39135139.85133
+[2026-02-22 20:23:48.574528200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=50451736.85133
+[2026-02-22 20:23:58.575825300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=51273167.82776
+[2026-02-22 20:24:01.467304400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=84333895.44688
+[2026-02-22 20:24:01.485224600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=88983795.44688
+[2026-02-22 20:24:01.486113700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=137483795.44688
+[2026-02-22 20:24:01.574168200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=237361958.66777
+[2026-02-22 20:24:02.160575300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=238541442.66777
+[2026-02-22 20:24:04.450737800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=295715825.05863
+[2026-02-22 20:24:17.442851600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=295875825.05863
+[2026-02-22 20:24:40.766724500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=296035825.05863
+[2026-02-22 20:24:53.726821800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=316179503.37113
+[2026-02-22 20:25:49.089161 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=12219333.19258
+[2026-02-22 20:26:27.597352500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=242467
+[2026-02-22 20:27:03.670571200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3500000
+[2026-02-22 20:27:16.245865100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3660000
+[2026-02-22 20:27:40.226114800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3820000
+[2026-02-22 20:27:41.349050200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=52320000
+[2026-02-22 20:27:41.391103400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=62627300
+[2026-02-22 20:27:41.393513500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=100820000
+[2026-02-22 20:27:41.394673200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=149320000
+[2026-02-22 20:27:41.421757800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=197820000
+[2026-02-22 20:27:41.422993600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=246320000
+[2026-02-22 20:27:41.424845900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=256627300
+[2026-02-22 20:27:42.207732200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=256627379.01542
+[2026-02-22 20:27:42.840464300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=257015589.01542
+[2026-02-22 20:28:12.382732700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1342281.87919
+[2026-02-22 20:28:54.451906500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4755041.87919
+[2026-02-22 20:30:00.842614800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3367003.367
+[2026-02-22 20:30:29.769170100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11892879.82776
+[2026-02-22 20:31:58.632470100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1500000
+[2026-02-22 20:32:08.299744500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1478040.54054
+[2026-02-22 20:32:08.302048 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3092780.90905
+[2026-02-22 20:32:09.910394100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=492920280.91151
+[2026-02-22 20:32:32.928470600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=494600953.18042
+[2026-02-22 20:33:13.333107900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4155300
+[2026-02-22 20:33:13.503841900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4155311
+[2026-02-22 20:33:40.459822700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=10417278.61502
+[2026-02-22 20:34:38.570925400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1677852.34899
+[2026-02-22 20:34:51.273832400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8178006.34899
+[2026-02-22 20:36:03.455109900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=500000
+[2026-02-22 20:36:30.848169600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=660000
+[2026-02-22 20:37:21.260131600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=396392.61744
+[2026-02-22 20:37:39.131952500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=556392.61744
+[2026-02-22 20:37:50.821206300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=3588624.90751
+[2026-02-22 20:38:33.791557700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5869210
+[2026-02-22 20:39:18.294524900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=81059400
+[2026-02-22 20:39:18.297569700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=531429662.56059
+[2026-02-22 20:39:18.298689700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1110542754.11537
+[2026-02-22 20:39:18.302298100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1710542754.11537
+[2026-02-22 20:39:25.261122200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1712057789.11537
+[2026-02-22 20:39:50.985720900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1712217928.11537
+[2026-02-22 20:40:16.688035200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=40000000
+[2026-02-22 20:40:21.665566400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=43407961.22778
+[2026-02-22 20:40:53.591254 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=43589253.22778
+[2026-02-22 20:41:36.964844700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160407
+[2026-02-22 20:41:53.515950 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=438884
+[2026-02-22 20:42:15.751945900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:42:37.014177900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2927521
+[2026-02-22 20:43:48.500047400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16040679
+[2026-02-22 20:43:53.707480400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=32081358
+[2026-02-22 20:43:59.563763 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=35074283
+[2026-02-22 20:44:04.714827400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4812204
+[2026-02-22 20:44:12.848640 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16917539.56894
+[2026-02-22 20:45:08.428673 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:45:12.728601500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=469622
+[2026-02-22 20:45:17.628107100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=629622
+[2026-02-22 20:45:24.029467500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=49129622
+[2026-02-22 20:45:24.166536100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=194629622
+[2026-02-22 20:45:24.169298100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=243129622
+[2026-02-22 20:45:24.207803100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=340129622
+[2026-02-22 20:45:24.210024500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=388629622
+[2026-02-22 20:45:24.211299200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=437129622
+[2026-02-22 20:45:24.212507500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=485629622
+[2026-02-22 20:45:24.213599 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=534129622
+[2026-02-22 20:45:24.225974800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=582629622
+[2026-02-22 20:45:24.294909900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=679629622
+[2026-02-22 20:45:24.317226200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=728129622
+[2026-02-22 20:45:24.318483400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=776629622
+[2026-02-22 20:45:24.319718400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=825129622
+[2026-02-22 20:45:24.335515600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=877829068.082
+[2026-02-22 20:45:24.388479700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=921942225.867
+[2026-02-22 20:46:04.687069900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:46:10.780994700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4176887
+[2026-02-22 20:46:59.855762 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4336887
+[2026-02-22 20:47:26.359403300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:47:28.395636900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1638040.54054
+[2026-02-22 20:47:29.475953400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5833720.54054
+[2026-02-22 20:47:36.784136200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=89167053.87388
+[2026-02-22 20:47:38.001632900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=91030853.87388
+[2026-02-22 20:47:38.029951100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=110320453.87388
+[2026-02-22 20:47:38.033813100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=117598153.87388
+[2026-02-22 20:47:38.063437 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=117598163.57282
+[2026-02-22 20:47:39.212062900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=119461999.88139
+[2026-02-22 20:48:05.354468500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:48:11.974681100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1338623
+[2026-02-22 20:48:41.737158700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1498623
+[2026-02-22 20:49:31.946356700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16067548
+[2026-02-22 20:50:05.942491300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=23526541
+[2026-02-22 20:50:36.716296800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=23686541
+[2026-02-22 20:51:10.195360700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:51:42.169430900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=277440
+[2026-02-22 20:53:16.757641600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=162777
+[2026-02-22 20:53:44.709884900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4206162
+[2026-02-22 20:53:47.284704100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=11706162
+[2026-02-22 20:53:47.486480600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16406162
+[2026-02-22 20:53:57.354593700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16566162
+[2026-02-22 20:54:24.790894400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 20:55:13.943640100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=48915303
+[2026-02-22 20:57:02.547406300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=59007171.80438
+[2026-02-22 20:57:19.981030700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=61455997.80438
+[2026-02-22 20:57:25.332858200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=63804659.80438
+[2026-02-22 20:58:10.070527 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=22312072.43732
+[2026-02-22 20:58:17.617760500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=23921523.43732
+[2026-02-22 20:59:08.275794100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=4201680.67226
+[2026-02-22 20:59:42.322244 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=82601425.67226
+[2026-02-22 20:59:55.288812300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1082601425.67226
+[2026-02-22 21:00:22.264055800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=186700
+[2026-02-22 21:00:28.962637200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=431532.69727
+[2026-02-22 21:00:30.214509 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=16539824.69727
+[2026-02-22 21:01:49.472361400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=244900
+[2026-02-22 21:01:53.179365600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=244926.41299
+[2026-02-22 21:01:59.707800400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8377784.41299
+[2026-02-22 21:03:39.498076800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1492331
+[2026-02-22 21:07:16.231317600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7364094
+[2026-02-22 21:07:51.286223900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=8533305.40939
+[2026-02-22 21:08:05.605779300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=29394875
+[2026-02-22 21:08:37.051788400 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=38041585
+[2026-02-22 21:09:04.616139700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 21:10:40.090539200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=2930001
+[2026-02-22 21:11:58.470410500 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1018525
+[2026-02-22 21:12:21.365777700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=160000
+[2026-02-22 21:13:19.601733200 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=987010
+[2026-02-22 21:13:46.884835300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=24903941
+[2026-02-22 21:13:50.230675600 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=28242839.16361
+[2026-02-22 21:17:01.288300300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1327212.02003
+[2026-02-22 21:17:13.338406900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=68376844.12705
+[2026-02-22 21:17:27.003313300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=68538413.12705
+[2026-02-22 21:20:07.345922700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1675041.87605
+[2026-02-22 21:20:47.388021700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9467595.87605
+[2026-02-22 21:20:49.642883300 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=9627595.87605
+[2026-02-22 21:21:11.080367100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=6902943
+[2026-02-22 21:21:16.005857900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=7148530.11188
+[2026-02-22 21:23:13.655396100 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=5527545.90985
+[2026-02-22 21:25:04.994799800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=241949
+[2026-02-22 21:25:17.833825800 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=1401777
+[2026-02-22 21:25:35.261753900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=13965232
+[2026-02-22 21:25:35.988979900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=25966960
+[2026-02-22 21:27:59.040563700 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=652642.14046
+[2026-02-22 21:28:25.819298900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=326454.84949
+[2026-02-22 21:30:32.349503900 -05:00] Invalid OHLC for SHIBUSD: open=0, high=0, low=0, close=0, vol=25415273.12739
+[2m2026-02-22 21:31:20 -05:00[0m [31mERROR[0m [2mtrading_bot_rs::websocket[0m[2m:[0m [2msrc\websocket.rs[0m[2m:[0m Public WS error: IO error: An existing connection was forcibly closed by the remote host. (os error 10054)
+[2026-02-22 21:32:04.618123600 -05:00] Public subs not fully confirmed after 5 polls (ohlc: true, ticker: false)
