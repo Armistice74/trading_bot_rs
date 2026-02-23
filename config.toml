@@ -95,7 +95,7 @@ roc_down_threshold = { value = -1.0, description = "ROC percentage threshold bel
 
 fixed_stop_loss = { value = false, description = "Enable fixed stop-loss to sell when price falls below a tightening threshold relative to average buy price" }
 
-trailing_stop_loss = { value = true, description = "Enable trailing stop-loss to sell when price falls below a constant threshold relative to highest price since buy" }
+trailing_stop_loss = { value = false, description = "Enable trailing stop-loss to sell when price falls below a constant threshold relative to highest price since buy" }
 
 buy_post_only = { value = true, description = "Enable post-only limit orders for buys to prioritize maker fees." }
 

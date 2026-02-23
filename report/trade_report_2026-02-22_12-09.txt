@@ -698,3 +698,118 @@
         Filled Qty: 1.37440000
         Avg Fill Price: 8.31122
         Fees USD: 0.0228
+[2026-02-22 22:06:39] SELL ATTEMPTED: DOTUSD
+[2026-02-22 22:06:39] SELL COMPLETED: DOTUSD
+[2026-02-22 22:07:12] SELL FULL FILL: DOTUSD
+        Order ID: OTYCL3-DB6JM-ZHBJPP
+        Filled Qty: 22.64280000
+        Avg Fill Price: 1.25910
+        Fees USD: 0.0570
+[2026-02-22 22:07:25] SELL ATTEMPTED: DOTUSD
+[2026-02-22 22:07:25] SELL COMPLETED: DOTUSD
+[2026-02-22 22:08:40] SELL CANCELLED (PARTIAL): DOTUSD
+        Order ID: ORRARL-3JFCY-VWB7ZV
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 22:11:37] BUY FULL FILL: SOLUSD
+        Order ID: OKIYDI-JCRVZ-72G43N
+        Filled Qty: 0.15400000
+        Avg Fill Price: 77.86000
+        Fees USD: 0.0239
+[2026-02-22 23:39:03] SELL ATTEMPTED: INJUSD
+[2026-02-22 23:39:03] SELL COMPLETED: INJUSD
+[2026-02-22 23:40:57] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OESJZU-WQIOJ-LZZZIK
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:40:57] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OIFZUQ-7HG6F-YUTW6W
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:40:58] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: ONFPKL-K77QC-Y7W2GA
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:40:58] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OGVQWC-SXYJR-4G5J62
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:41:05] SELL ATTEMPTED: INJUSD
+[2026-02-22 23:41:05] SELL CANCELLED: INJUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-22 23:42:59] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: OTKDKB-5BMTK-FNKUR3
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:42:59] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: O52X7N-3UD5K-MUAAMC
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:42:59] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: O7EE6H-WTS54-ZLUEXD
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:42:59] SELL CANCELLED (PARTIAL): INJUSD
+        Order ID: ONM5UY-WS6I2-EXKF2G
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-22 23:43:06] SELL ATTEMPTED: INJUSD
+[2026-02-22 23:43:06] SELL COMPLETED: INJUSD
+[2026-02-22 23:44:50] SELL FULL FILL: INJUSD
+        Order ID: O4VZMN-T6LWE-47USIT
+        Filled Qty: 55.56370000
+        Avg Fill Price: 3.35300
+        Fees USD: 0.3726
+[2026-02-22 23:44:50] SELL FULL FILL: INJUSD
+        Order ID: O62USV-PDMT7-QOEUSL
+        Filled Qty: 44.45680000
+        Avg Fill Price: 3.35300
+        Fees USD: 0.2981
+[2026-02-22 23:44:50] SELL FULL FILL: INJUSD
+        Order ID: OYZWY6-OV6DU-RLMT3C
+        Filled Qty: 2.98970000
+        Avg Fill Price: 3.35300
+        Fees USD: 0.0200
+[2026-02-22 23:44:50] SELL FULL FILL: INJUSD
+        Order ID: OVLQX3-YUO6H-HDPYEI
+        Filled Qty: 35.77090000
+        Avg Fill Price: 3.35300
+        Fees USD: 0.2398
+[2026-02-22 23:55:32] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-22 23:55:31
+    Runtime: 11h 45m 55s
+    Bot Trade Volume (Run Total USD): 0
+    Final free USD: 512.3900
+    Free USD change: -481.5835
+    Holdings value: 420.3701
+    Total portfolio value: 932.7601
+    Total value change: -61.2133
+    
+    Portfolio Positions:
+      SOLUSD: 0.26866270 (value 20.7783 USD)
+      LINKUSD: 7.48350000 (value 61.3844 USD)
+      INJUSD: 66.23337690 (value 223.6701 USD)
+      ATOMUSD: 49.68 (value 108.5011 USD)
+      DOTUSD: 4.83431736 (value 6.0361 USD)
+    Buys: 77 attempted, 38 filled
+    Sells: 41 attempted, 22 filled
+    Cancels: 136
+    
+    Final Balances:
+      ATOM: 49.68000000
+      DOT: 4.83431736
+      INJ: 92.91729249
+      LINK: 7.48350000
+      PEPE: 38461.68000000
+      SOL: 0.26866270
+      USDG: 0.01958385
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 512.39000000
+    
+    Open Orders:
+      OPYRJA-C36F6-XVF7YC: INJUSD sell 26.68391559 @ 4.000 (status: open) opened: 2026-02-21 21:50:34
+    DB realized PL: -52.8893
+    Kraken approx PL (free USD change): -481.5835
+    PL difference (DB - Kraken): 428.6941
+    
