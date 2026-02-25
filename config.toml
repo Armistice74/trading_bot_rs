@@ -5,9 +5,9 @@ key = { value = "OhvP/6XEFA7VxLfckSyD9xuo2lqaHRdtWaNKePwbiADXC5o6T15N9wF2", desc
 secret = { value = "uL9v1ku5jfh/f/EY3e2O/WV9hWaCaYEILxDziP/j2XDnzxWSMamXjNgP9gLcGPkyCCADuZqCxJhW2/zc3IaaDw==", description = "Kraken API Secret" }
 
 [portfolio]
-api_pairs = { value = ["SOLUSD", "SHIBUSD", "LINKUSD", "INJUSD", "ATOMUSD", "DOTUSD"], description = "List of trading pairs for API (e.g., SOLUSD, XDGUSD, XRPUSD)" }
+api_pairs = { value = ["SOLUSD", "SHIBUSD", "LINKUSD", "XDGUSD", "XRPUSD", "DOTUSD"], description = "List of trading pairs for API (e.g., SOLUSD, XDGUSD, XRPUSD)" }
 
-ws_pairs = { value = ["SOL/USD", "SHIB/USD", "LINK/USD", "INJ/USD", "ATOM/USD", "DOT/USD"], description = "List of trading pairs for WebSocket (e.g., SOL/USD, XDG/USD)" }
+ws_pairs = { value = ["SOL/USD", "SHIB/USD", "LINK/USD", "XDG/USD", "XRP/USD", "DOT/USD"], description = "List of trading pairs for WebSocket (e.g., SOL/USD, XDG/USD)" }
 
 initial_investment = { value = 2750.0, description = "Initial USD investment, not to be used by bot. Does not include $30 Grok subscription since April 2025." }
 
@@ -107,6 +107,16 @@ buy_price = { value = "close_price * (1 - price_modifier)", description = "Formu
 
 sell_price = { value = "close_price * (1 + price_modifier)", description = "Formula to calculate sell order limit price" }
 
+[delays]
+
+monitor_loop_delay = { value = 10.0, description = "Delay in seconds between order monitoring loop iterations" }
+
+monitor_pair_delay = { value = 1.0, description = "Delay in seconds between monitoring different pairs" }
+
+monitor_partial_delay = { value = 10.0, description = "Delay in seconds to poll for partial fills after order closes with vol_exec < vol" }
+
+poll_interval = { value = 5.0, description = "Seconds to poll for order completion when skipping logic" }
+
 [symbol_info."SOLUSD"]
 quantityPrecision = 4
 pricePrecision = 2
@@ -143,12 +153,14 @@ pricePrecision = 4
 balanceKey = "DOT"
 lotSize = { minQty = 0.6, maxQty = 100000.0, stepSize = 0.0001 }
 
-[delays]
+[symbol_info."XDGUSD"]
+quantityPrecision = 4
+pricePrecision = 7
+balanceKey = "XDG"
+lotSize = { minQty = 13.0, maxQty = 100000000.0, stepSize = 0.0001 }
 
-monitor_loop_delay = { value = 10.0, description = "Delay in seconds between order monitoring loop iterations" }
-
-monitor_pair_delay = { value = 1.0, description = "Delay in seconds between monitoring different pairs" }
-
-monitor_partial_delay = { value = 10.0, description = "Delay in seconds to poll for partial fills after order closes with vol_exec < vol" }
-
-poll_interval = { value = 5.0, description = "Seconds to poll for order completion when skipping logic" }
+[symbol_info."XRPUSD"]
+quantityPrecision = 4
+pricePrecision = 5
+balanceKey = "XRP"
+lotSize = { minQty = 1.65, maxQty = 100000.0, stepSize = 0.0001 }

@@ -1,0 +1,169 @@
+[2026-02-23 09:50:28] BOT RUN STARTED at 2026-02-23 09:50:28
+    
+[2026-02-23 09:50:29] INITIAL SNAPSHOT
+    Initial free USD: 503.7497
+    
+    Balances:
+      ATOM: 49.68000000
+      DOT: 4.83431736
+      INJ: 92.91729249
+      LINK: 7.48360006
+      PEPE: 38461.68000000
+      SOL: 0.42863539
+      USDG: 0.01958385
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 503.74970000
+    
+    Open Orders:
+      O5KMUC-NANL4-4ZM2EG: ATOMUSD sell 49.68000000 @ 2.5000 (status: open) opened: 2026-02-23 00:25:49
+      O6F5A4-23WIR-UX5YUW: DOTUSD sell 4.83431736 @ 1.5000 (status: open) opened: 2026-02-23 00:23:37
+      O7FH5T-3WJVC-KPXNXK: INJUSD sell 92.91729249 @ 4.000 (status: open) opened: 2026-02-23 00:23:02
+      ODLUX3-OAPKY-474QJZ: LINKUSD sell 7.48350000 @ 9.10000 (status: open) opened: 2026-02-23 00:26:22
+      ONVCME-VQAUK-CAIJZV: SOLUSD sell 0.26866270 @ 85.00 (status: open) opened: 2026-02-23 00:24:22
+    
+[2026-02-23 09:50:29] 
+    INITIAL PORTFOLIO POSITIONS
+    Holdings value: 0.0000
+    Total portfolio value: 503.7497
+    
+[2026-02-23 09:57:04] BUY CANCELLED (PARTIAL): SOLUSD
+        Order ID: O3MENU-RY5LI-MLQ5P2
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 09:57:04] BUY CANCELLED: SOLUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 09:58:29] BUY FULL FILL: DOTUSD
+        Order ID: OX5HG6-6NYYT-5S27AU
+        Filled Qty: 77.77510000
+        Avg Fill Price: 1.29510
+        Fees USD: 0.2014
+[2026-02-23 10:01:28] BUY CANCELLED (PARTIAL): SOLUSD
+        Order ID: OJ2R3D-SB4T7-Y7YXBG
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:01:28] BUY CANCELLED: SOLUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:01:55] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OAG4UM-PIE5Y-QMUHLX
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:01:55] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:02:35] BUY CANCELLED (PARTIAL): DOTUSD
+        Order ID: OWGNMF-JCFHC-BOND3A
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:02:35] BUY CANCELLED: DOTUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:03:26] BUY FULL FILL: INJUSD
+        Order ID: OSFL3D-3M62V-VUSCXP
+        Filled Qty: 23.17730000
+        Avg Fill Price: 3.47500
+        Fees USD: 0.1610
+[2026-02-23 10:03:57] BUY FULL FILL: SOLUSD
+        Order ID: O26LRL-QVPGG-TXV3CW
+        Filled Qty: 0.80550000
+        Avg Fill Price: 79.96000
+        Fees USD: 0.1288
+[2026-02-23 10:04:00] BUY FULL FILL: LINKUSD
+        Order ID: OQMJKH-FWD5F-QJSUEE
+        Filled Qty: 7.63460000
+        Avg Fill Price: 8.43629
+        Fees USD: 0.1288
+[2026-02-23 10:04:14] BUY FULL FILL: INJUSD
+        Order ID: OB2GMN-OFJNM-UY4ZDA
+        Filled Qty: 11.14260000
+        Avg Fill Price: 3.46400
+        Fees USD: 0.0772
+[2026-02-23 10:04:19] BUY FULL FILL: ATOMUSD
+        Order ID: OYPBGH-HP4MC-E24FOO
+        Filled Qty: 17.86000000
+        Avg Fill Price: 2.16000
+        Fees USD: 0.0771
+[2026-02-23 10:04:32] BUY FULL FILL: SOLUSD
+        Order ID: OCVZXD-5XQIB-4MWKPY
+        Filled Qty: 0.48330000
+        Avg Fill Price: 79.86000
+        Fees USD: 0.0771
+[2026-02-23 10:05:13] BUY FULL FILL: INJUSD
+        Order ID: OGSFEW-OVMTG-MT76T5
+        Filled Qty: 4.45330000
+        Avg Fill Price: 3.45900
+        Fees USD: 0.0308
+[2026-02-23 10:05:29] BUY CANCELLED (PARTIAL): LINKUSD
+        Order ID: OY3IW7-2GGUL-2YJFHY
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:05:29] BUY CANCELLED: LINKUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:06:01] BUY CANCELLED (PARTIAL): DOTUSD
+        Order ID: OMTURG-BKMQG-7OXHN3
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:06:01] BUY CANCELLED: DOTUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:06:30] BUY CANCELLED (PARTIAL): ATOMUSD
+        Order ID: OKROV6-RRAAK-UG2OSM
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:06:30] BUY CANCELLED: ATOMUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:17:46] SELL ATTEMPTED: LINKUSD
+[2026-02-23 10:19:10] SELL CANCELLED (PARTIAL): LINKUSD
+        Order ID: ONG5U5-JQIXY-CDCZBN
+        Filled Qty: 0.00000000
+        Reason: stagnant_accumulation
+[2026-02-23 10:19:10] SELL CANCELLED: LINKUSD reason=stagnant_accumulation filled=0.00000000
+[2026-02-23 10:51:00] HOURLY SUMMARY at 2026-02-23 10:50:59
+    Free USD: 36.3715
+    Holdings value: 463.1559
+    Total portfolio value: 499.5274
+    Portfolio Positions:
+      SOLUSD: 1.2888 (value 102.5884 USD)
+      LINKUSD: 9.46650000 (value 79.9793 USD)
+      INJUSD: 38.7732 (value 132.6043 USD)
+      ATOMUSD: 17.86 (value 38.4972 USD)
+      DOTUSD: 85.37630860 (value 109.4865 USD)
+    Buys: 23 attempted, 16 filled
+    Sells: 1 attempted, 0 filled
+    Cancels: 16
+    Bot Trade Volume (Run Total USD): 466.44531245834000000000000000
+    Avg Fee % (Last Hour): 0.18
+[2026-02-23 22:36:17] FINAL SNAPSHOT
+    BOT RUN SHUTDOWN at 2026-02-23 22:36:17
+    Runtime: 12h 45m 49s
+    Bot Trade Volume (Run Total USD): 0
+    Final free USD: 36.3715
+    Free USD change: -467.3782
+    Holdings value: 447.1480
+    Total portfolio value: 483.5195
+    Total value change: -20.2301
+    
+    Portfolio Positions:
+      SOLUSD: 1.2888 (value 99.0442 USD)
+      LINKUSD: 9.46650000 (value 77.5974 USD)
+      INJUSD: 38.7732 (value 125.7027 USD)
+      ATOMUSD: 17.86 (value 37.5452 USD)
+      DOTUSD: 85.37630860 (value 107.2582 USD)
+    Buys: 23 attempted, 16 filled
+    Sells: 1 attempted, 0 filled
+    Cancels: 16
+    
+    Final Balances:
+      ATOM: 67.54000000
+      DOT: 90.21062596
+      INJ: 131.69049249
+      LINK: 16.95010006
+      PEPE: 38461.68000000
+      SOL: 1.71743539
+      USDG: 0.01958385
+      XETH: 0.00000000
+      XXBT: 0.00000000
+      XXDG: 8952.75541175
+      ZUSD: 36.37150000
+    
+    Open Orders:
+      O5KMUC-NANL4-4ZM2EG: ATOMUSD sell 49.68000000 @ 2.5000 (status: open) opened: 2026-02-23 00:25:49
+      O6F5A4-23WIR-UX5YUW: DOTUSD sell 4.83431736 @ 1.5000 (status: open) opened: 2026-02-23 00:23:37
+      O7FH5T-3WJVC-KPXNXK: INJUSD sell 92.91729249 @ 4.000 (status: open) opened: 2026-02-23 00:23:02
+      ODLUX3-OAPKY-474QJZ: LINKUSD sell 7.48350000 @ 9.10000 (status: open) opened: 2026-02-23 00:26:22
+      ONVCME-VQAUK-CAIJZV: SOLUSD sell 0.26866270 @ 85.00 (status: open) opened: 2026-02-23 00:24:22
+    DB realized PL: -0.9328
+    Kraken approx PL (free USD change): -467.3782
+    PL difference (DB - Kraken): 466.4453
+    
