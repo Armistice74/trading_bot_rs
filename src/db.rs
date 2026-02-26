@@ -82,6 +82,7 @@ pub async fn init_db(config: &Config) -> Result<()> {
                 last_updated TEXT,
                 total_fees NUMERIC(38,18),
                 total_pl NUMERIC(38,18),
+                total_volume NUMERIC(38,18),
                 highest_price_since_buy NUMERIC(38,18),
                 last_synced TEXT
             )",
@@ -174,7 +175,7 @@ pub async fn update_position(
             .context("Transaction error")?;
 
         // Use consistent INSERT ... ON CONFLICT logic for all pairs including USD
-        let query = "INSERT INTO positions (pair, total_usd, total_quantity, usd_balance, last_updated, total_fees, total_pl, highest_price_since_buy, last_synced) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) ON CONFLICT (pair) DO UPDATE SET total_usd = EXCLUDED.total_usd, total_quantity = EXCLUDED.total_quantity, usd_balance = EXCLUDED.usd_balance, last_updated = EXCLUDED.last_updated, total_fees = EXCLUDED.total_fees, total_pl = EXCLUDED.total_pl, highest_price_since_buy = EXCLUDED.highest_price_since_buy, last_synced = EXCLUDED.last_synced";
+        let query = "INSERT INTO positions (pair, total_usd, total_quantity, usd_balance, last_updated, total_fees, total_pl, total_volume, highest_price_since_buy, last_synced) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) ON CONFLICT (pair) DO UPDATE SET total_usd = EXCLUDED.total_usd, total_quantity = EXCLUDED.total_quantity, usd_balance = EXCLUDED.usd_balance, last_updated = EXCLUDED.last_updated, total_fees = EXCLUDED.total_fees, total_pl = EXCLUDED.total_pl, total_volume = EXCLUDED.total_volume, highest_price_since_buy = EXCLUDED.highest_price_since_buy, last_synced = EXCLUDED.last_synced";
 
         // Log query parameters for debugging
         info!("DB: Updating position for {} - total_usd={}, total_quantity={}, usd_balance={}, is_buy={}", 
@@ -482,6 +483,7 @@ pub async fn get_all_positions(
                         last_updated: row.get("last_updated"),
                         total_fees: row.get("total_fees"),
                         total_pl: row.get("total_pl"),
+                        total_volume: row.get("total_volume"),
                         highest_price_since_buy: row.get("highest_price_since_buy"),
                         last_synced: row.get("last_synced"),
                     })
@@ -957,7 +959,7 @@ pub async fn export_positions_to_csv(pool: &deadpool_postgres::Pool) -> Result<(
 
     wtr.write_record(&[
         "pair", "total_usd", "total_quantity", "usd_balance", "last_updated",
-        "total_fees", "total_pl", "highest_price_since_buy", "last_synced"
+        "total_fees", "total_pl", "total_volume", "highest_price_since_buy", "last_synced"
     ])?;
 
     let client = pool.get().await?;
@@ -974,12 +976,13 @@ pub async fn export_positions_to_csv(pool: &deadpool_postgres::Pool) -> Result<(
         let last_updated: Option<String> = row.get(4);
         let total_fees: Decimal = row.get(5);
         let total_pl: Decimal = row.get(6);
-        let highest_price_since_buy: Option<Decimal> = row.get(7);
-        let last_synced: Option<String> = row.get(8);
+        let total_volume: Decimal = row.get(7);
+        let highest_price_since_buy: Option<Decimal> = row.get(8);
+        let last_synced: Option<String> = row.get(9);
 
         wtr.serialize((
             pair, total_usd, total_quantity, usd_balance, last_updated,
-            total_fees, total_pl, highest_price_since_buy, last_synced
+            total_fees, total_pl, total_volume, highest_price_since_buy, last_synced
         ))?;
     }
     wtr.flush()?;

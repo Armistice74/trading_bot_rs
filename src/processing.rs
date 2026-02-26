@@ -187,6 +187,7 @@ pub mod processing {
         let fees = trade.fees;
         let notional = amount * price;
         let fees_usd = fees.round_dp(8);
+        let delta_volume = (amount * price).round_dp(8);
         trade.fee_percentage = if notional > Decimal::ZERO {
             (fees_usd / notional * Decimal::from(100)).round_dp(2)
         } else {
@@ -233,6 +234,7 @@ pub mod processing {
                 last_updated: get_current_time().format("%Y-%m-%d %H:%M:%S").to_string(),
                 total_fees,
                 total_pl,
+                total_volume: existing_position.total_volume + delta_volume,
                 highest_price_since_buy: if remaining_qty_total > Decimal::ZERO {
                     existing_position.highest_price_since_buy
                 } else {
@@ -268,6 +270,7 @@ pub mod processing {
                 last_updated: get_current_time().format("%Y-%m-%d %H:%M:%S").to_string(),
                 total_fees: existing_position.total_fees,
                 total_pl: existing_position.total_pl - fees_usd,
+                total_volume: existing_position.total_volume + delta_volume,
                 highest_price_since_buy: existing_position.highest_price_since_buy.max(price),
                 last_synced: chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string(),
             }
@@ -280,6 +283,11 @@ pub mod processing {
                 "Failed to update position in post_process_trade for {}: {}",
                 pair, e
             );
+        }
+        let mut usd_position = state_manager.get_position("USD".to_string()).await?;
+        usd_position.total_volume += delta_volume;
+        if let Err(e) = state_manager.update_positions("USD".to_string(), usd_position, false).await {
+            error!("Failed to update USD total_volume in post_process_trade: {}", e);
         }
         let usd_delta = if trade.trade_type == "buy" {
             -(amount * price + fees_usd)

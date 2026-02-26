@@ -24,6 +24,8 @@ use tokio::time::Instant;
 use crate::statemanager::OrderStatus;
 use std::sync::atomic::{AtomicU64, Ordering};
 use crate::utils::{report_log, report_cancel, report_order_attempt, report_order_partial, report_order_full};
+use crate::statemanager::PriceData;
+use crate::utils::report_order_failed;
 
 // Monitor Function
 
@@ -287,21 +289,12 @@ pub async fn monitor_order(
                         loop {
                             if iteration >= max_iterations || overall_start.elapsed() > overall_timeout {
                                 warn!("Accumulation exceeded limits for {} (iter={}, time={:?}), escalating to cancel", order_id, iteration, overall_start.elapsed());
-                                escalate_to_cancel(
-                                    client,
-                                    symbol,
-                                    order_id,
-                                    pair_item,
-                                    state_manager.clone(),
-                                    report_path.clone(),
-                                    cancels.clone(),
-                                    trade_type,
-                                    executed_qty_total,
-                                    "stagnant_accumulation",
-                                ).await;
-                                state_manager
-                                    .remove_open_order(pair_item.to_string(), order_id.clone())
-                                    .await?;
+                                let price_data = state_manager.get_price(pair_item.to_string()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+                                let current_close = price_data.close_price;
+                                let current_bid = price_data.bid_price;
+                                let current_ask = price_data.ask_price;
+                                let _ = report_cancel(&report_path, trade_type, pair_item, order_id, executed_qty_total, "no_fill_progress", Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price), trade_type);
+                                escalate_to_cancel(client, symbol, order_id, pair_item, state_manager.clone(), report_path.clone(), cancels.clone(), trade_type, executed_qty_total, "no_fill_progress", current_close, current_bid, current_ask, limit_price).await;
                                 let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Cancelled {
                                     filled_qty: Decimal::ZERO,
                                     reason: "stagnant_accumulation".to_string(),
@@ -357,6 +350,10 @@ pub async fn monitor_order(
                                     let db_trades = state_manager.get_trades_for_order(order_id.clone(), pair_item.clone(), client.startup_time()).await.unwrap_or(vec![]);
                                     trades.extend(db_trades.iter().filter(|t| !trades.contains(t)).cloned().collect::<Vec<_>>());
                                     if trades.len() == prev_trades_len {
+                                        let price_data = state_manager.get_price(pair_item.to_string()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+                                        let current_close = price_data.close_price;
+                                        let current_bid = price_data.bid_price;
+                                        let current_ask = price_data.ask_price;
                                         escalate_to_cancel(
                                             client,
                                             symbol,
@@ -367,15 +364,16 @@ pub async fn monitor_order(
                                             cancels.clone(),
                                             trade_type,
                                             executed_qty_total,
-                                            "stagnant_accumulation",
+                                            "no_fill_progress",
+                                            current_close,
+                                            current_bid,
+                                            current_ask,
+                                            limit_price,
                                         ).await;
                                         state_manager
                                             .remove_open_order(pair_item.to_string(), order_id.clone())
                                             .await?;
-                                        let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Cancelled {
-                                            filled_qty: Decimal::ZERO,
-                                            reason: "stagnant_accumulation".to_string(),
-                                        }).await;
+                                        let _ = state_manager.send_completion(pair_item.clone(), OrderComplete::Cancelled { filled_qty: Decimal::ZERO, reason: "no_fill_progress".to_string(), }).await;
                                         clear_monitoring_flag(&state_manager, &target_order_id).await;
                                         return Ok((
                                             filled,
@@ -536,17 +534,23 @@ pub async fn monitor_order(
                         };
                         trades.extend(final_trades.clone());
 
+                        let cancel_reason = if should_check { "adverse_price_move" } else { "timeout" };
+
+                        let price_data = state_manager.get_price(pair_item.to_string()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+                        let current_close = price_data.close_price;
+                        let current_bid = price_data.bid_price;
+                        let current_ask = price_data.ask_price;
+
                         match client.cancel_order(symbol, order_id).await {
                             Ok(_) => {
                                 info!("Order {} for {} canceled successfully", order_id, pair_item);
-                                let reason = if should_check { "adverse_price_move" } else { "timeout" };
-                                let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
+                                let _ = report_cancel(&report_path, trade_type, pair_item, order_id, executed_qty_total, cancel_reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price), trade_type);
                                 cancels.fetch_add(1, Ordering::Relaxed);
                                 let _ = state_manager.send_completion(
                                     pair_item.clone(),
                                     OrderComplete::Cancelled {
                                         filled_qty: executed_qty_total,
-                                        reason: reason.to_string(),
+                                        reason: cancel_reason.to_string(),
                                     },
                                 ).await;
                             }
@@ -689,17 +693,21 @@ async fn escalate_to_cancel(
     trade_type: &str,
     executed_qty_total: Decimal,
     reason: &str,
+    current_close: Decimal,
+    current_bid: Decimal,
+    current_ask: Decimal,
+    limit_price: Decimal,
 ) {
     match client.cancel_order(symbol, order_id).await {
         Ok(_) => {
             info!("Escalated cancel for order {} on {}", order_id, pair_item);
-            let _ = report_log(&report_path, &format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", trade_type.to_uppercase(), pair_item, order_id, executed_qty_total, reason));
+            let _ = report_cancel(&report_path, trade_type, pair_item, order_id, executed_qty_total, reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price), trade_type);
             cancels.fetch_add(1, Ordering::Relaxed);
             let _ = state_manager.send_completion(
                 pair_item.to_string(),
                 OrderComplete::Cancelled {
-                    filled_qty: Decimal::ZERO,
-                    reason: "stagnant_accumulation".to_string(),
+                    filled_qty: executed_qty_total,
+                    reason: reason.to_string(),
                 },
             ).await;
         }

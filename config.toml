@@ -13,9 +13,9 @@ initial_investment = { value = 2750.0, description = "Initial USD investment, no
 
 [trading_logic]
 
-dip_percentage = { value = 0.5, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
+dip_percentage = { value = 0.4, description = "Percentage dip below the highest price in period_minutes to trigger a buy. Default 0.5" }
 
-profit_target = { value = 0.7, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
+profit_target = { value = 0.58, description = "Initial percentage profit target for selling above average buy price Default 0.75" }
 
 period_minutes = { value = 20, description = "Lookback period in minutes for calculating highest price" }
 
@@ -27,7 +27,7 @@ loop_delay_seconds = { value = 15.0, description = "Delay in seconds between tra
 
 profit_decay_period = { value = 30, description = "Time constant (minutes) for exponential profit target decay to reach take_profit_min" }
 
-take_profit_min = { value = 0.45, description = "Minimum profit target percentage for exponential decay and early profit sells triggered by contraction or stagnation. Default 0.5" }
+take_profit_min = { value = 0.33, description = "Minimum profit target percentage for exponential decay and early profit sells triggered by contraction or stagnation. Default 0.5" }
 
 min_notional = { value = 10.0, description = "Minimum trade value in USD to meet Kraken's requirements" }
 

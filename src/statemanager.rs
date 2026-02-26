@@ -46,6 +46,7 @@ pub struct Position {
     pub last_updated: String,
     pub total_fees: Decimal,
     pub total_pl: Decimal,
+    pub total_volume: Decimal,
     pub highest_price_since_buy: Decimal,
     pub last_synced: String,
 }
@@ -60,6 +61,7 @@ impl Position {
             last_updated: String::new(),
             total_fees: Decimal::ZERO,
             total_pl: Decimal::ZERO,
+            total_volume: Decimal::ZERO,
             highest_price_since_buy: Decimal::ZERO,
             last_synced: String::new(),
         }

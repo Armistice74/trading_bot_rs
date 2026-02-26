@@ -28,6 +28,7 @@ use tokio::sync::mpsc;
 use tokio::sync::broadcast;
 use crate::utils::{report_log, report_cancel};
 use std::sync::atomic::{AtomicU64, Ordering};
+use crate::utils::report_order_failed;
 
 // Trading Logic
 
@@ -624,9 +625,9 @@ pub mod trading_logic {
         state_manager: Arc<StateManager>,
         shutdown_tx: broadcast::Sender<()>,
         report_path: Arc<String>,
-            cancels: Arc<AtomicU64>,
-        ) -> Result<
-            (
+        cancels: Arc<AtomicU64>,
+    ) -> Result<
+        (
             Option<String>,
             Decimal,
             Decimal,
@@ -740,6 +741,18 @@ pub mod trading_logic {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
                     }
                     Err(e) => {
+                        let price_data = state_manager_clone.get_price(pair_clone.clone()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+                        let current_close = price_data.close_price;
+                        let current_bid = price_data.bid_price;
+                        let current_ask = price_data.ask_price;
+                        let failure_reason = if e.to_string().contains("post only") {
+                            "post_only_violation"
+                        } else if e.to_string().contains("insufficient funds") {
+                            "insufficient_funds"
+                        } else {
+                            "api_error"
+                        };
+                        let _ = report_order_failed(&report_path, "buy", &pair_clone, failure_reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price));
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Error(Arc::new(e))).await;
                     }
                 }
@@ -757,6 +770,12 @@ pub mod trading_logic {
                 Decimal::ZERO,
             ))
         } else {
+            let price_data = state_manager.get_price(pair.to_string()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+            let current_close = price_data.close_price;
+            let current_bid = price_data.bid_price;
+            let current_ask = price_data.ask_price;
+            let failure_reason = "actor_no_order_id";
+            let _ = report_order_failed(&report_path, "buy", pair, failure_reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price));
             warn!("ExecuteBuy Actor returned no order_id for {}", pair);
             Ok((
                 None,
@@ -786,9 +805,9 @@ pub mod trading_logic {
         total_buy_qty: Decimal,
         shutdown_tx: broadcast::Sender<()>,
         report_path: Arc<String>,
-            cancels: Arc<AtomicU64>,
-        ) -> Result<
-            Option<(
+        cancels: Arc<AtomicU64>,
+    ) -> Result<
+        Option<(
             String,
             Decimal,
             Decimal,
@@ -854,7 +873,6 @@ pub mod trading_logic {
                 reply: tx,
             })
             .await?;
-        // In execute_sell_trade, replace the spawn block with:
         let order_id_opt = rx.await?;
         if let Some(order_id) = order_id_opt {
             info!("Triggered sell actor for order {} on {}", order_id, pair);
@@ -891,6 +909,18 @@ pub mod trading_logic {
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Success(filled)).await;
                     }
                     Err(e) => {
+                        let price_data = state_manager_clone.get_price(pair_clone.clone()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+                        let current_close = price_data.close_price;
+                        let current_bid = price_data.bid_price;
+                        let current_ask = price_data.ask_price;
+                        let failure_reason = if e.to_string().contains("post only") {
+                            "post_only_violation"
+                        } else if e.to_string().contains("insufficient funds") {
+                            "insufficient_funds"
+                        } else {
+                            "api_error"
+                        };
+                        let _ = report_order_failed(&report_path, "sell", &pair_clone, failure_reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price));
                         let _ = state_manager_clone.send_completion(pair_clone, OrderComplete::Error(Arc::new(e))).await;
                     }
                 }
@@ -909,6 +939,12 @@ pub mod trading_logic {
                 total_buy_qty,
             )))
         } else {
+            let price_data = state_manager.get_price(pair.clone()).await.unwrap_or(PriceData::new(Decimal::ZERO, Decimal::ZERO, Decimal::ZERO));
+            let current_close = price_data.close_price;
+            let current_bid = price_data.bid_price;
+            let current_ask = price_data.ask_price;
+            let failure_reason = "actor_no_order_id";
+            let _ = report_order_failed(&report_path, "sell", &pair, failure_reason, Some(current_close), Some(current_bid), Some(current_ask), Some(limit_price));
             warn!("ExecuteSell Actor returned no order_id for {}", pair);
             Ok(None)
         }

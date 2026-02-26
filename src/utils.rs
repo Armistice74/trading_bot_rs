@@ -51,18 +51,56 @@ pub fn report_order_success(report_path: &str, pair: &str, order_id: &str) {
     let _ = report_log(report_path, &msg);
 }
 
-pub fn report_order_failed(report_path: &str, pair: &str, reason: &str) {
-    let msg = format!("ORDER FAILED: {} reason={}", pair, reason);
-    let _ = report_log(report_path, &msg);
-}
-
 pub fn report_fill(report_path: &str, pair: &str, order_id: &str, filled_qty: Decimal, remaining_qty: Decimal, price: Decimal, fees: Decimal) {
     let msg = format!("FILL: {} order_id={} filled={} remaining={} price={} fees={}", pair, order_id, filled_qty, remaining_qty, price, fees);
     let _ = report_log(report_path, &msg);
 }
 
-pub fn report_cancel(report_path: &str, pair: &str, order_id: &str, reason: &str) {
-    let msg = format!("CANCEL: {} order_id={} reason={}", pair, order_id, reason);
+pub fn report_cancel(report_path: &str, side: &str, pair: &str, order_id: &str, filled_qty: Decimal, reason: &str, current_close: Option<Decimal>, current_bid: Option<Decimal>, current_ask: Option<Decimal>, attempted_price: Option<Decimal>, trade_type: &str) {
+    let mut msg = format!("{} CANCELLED (PARTIAL): {}\n    Order ID: {}\n    Filled Qty: {:.8}\n    Reason: {}", side.to_uppercase(), pair, order_id, filled_qty, reason);
+    if let (Some(close), Some(bid), Some(ask), Some(attempted)) = (current_close, current_bid, current_ask, attempted_price) {
+        let pct_diff = if trade_type == "buy" && ask > Decimal::ZERO {
+            ((attempted - ask) / ask * Decimal::from(100)).round_dp(2)
+        } else if trade_type == "sell" && bid > Decimal::ZERO {
+            ((bid - attempted) / bid * Decimal::from(100)).round_dp(2)
+        } else {
+            Decimal::ZERO
+        };
+        let direction = if pct_diff > Decimal::ZERO {
+            if trade_type == "buy" { "above ask" } else { "below bid" }
+        } else if pct_diff < Decimal::ZERO {
+            if trade_type == "buy" { "below ask" } else { "above bid" }
+        } else {
+            "at market"
+        };
+        msg.push_str(&format!("\n    Current: close={:.5} bid={:.5} ask={:.5}\n    Attempted: {:.5}\n    Diff: {:.2}% {}", close, bid, ask, attempted, pct_diff.abs(), direction));
+    } else {
+        msg.push_str("\n    Price data unavailable");
+    }
+    let _ = report_log(report_path, &msg);
+}
+
+pub fn report_order_failed(report_path: &str, side: &str, pair: &str, reason: &str, current_close: Option<Decimal>, current_bid: Option<Decimal>, current_ask: Option<Decimal>, attempted_price: Option<Decimal>) {
+    let mut msg = format!("{} FAILED: {}\n    Reason: {}", side.to_uppercase(), pair, reason);
+    if let (Some(close), Some(bid), Some(ask), Some(attempted)) = (current_close, current_bid, current_ask, attempted_price) {
+        let pct_diff = if side == "buy" && ask > Decimal::ZERO {
+            ((attempted - ask) / ask * Decimal::from(100)).round_dp(2)
+        } else if side == "sell" && bid > Decimal::ZERO {
+            ((bid - attempted) / bid * Decimal::from(100)).round_dp(2)
+        } else {
+            Decimal::ZERO
+        };
+        let direction = if pct_diff > Decimal::ZERO {
+            if side == "buy" { "above ask" } else { "below bid" }
+        } else if pct_diff < Decimal::ZERO {
+            if side == "buy" { "below ask" } else { "above bid" }
+        } else {
+            "at market"
+        };
+        msg.push_str(&format!("\n    Current: close={:.5} bid={:.5} ask={:.5}\n    Attempted: {:.5}\n    Diff: {:.2}% {}", close, bid, ask, attempted, pct_diff.abs(), direction));
+    } else {
+        msg.push_str("\n    Price data unavailable");
+    }
     let _ = report_log(report_path, &msg);
 }
 
